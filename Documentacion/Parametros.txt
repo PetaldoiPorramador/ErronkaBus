@@ -17,4 +17,4 @@ Entornos de desarrollo
     Pseudocodigo
     Debug / Errores
     Diagrama y documentación de casos de uso (UML)
-    Diagrama de clases (UML)
+    Diagrama de clases (UML)↚ 
