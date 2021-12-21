@@ -71,9 +71,8 @@ public class DAOKale {
 	}
 	
 	public void update(Kale kale) {
-		DAOUdalerri udalDao = new DAOUdalerri();
-		if (udalDao.getByKode(kale.getUdalerria().getKode()) == null) {
-			System.out.println("Udalerria ez da existitzen");
+		if (this.getByIzena(kale.getIzena()) == null) {
+			System.out.println("Kalea ez da existitzen");
 		} else {
 			try {
 				String sql = "UPDATE Calle SET Calle=?, CP=?, CodMun=? WHERE Calle=?";

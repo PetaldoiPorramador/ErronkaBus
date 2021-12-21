@@ -48,7 +48,7 @@ public class DAOLinea {
 		}
 	}
 
-	public Linea getByKode(String izena) {
+	public Linea getByKode(int kode) {
 		Linea linea = new Linea();
 		try {
 			String sql = "SELECT * FROM Calle WHERE Calle=?";

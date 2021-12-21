@@ -63,14 +63,18 @@ public class DAOUdalerri {
 	}
 
 	public void update(Udalerri udalerri) {
-		try {
-			String sql = "UPDATE Municipio SET Nombre=? WHERE CodMun=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, udalerri.getIzena());
-			pst.setInt(2, udalerri.getKode());
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (getByKode(udalerri.getKode()) == null) {
+			System.out.println("Udalerria ez da existitzen");
+		} else {
+			try {
+				String sql = "UPDATE Municipio SET Nombre=? WHERE CodMun=?";
+				PreparedStatement pst = conn.prepareStatement(sql);
+				pst.setString(1, udalerri.getIzena());
+				pst.setInt(2, udalerri.getKode());
+				pst.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
