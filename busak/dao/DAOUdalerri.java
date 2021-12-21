@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 import busak.objektuak.Udalerri;
 
@@ -16,8 +14,6 @@ public class DAOUdalerri {
 
 	/**
 	 * Constructor vacio
-	 * 
-	 * @throws Exception
 	 */
 	public DAOUdalerri() {
 		super();
