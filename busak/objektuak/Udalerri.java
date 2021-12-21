@@ -9,6 +9,11 @@ public class Udalerri {
         this.izena = izena;
     }
 
+    public Udalerri() {
+        this.kode = -1;
+        this.izena = null;
+    }
+
     public int getKode() {
         return kode;
     }

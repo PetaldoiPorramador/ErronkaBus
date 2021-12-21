@@ -16,6 +16,14 @@ public class Geltoki {
         this.kalea = kalea;
     }
 
+    public Geltoki() {
+        this.orden = -1;
+        this.izena = null;
+        this.zenbakia = -1;
+        this.denboraBzBs = -1;
+        this.kalea = null;
+    }
+
     public int getOrden() {
         return orden;
     }

@@ -29,6 +29,18 @@ public class Linea {
 		this.geltokiak = geltokiak;
 	}
 
+	public Linea() {
+		this.kodea = -1;
+		this.izena = null;
+		this.hasOrdGor = null;
+		this.bukOrdGor = null;
+		this.hasOrdBer = null;
+		this.bukOrdBer = null;
+		this.pvpu = -1;
+		this.maiztasuna = -1;
+		this.geltokiak = null;
+	}
+
 	public int getKodea() {
 		return kodea;
 	}
