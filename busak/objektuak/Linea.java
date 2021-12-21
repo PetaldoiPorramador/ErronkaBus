@@ -1,6 +1,5 @@
 package busak.objektuak;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -73,7 +72,7 @@ public class Linea {
 	public LocalTime getBukOrdBer() {
 		return bukOrdBer;
 	}
-
+	
 	public void setBukOrdBer(LocalTime bukOrdBer) {
 		this.bukOrdBer = bukOrdBer;
 	}
@@ -105,21 +104,33 @@ public class Linea {
 	public void printGeltoki() {
 		System.out.println("Geltokiak:");
 		for (Geltoki geltoki : geltokiak) {
-			System.out.println(geltoki.getIzena() + ": " + geltoki.getKalea());
+			System.out.println(geltoki.getOrden() + " " + geltoki.getIzena() + ": " + geltoki.getKalea());
 		}
 	}
 
-	public ArrayList<Timestamp> getOrduEgoki(Timestamp data) {
-		// TODDO implementar
-		LocalDateTime bilaketa = data.toLocalDateTime();
-		LocalDateTime hasiera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
-				hasOrdGor.getHour(), hasOrdGor.getMinute());
-		LocalDateTime bukaera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
-				bukOrdGor.getHour(), bukOrdGor.getMinute());
-		ArrayList<LocalDateTime> orduak = new ArrayList<LocalDateTime>();
+	public ArrayList<LocalDateTime> getOrduEgoki(LocalDateTime bilaketa, int geltoki, boolean gora) {
+		LocalDateTime hasiera;
+		LocalDateTime bukaera;
+		int desfase;
+		if (gora) {
+			hasiera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
+					hasOrdGor.getHour(), hasOrdGor.getMinute());
+			bukaera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
+					bukOrdGor.getHour(), bukOrdGor.getMinute());
+			desfase = bidaiDenbora(0, geltoki);
+		} else {
+			hasiera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
+					hasOrdBer.getHour(), hasOrdBer.getMinute());
+			bukaera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
+					bukOrdBer.getHour(), bukOrdBer.getMinute());
+			desfase = bidaiDenbora(geltokiak.size()-1, geltoki);
+		}
+		hasiera = hasiera.plusMinutes(desfase);
+		bukaera = bukaera.plusMinutes(desfase);
 		LocalDateTime ordua = hasiera;
 		LocalDateTime beheMuga = bilaketa.minusHours(1);
 		LocalDateTime goiMuga = bilaketa.plusHours(1);
+		ArrayList<LocalDateTime> orduak = new ArrayList<LocalDateTime>();
 		while (ordua.isBefore(bukaera) && ordua.isBefore(goiMuga)) {
 			if (ordua.isAfter(beheMuga) && ordua.isBefore(goiMuga)) {
 				orduak.add(ordua);
@@ -127,6 +138,20 @@ public class Linea {
 			ordua = ordua.plusMinutes(maiztasuna);
 		}
 		return orduak;
+	}
+
+	public int bidaiDenbora(int hasiera, int bukaera) {
+		int denbora = 0;
+		if (hasiera < bukaera) {
+			for (int i = hasiera; i < bukaera; i++) {
+				denbora += geltokiak.get(i).getDenboraBzBs();
+			}
+		} else {
+			for (int i = hasiera; i > bukaera; i--) {
+				denbora += geltokiak.get(i - 1).getDenboraBzBs();
+			}
+		}
+		return denbora;
 	}
 
 }
