@@ -2,13 +2,15 @@ package busak.objektuak;
 
 public class Geltoki {
 
+    private int lineaKode;
     private int orden;
     private String izena;
     private int zenbakia;
     private int denboraBzBs;
     private Kale kalea;
 
-    public Geltoki(int orden, String izena, int zenbakia, int denboraBzBs, Kale kalea) {
+    public Geltoki(int lineaKode, int orden, String izena, int zenbakia, int denboraBzBs, Kale kalea) {
+        this.lineaKode = lineaKode;
         this.orden = orden;
         this.izena = izena;
         this.zenbakia = zenbakia;
@@ -62,6 +64,14 @@ public class Geltoki {
 
     public void setKalea(Kale kalea) {
         this.kalea = kalea;
+    }
+
+    public int getLineaKode() {
+        return lineaKode;
+    }
+
+    public void setLineaKode(int lineaKode) {
+        this.lineaKode = lineaKode;
     }
 
 }
