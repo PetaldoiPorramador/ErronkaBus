@@ -58,7 +58,7 @@ public class DAOKale {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				DAOUdalerri udalDao = new DAOUdalerri();
-				kale.setIzena(rs.getString("Calle"));
+				kale.setIzena(izena);
 				kale.setPk(rs.getInt("CP"));
 				int codMun = rs.getInt("CodMun");
 				Udalerri udalerri = udalDao.getByKode(codMun);

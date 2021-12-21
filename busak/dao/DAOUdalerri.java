@@ -28,7 +28,7 @@ public class DAOUdalerri {
 			pst.setInt(1, kode);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				udalerri.setKode(rs.getInt("CodMun"));
+				udalerri.setKode(kode);
 				udalerri.setIzena(rs.getString("Nombre"));
 			}
 		} catch (SQLException e) {
