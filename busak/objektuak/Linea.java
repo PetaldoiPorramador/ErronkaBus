@@ -38,7 +38,7 @@ public class Linea {
 		this.bukOrdBer = null;
 		this.pvpu = -1;
 		this.maiztasuna = -1;
-		this.geltokiak = null;
+		this.geltokiak = new ArrayList<Geltoki>();
 	}
 
 	public int getKodea() {
