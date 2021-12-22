@@ -1,18 +1,21 @@
 package busak.objektuak;
 
-import java.sql.Timestamp;
+import java.time.LocalTime;
+
 
 public class Bilete {
     private int kode;
     private float ordaintzekoa;
-    private Timestamp hasData;
-    private Timestamp bukData;
+    private String nan;
+    private LocalTime hasData;
+    private LocalTime bukData;
     private Geltoki hasGeltoki;
     private Geltoki bukGeltoki;
 
-    public Bilete(int kode, float ordaintzekoa, Timestamp hasData, Timestamp bukData, Geltoki hasGeltoki, Geltoki bukGeltoki) {
+    public Bilete(int kode, float ordaintzekoa,String nan, LocalTime hasData, LocalTime bukData, Geltoki hasGeltoki, Geltoki bukGeltoki) {
         this.kode = kode;
         this.ordaintzekoa = ordaintzekoa;
+        this.nan = nan;
         this.hasData = hasData;
         this.bukData = bukData;
         this.hasGeltoki = hasGeltoki;
@@ -22,6 +25,7 @@ public class Bilete {
     public Bilete() {
         this.kode = -1;
         this.ordaintzekoa = -1;
+        this.nan = null;
         this.hasData = null;
         this.bukData = null;
         this.hasGeltoki = null;
@@ -30,6 +34,14 @@ public class Bilete {
 
     public int getKode() {
         return kode;
+    }
+
+    public String getNan() {
+        return nan;
+    }
+
+    public void setNan(String nan) {
+        this.nan = nan;
     }
 
     public void setKode(int kode) {
@@ -44,19 +56,19 @@ public class Bilete {
         this.ordaintzekoa = ordaintzekoa;
     }
 
-    public Timestamp getHasData() {
+    public LocalTime getHasData() {
         return hasData;
     }
 
-    public void setHasData(Timestamp hasData) {
+    public void setHasData(LocalTime hasData) {
         this.hasData = hasData;
     }
 
-    public Timestamp getBukData() {
+    public LocalTime getBukData() {
         return bukData;
     }
 
-    public void setBukData(Timestamp bukData) {
+    public void setBukData(LocalTime bukData) {
         this.bukData = bukData;
     }
 
