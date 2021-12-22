@@ -11,6 +11,7 @@ public class DAOErabiltzaile {
 
 	Connection conn;
 
+	
 	/**
 	 * Constructor vacio
 	 */
