@@ -70,11 +70,11 @@ public class DAOBilete {
 
                 bilete.setBukData(rs.getTime(2).toLocalTime().plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
 
-                sql = "SELECT round(PVPU*abs(?-?)) FROM Linea WHERE CodLin=?";
+                sql = "SELECT round(PVPU*abs(OrdenTer-OrdenEmp)) FROM Linea WHERE CodLin=? AND OrdenEmp=? AND OrdenTer=?";
                 pst = conn.prepareStatement(sql);
-                pst.setInt(1, ordenEmp);
-                pst.setInt(2, ordenTer);
-                pst.setInt(3, kodeLin);
+                pst.setInt(1, kodeLin);
+                pst.setInt(2, ordenEmp);
+                pst.setInt(3, ordenTer);
                 rs = pst.executeQuery();
                 bilete.setOrdaintzekoa(rs.getFloat(1));
 
