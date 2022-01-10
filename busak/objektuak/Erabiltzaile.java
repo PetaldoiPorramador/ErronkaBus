@@ -1,9 +1,14 @@
 package busak.objektuak;
 
+import java.util.ArrayList;
+
 public class Erabiltzaile {
     private String nanAiz, izenAbizenak, pasahitza;
     private ArrayList<Bilete> bileteak;
-    private Scanner teklatua = new Scanner(System.in);
+
+    public Erabiltzaile() {
+
+    }
 
     public Erabiltzaile(String EnanAiz, String EizenAbizenak, String Epasahitza) {
         this.nanAiz = EnanAiz;
@@ -12,9 +17,7 @@ public class Erabiltzaile {
         bileteak = new ArrayList<Bilete>();
     }
 
-    public void erosiBilete(int kode, float ordaintzekoa, Timestamp hasData, Timestamp bukData, Geltoki hasGeltoki,
-            Geltoki bukGeltoki) {
-        Bilete bileteBerria = new Bilete(kode, ordaintzekoa, hasData, bukData, hasGeltoki, bukGeltoki);
+    public void erosiBilete(Bilete bileteBerria) {
         bileteak.add(bileteBerria);
     }
 
@@ -33,15 +36,15 @@ public class Erabiltzaile {
         }
     }
 
-    public void setNanAiz(nan) {
+    public void setNanAiz(String nan) {
         this.nanAiz = nan;
     }
 
-    public void setIzenAbizenak(izenAbiz) {
+    public void setIzenAbizenak(String izenAbiz) {
         this.izenAbizenak = izenAbiz;
     }
 
-    public void setPasahitza(pass) {
+    public void setPasahitza(String pass) {
         this.pasahitza = pass;
     }
 

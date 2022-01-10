@@ -24,7 +24,7 @@ public class DAOErabiltzaile {
 		try {
 			String sql = "INSERT INTO Cliente (DNI, NomApe, Pass) VALUES (?,?,MD5(?))";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, erabiltzaile.getNan());
+			pst.setString(1, erabiltzaile.getNanAiz());
 			pst.setString(2, erabiltzaile.getIzenAbizenak());
 			pst.setString(3, erabiltzaile.getPasahitza());
 			pst.executeUpdate();
@@ -52,7 +52,7 @@ public class DAOErabiltzaile {
 			pst.setString(1, nan);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile.setNan(nan);
+				erabiltzaile.setNanAiz(nan);
 				erabiltzaile.setIzenAbizenak(rs.getString("NomApe"));
 				erabiltzaile.setPasahitza(rs.getString("Pass"));
 			}
@@ -71,7 +71,7 @@ public class DAOErabiltzaile {
 			pst.setString(2, pasahitza);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile.setNan(nan);
+				erabiltzaile.setNanAiz(nan);
 				erabiltzaile.setIzenAbizenak(rs.getString("NomApe"));
 				erabiltzaile.setPasahitza(rs.getString("Pass"));
 			}
@@ -82,7 +82,7 @@ public class DAOErabiltzaile {
 	}
 
 	public void update(Erabiltzaile erabiltzaile) {
-		if (this.getByNan(erabiltzaile.getNan()) == null) {
+		if (this.getByNan(erabiltzaile.getNanAiz()) == null) {
 			System.out.println("Erabiltzailea ez da existitzen");
 		} else {
 			try {
@@ -90,7 +90,7 @@ public class DAOErabiltzaile {
 				PreparedStatement pst = conn.prepareStatement(sql);
 				pst.setString(1, erabiltzaile.getIzenAbizenak());
 				pst.setString(2, erabiltzaile.getPasahitza());
-				pst.setString(3, erabiltzaile.getNan());
+				pst.setString(3, erabiltzaile.getNanAiz());
 				pst.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
