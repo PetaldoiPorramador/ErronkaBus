@@ -25,10 +25,10 @@ INSERT INTO Parada VALUES (1, 1, 'Bilbao Intermodal', 1, 'Gurtubay');
 INSERT INTO Parada VALUES (1, 2, 'Iorgi', 48045024, 'Iorgi');
 INSERT INTO Parada VALUES (1, 3, 'Sodupe Estación', 48045004, 'Urrestieta');
 INSERT INTO Parada VALUES (1, 4, 'Zeribai', 48045031, 'Zeribai');
-INSERT INTO Parada VALUES (1, 4, 'Artxube', 48045033, 'Artxube');
-INSERT INTO Parada VALUES (1, 5, 'Lambarri', 48045005, 'Lambarri');
-INSERT INTO Parada VALUES (1, 6, 'Lasier', 48045035, 'Lasier');
-INSERT INTO Parada VALUES (1, 7, 'Güeñes Ayuntamiento', 48045014, 'Enkarterri');
+INSERT INTO Parada VALUES (1, 5, 'Artxube', 48045033, 'Artxube');
+INSERT INTO Parada VALUES (1, 6, 'Lambarri', 48045005, 'Lambarri');
+INSERT INTO Parada VALUES (1, 7, 'Lasier', 48045035, 'Lasier');
+INSERT INTO Parada VALUES (1, 8, 'Güeñes Ayuntamiento', 48045014, 'Enkarterri');
 
 INSERT INTO Billete VALUES (1, '2021-12-23', '32748572S', 1, 3, 7);
 
