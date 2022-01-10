@@ -88,4 +88,18 @@ public class Bilete {
         this.bukGeltoki = bukGeltoki;
     }
 
+    @Override
+    public String toString() {
+        return "Kodea: " + kode + " ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan + " Bidaiaren hasierako eguna eta ordua: "
+                + hasData + " estimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik " + bukGeltoki + "-ra";
+    }
+
+    public boolean berdinaDa(int kode, String nan) {
+       if(this.kode == kode && this.nan.equalsIgnoreCase(nan)){
+           return true;
+       } else {
+           return false;
+       }
+    }
+
 }

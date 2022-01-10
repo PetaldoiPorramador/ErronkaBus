@@ -24,18 +24,21 @@ public class Erabiltzaile {
         bileteak.add(bileteBerria);
     }
 
-    public void kantzelatuBilete(int num) {
-        // lehenengo eta behin, erabiltzailearen bileteak erakutsi, gero nahi duena
-        // ezabatu
-        ikusiBileteak();
-        bileteak.remove(num);
+    public void kantzelatuBilete(int kode) {
+       
+       for (Bilete bilete : bileteak) {
+           if(bilete.berdinaDa(kode, this.nanAiz)){
+               bileteak.remove(bilete);
+           }
+       }
+        
     }
 
     public void ikusiBileteak() {
         // erakutsi erabiltzailearen bilete guztiak
         for (int i = 0; i < bileteak.size(); i++) {
             // TODO: con todos los getter
-            System.out.println(i + ": " + bileteak.get(i));
+            System.out.println("\t" + bileteak.get(i));
         }
     }
 
