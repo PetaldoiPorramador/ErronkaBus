@@ -20,6 +20,7 @@ public class DAOBilete {
     }
 
     public void insert(Bilete bilete) {
+
         try {
             String sql = "INSERT INTO Billete (CodBil, FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -34,11 +35,12 @@ public class DAOBilete {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void delete(int kode) {
         try {
-            String sql = "DELETE FROM Billete WHERE CodBil=? AND DNI=?";
+            String sql = "DELETE FROM Billete WHERE CodBil=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, kode);
             pst.executeUpdate();
@@ -48,39 +50,38 @@ public class DAOBilete {
     }
 
     public Bilete getByKode(int kode) {
+
         Bilete bilete = new Bilete();
         try {
             String sql = "SELECT * FROM Billete WHERE CodBil=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, kode);
             ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                bilete.setKode(rs.getInt(1));
-                bilete.setHasData(rs.getTime(2).toLocalTime());
-                bilete.setNan(rs.getString(3));
-                int kodeLin = rs.getInt("CodLin");
-                int ordenEmp = rs.getInt("OrdenEmp");
-                int ordenTer = rs.getInt("OrdenTer");
 
-                DAOGeltoki daoGeltoki = new DAOGeltoki();
-                bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
-                bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
+            bilete.setKode(rs.getInt(1));
+            bilete.setHasData(rs.getTime(2).toLocalTime());
+            bilete.setNan(rs.getString(3));
+            int kodeLin = rs.getInt("CodLin");
+            int ordenEmp = rs.getInt("OrdenEmp");
+            int ordenTer = rs.getInt("OrdenTer");
 
-                DAOLinea daoLinea = new DAOLinea();
+            DAOGeltoki daoGeltoki = new DAOGeltoki();
+            bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
+            bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
 
-                bilete.setBukData(rs.getTime(2).toLocalTime().plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
+            DAOLinea daoLinea = new DAOLinea();
 
-                sql = "SELECT round(PVPU*abs(OrdenTer-OrdenEmp)) FROM Linea WHERE CodLin=? AND OrdenEmp=? AND OrdenTer=?";
-                pst = conn.prepareStatement(sql);
-                pst.setInt(1, kodeLin);
-                pst.setInt(2, ordenEmp);
-                pst.setInt(3, ordenTer);
-                rs = pst.executeQuery();
-                bilete.setOrdaintzekoa(rs.getFloat(1));
+            bilete.setBukData(bilete.getHasData()
+                    .plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
 
-                
-                
-            }
+            sql = "SELECT round(PVPU*abs(OrdenTer-OrdenEmp)) FROM Linea WHERE CodLin=? AND OrdenEmp=? AND OrdenTer=?";
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, kodeLin);
+            pst.setInt(2, ordenEmp);
+            pst.setInt(3, ordenTer);
+            rs = pst.executeQuery();
+            bilete.setOrdaintzekoa(rs.getFloat(1));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
