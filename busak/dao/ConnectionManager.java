@@ -11,9 +11,9 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/ErronkaBus";
-	private static final String USER = "root";
-	private static final String PASS = "root";
+	private static final String URL = "jdbc:mysql://erronkabus.ddns.net:3306/ErronkaBus";
+	private static final String USER = "dam";
+	private static final String PASS = "elorrieta";
 
 	static private Connection conn = null;
 
