@@ -7,7 +7,10 @@ public class Erabiltzaile {
     private ArrayList<Bilete> bileteak;
 
     public Erabiltzaile() {
-
+        nanAiz = null;
+        izenAbizenak = null;
+        pasahitza = null;
+        bileteak = new ArrayList<Bilete>();
     }
 
     public Erabiltzaile(String EnanAiz, String EizenAbizenak, String Epasahitza) {
