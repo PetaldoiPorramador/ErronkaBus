@@ -81,4 +81,35 @@ public class Utilities {
 		}
 		return str;
 	}
+
+	private static boolean nanKonprobatu(int nanZbk, char letra) {
+		char[] letrak = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
+				'L', 'C', 'K', 'E' };
+		return letrak[nanZbk % 23] == letra;
+	}
+
+	public static String eskatuNan() {
+		String nan = null;
+		boolean ok = false;
+		do {
+			nan = System.console().readLine();
+			if (nan.length() == 9) {
+				try {
+					int nanZbk = Integer.parseInt(nan.substring(0, 8));
+					char letra = nan.charAt(8);
+					if (nanKonprobatu(nanZbk, letra)) {
+						ok = true;
+					} else {
+						System.out.println("Nan-a ez da zuzena");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Sartu nan formatu egokia");
+				}
+			} else {
+				System.out.println("Sartu nan formatu egokia");
+			}
+		} while (!ok);
+		return nan;
+	}
+
 }
