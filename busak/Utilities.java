@@ -112,4 +112,17 @@ public class Utilities {
 		return nan;
 	}
 
+	public static boolean eskatuBaiEz() {
+	
+		do{
+			String str = System.console().readLine();
+			if(str.equalsIgnoreCase("e")) {
+				return false;
+			}else if (str.equalsIgnoreCase("b")) {
+				return true;
+			}else {
+				System.out.print("GOGORATU! bai(b), ez(e)");
+			}
+		}while(true);
+	}
 }
