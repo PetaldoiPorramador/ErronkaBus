@@ -51,7 +51,7 @@ public class Main {
 
         System.out.println("ERABILTZAILE BERRIA ESKATU");
         System.out.print("Erabiltzailearen NAN: ");
-        String nan = Utilities.eskatuString(9);
+        String nan = Utilities.eskatuNan();
         erabiltzaileBerri.setNanAiz(nan);
 
         System.out.print("\n" + "Erabiltzailearen Izen Abizenak: ");
@@ -86,7 +86,7 @@ public class Main {
         do {
 
             System.out.println("Sartu NAN/AIZ:");
-            String nanAiz = Utilities.eskatuString(3);
+            String nanAiz = Utilities.eskatuNan();
             erabiltzailea = daoE.getByNan(nanAiz);
             if (daoE.getByNan(nanAiz) != null) {
                 do {
