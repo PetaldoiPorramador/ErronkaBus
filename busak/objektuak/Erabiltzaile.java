@@ -37,7 +37,6 @@ public class Erabiltzaile {
     public void ikusiBileteak() {
         // erakutsi erabiltzailearen bilete guztiak
         for (int i = 0; i < bileteak.size(); i++) {
-            // TODO: con todos los getter
             System.out.println("\t" + bileteak.get(i));
         }
     }
