@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import busak.objektuak.Linea;
 
@@ -51,6 +52,7 @@ public class DAOLinea {
 
 	public Linea getByKode(int kode) {
 		Linea linea = new Linea();
+		DAOGeltoki daoGeltoki = new DAOGeltoki();
 		try {
 			String sql = "SELECT * FROM Linea WHERE CodLin=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -65,11 +67,38 @@ public class DAOLinea {
 				linea.setBukOrdBer(rs.getTime("HoraFinDsc").toLocalTime());
 				linea.setPvpu(rs.getFloat("PVPU"));
 				linea.setMaiztasuna(rs.getInt("Frecuencia"));
+				linea.setGeltokiak(daoGeltoki.getAll(linea.getKodea()));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return linea;
+	}
+
+	public ArrayList<Linea> getAll() {
+		ArrayList<Linea> lineak = new ArrayList<Linea>();
+		DAOGeltoki daoGeltoki = new DAOGeltoki();
+		try {
+			String sql = "SELECT * FROM Linea";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Linea linea = new Linea();
+				linea.setKodea(rs.getInt("CodLin"));
+				linea.setIzena(rs.getString("Nombre"));
+				linea.setHasOrdGor(rs.getTime("HoraInicioAsc").toLocalTime());
+				linea.setBukOrdGor(rs.getTime("HoraFinAsc").toLocalTime());
+				linea.setHasOrdBer(rs.getTime("HoraInicioDsc").toLocalTime());
+				linea.setBukOrdBer(rs.getTime("HoraFinDsc").toLocalTime());
+				linea.setPvpu(rs.getFloat("PVPU"));
+				linea.setMaiztasuna(rs.getInt("Frecuencia"));
+				linea.setGeltokiak(daoGeltoki.getAll(linea.getKodea()));
+				lineak.add(linea);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lineak;
 	}
 
 	public void update(Linea linea) {

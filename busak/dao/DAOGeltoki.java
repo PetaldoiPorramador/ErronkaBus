@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import busak.objektuak.Geltoki;
 
@@ -71,6 +72,29 @@ public class DAOGeltoki {
 			e.printStackTrace();
 		}
 		return geltoki;
+	}
+
+	public ArrayList<Geltoki> getAll(int lineaKode) {
+		Geltoki geltoki = new Geltoki();
+		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
+		try {
+			String sql = "SELECT * FROM Parada WHERE CodLin=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, lineaKode);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				DAOKale kaleDao = new DAOKale();
+				geltoki.setLineaKode(lineaKode);
+				geltoki.setOrden(rs.getInt("Orden"));
+				geltoki.setIzena(rs.getString("Nombre"));
+				geltoki.setZenbakia(rs.getInt("Numero"));
+				geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
+				lGeltokiak.add(geltoki);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lGeltokiak;
 	}
 
 	public void update(Geltoki geltoki) {

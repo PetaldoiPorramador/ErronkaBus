@@ -74,4 +74,10 @@ public class Geltoki {
         this.lineaKode = lineaKode;
     }
 
+    @Override
+    public String toString() {
+        return "Geltoki [denboraBzBs=" + denboraBzBs + ", izena=" + izena + ", kalea=" + kalea + ", lineaKode="
+                + lineaKode + ", orden=" + orden + ", zenbakia=" + zenbakia + "]";
+    }
+
 }

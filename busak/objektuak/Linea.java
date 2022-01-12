@@ -166,4 +166,11 @@ public class Linea {
 		return denbora;
 	}
 
+	@Override
+	public String toString() {
+		return "Linea [bukOrdBer=" + bukOrdBer + ", bukOrdGor=" + bukOrdGor + ", geltokiak=" + geltokiak
+				+ ", hasOrdBer=" + hasOrdBer + ", hasOrdGor=" + hasOrdGor + ", izena=" + izena + ", kodea=" + kodea
+				+ ", maiztasuna=" + maiztasuna + ", pvpu=" + pvpu + "]";
+	}
+
 }
