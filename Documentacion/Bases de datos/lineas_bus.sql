@@ -1,10 +1,10 @@
 USE `ErronkaBus` ;
 
-INSERT INTO Cliente VALUES ('32748572S', 'Manolo García Gómez', 'contramanolo');
-INSERT INTO Cliente VALUES ('73173892H', 'Miguel López Santiago', 'contramiguel');
-INSERT INTO Cliente VALUES ('28467283J', 'Ana Muñoz Ibañez', 'contraana');
-INSERT INTO Cliente VALUES ('19436725W', 'Elena Milán García', 'contraelena');
-INSERT INTO Cliente VALUES ('28635618B', 'Alberto Espino Sousa', 'contraalberto');
+INSERT INTO Cliente VALUES ('32748572E', 'Manolo García Gómez', MD5('contramanolo'));
+INSERT INTO Cliente VALUES ('73173892J', 'Miguel López Santiago', MD5('contramiguel'));
+INSERT INTO Cliente VALUES ('28467283E', 'Ana Muñoz Ibañez', MD5('contraana'));
+INSERT INTO Cliente VALUES ('19436725T', 'Elena Milán García', MD5('contraelena'));
+INSERT INTO Cliente VALUES ('28635618C', 'Alberto Espino Sousa', MD5('contraalberto'));
 
 #linea1
 INSERT INTO Linea VALUES (1, 'BILBAO-Güeñes', '7:35', '22:05', '6:35', '21:05', 2.55, 30);
@@ -30,7 +30,7 @@ INSERT INTO Parada VALUES (1, 6, 'Lambarri', 48045005, 'Lambarri');
 INSERT INTO Parada VALUES (1, 7, 'Lasier', 48045035, 'Lasier');
 INSERT INTO Parada VALUES (1, 8, 'Güeñes Ayuntamiento', 48045014, 'Enkarterri');
 
-INSERT INTO Billete VALUES (1, '2021-12-23', '32748572S', 1, 3, 7);
+INSERT INTO Billete VALUES (1, '2021-12-23', '32748572E', 1, 3, 7);
 
 #linea2
 INSERT INTO Linea VALUES (2, 'Barakaldo-UPV/EHU ', '7:35', '17:35', '11:05', '21:35', 1.35, 30);
@@ -50,4 +50,4 @@ INSERT INTO Parada VALUES (2, 3, 'Lutxana (Eliza/Iglesia)', 0405, 'Andikollano')
 INSERT INTO Parada VALUES (2, 4, 'Landeta (Goikoa)', 649, 'Landeta');
 INSERT INTO Parada VALUES (2, 5, 'EHU Oteiza plaza', 1, 'Unibertsitateko errepidea');
 
-INSERT INTO Billete VALUES (2, '2021-12-23', '19436725W', 2, 1, 5);
+INSERT INTO Billete VALUES (2, '2021-12-23', '19436725T', 2, 1, 5);
