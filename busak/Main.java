@@ -5,7 +5,7 @@ import busak.objektuak.Erabiltzaile;
 
 public class Main {
 
-    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile();
+    private static Erabiltzaile unekoErabiltzaile = null;
 
     public static void main(String[] args) {
         menu();
@@ -14,7 +14,6 @@ public class Main {
     private static void menu() {
         int aukera = -1;
         do {
-            System.out.println("Ongi etorri...");
             System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
             System.out.println();
             System.out.println("╔═══╦══════════════════╗");
@@ -23,6 +22,8 @@ public class Main {
             System.out.println("║ 2 ║ Erregistratu     ║");
             System.out.println("╠═══╬══════════════════╣");
             System.out.println("║ 3 ║ Bilete bat erosi ║");
+            System.out.println("╠═══╬══════════════════╣");
+            System.out.println("║ 4 ║ Atera            ║");
             System.out.println("╚═══╩══════════════════╝");
 
             aukera = Utilities.eskatuInt(3);
@@ -35,7 +36,11 @@ public class Main {
                     erregistratu();
                     break;
                 case 3:
-                    bileteaErosi();
+                    if (unekoErabiltzaile != null) {
+                        bileteaErosi();
+                    } else {
+                        System.out.println("Logeatu behar zara bilete bat erosteko");
+                    }
                 default:
                     break;
             }
@@ -98,7 +103,7 @@ public class Main {
                     if (erabiltzailea != null) {
                         unekoErabiltzaile = erabiltzailea;
                         ok = true;
-                        System.out.println("estas dentro");
+                        System.out.println("Login-a ondo atera da");
                     } else {
                         System.out.println("Pasahitza okerra da");
                         System.out.println("Login-etik atera nahi zara");
@@ -111,5 +116,6 @@ public class Main {
                 atera = Utilities.eskatuBaiEz();
             }
         } while (!ok && !atera);
+        System.out.println("\nKaixo " + unekoErabiltzaile.getIzenAbizenak());
     }
 }

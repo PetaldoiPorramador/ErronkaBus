@@ -40,4 +40,9 @@ public class Kale {
     public void setUdalerria(Udalerri udalerria) {
         this.udalerria = udalerria;
     }
+
+    @Override
+    public String toString() {
+        return izena + "Posta Kodea:" + pk + ", udalerria: " + udalerria;
+    }
 }

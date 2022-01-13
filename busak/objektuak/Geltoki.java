@@ -76,8 +76,11 @@ public class Geltoki {
 
     @Override
     public String toString() {
-        return "Geltoki [denboraBzBs=" + denboraBzBs + ", izena=" + izena + ", kalea=" + kalea + ", lineaKode="
-                + lineaKode + ", orden=" + orden + ", zenbakia=" + zenbakia + "]";
+        if(zenbakia>0){
+            return izena + " kalea: " + kalea + " zenbakia: " + zenbakia + " lineako " + orden + ". geltokia";
+        } else {
+            return izena + " kalea: " + kalea + " lineako " + orden + ". geltokia";
+        }
     }
 
 }

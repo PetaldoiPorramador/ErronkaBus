@@ -168,9 +168,10 @@ public class Linea {
 
 	@Override
 	public String toString() {
-		return "Linea [bukOrdBer=" + bukOrdBer + ", bukOrdGor=" + bukOrdGor + ", geltokiak=" + geltokiak
-				+ ", hasOrdBer=" + hasOrdBer + ", hasOrdGor=" + hasOrdGor + ", izena=" + izena + ", kodea=" + kodea
-				+ ", maiztasuna=" + maiztasuna + ", pvpu=" + pvpu + "]";
+		return "Linearen izena: " + izena + " kodea: " + kodea +
+		"\n\tHasierako ordua(G): " + hasOrdGor + " bukaerako ordua: " + bukOrdGor
+		+ "\n\tHasierako ordua(B): " + hasOrdBer + " bukaerako ordua: " + bukOrdBer
+		+ "\n\tMaiztasuna " + maiztasuna + " eta geltokiko PSN-a: " + pvpu;
 	}
 
 }
