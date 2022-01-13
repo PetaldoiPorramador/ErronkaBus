@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `ErronkaBus`.`Parada` (
   `Orden` INT NOT NULL,
   `Nombre` VARCHAR(45) NOT NULL,
   `Numero` INT NULL,
+  `TiempoE` INT NOT NULL,
   `Calle` VARCHAR(45) NOT NULL,
   UNIQUE INDEX `Nombre_UNIQUE` (`Nombre` ASC) VISIBLE,
   PRIMARY KEY (`CodLin`, `Orden`),

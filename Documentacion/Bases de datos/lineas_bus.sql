@@ -21,14 +21,14 @@ INSERT INTO Calle VALUES ('Lambarri', '48840', 2);
 INSERT INTO Calle VALUES ('Lasier', '48840', 2);
 INSERT INTO Calle VALUES ('Enkarterri', '48840', 2);
 
-INSERT INTO Parada VALUES (1, 1, 'Bilbao Intermodal', 1, 'Gurtubay');
-INSERT INTO Parada VALUES (1, 2, 'Iorgi', 48045024, 'Iorgi');
-INSERT INTO Parada VALUES (1, 3, 'Sodupe Estación', 48045004, 'Urrestieta');
-INSERT INTO Parada VALUES (1, 4, 'Zeribai', 48045031, 'Zeribai');
-INSERT INTO Parada VALUES (1, 5, 'Artxube', 48045033, 'Artxube');
-INSERT INTO Parada VALUES (1, 6, 'Lambarri', 48045005, 'Lambarri');
-INSERT INTO Parada VALUES (1, 7, 'Lasier', 48045035, 'Lasier');
-INSERT INTO Parada VALUES (1, 8, 'Güeñes Ayuntamiento', 48045014, 'Enkarterri');
+INSERT INTO Parada VALUES (1, 1, 'Bilbao Intermodal', 1, 2, 'Gurtubay');
+INSERT INTO Parada VALUES (1, 2, 'Iorgi', 48045024, 3, 'Iorgi');
+INSERT INTO Parada VALUES (1, 3, 'Sodupe Estación', 48045004, 1, 'Urrestieta');
+INSERT INTO Parada VALUES (1, 4, 'Zeribai', 48045031, 3, 'Zeribai');
+INSERT INTO Parada VALUES (1, 5, 'Artxube', 48045033, 3, 'Artxube');
+INSERT INTO Parada VALUES (1, 6, 'Lambarri', 48045005, 2, 'Lambarri');
+INSERT INTO Parada VALUES (1, 7, 'Lasier', 48045035, 1, 'Lasier');
+INSERT INTO Parada VALUES (1, 8, 'Güeñes Ayuntamiento', 48045014, -1, 'Enkarterri');
 
 INSERT INTO Billete VALUES (1, '2021-12-23', '32748572E', 1, 3, 7);
 
@@ -44,10 +44,10 @@ INSERT INTO Calle VALUES ('Andikollano', '48903', 3);
 INSERT INTO Calle VALUES ('Landeta', '48903', 3);
 INSERT INTO Calle VALUES ('Unibertsitateko errepidea', '48903', 4);
 
-INSERT INTO Parada VALUES (2, 1, 'Balejo (Gurutzeta/Cruces)', 4172, 'Balejo');
-INSERT INTO Parada VALUES (2, 2, 'Argenta', 0399, 'Argenta');
-INSERT INTO Parada VALUES (2, 3, 'Lutxana (Eliza/Iglesia)', 0405, 'Andikollano');
-INSERT INTO Parada VALUES (2, 4, 'Landeta (Goikoa)', 649, 'Landeta');
-INSERT INTO Parada VALUES (2, 5, 'EHU Oteiza plaza', 1, 'Unibertsitateko errepidea');
+INSERT INTO Parada VALUES (2, 1, 'Balejo (Gurutzeta/Cruces)', 4172, 2, 'Balejo');
+INSERT INTO Parada VALUES (2, 2, 'Argenta', 0399, 2, 'Argenta');
+INSERT INTO Parada VALUES (2, 3, 'Lutxana (Eliza/Iglesia)', 0405, 1, 'Andikollano');
+INSERT INTO Parada VALUES (2, 4, 'Landeta (Goikoa)', 649, 3, 'Landeta');
+INSERT INTO Parada VALUES (2, 5, 'EHU Oteiza plaza', null, -1, 'Unibertsitateko errepidea');
 
 INSERT INTO Billete VALUES (2, '2021-12-23', '19436725T', 2, 1, 5);
