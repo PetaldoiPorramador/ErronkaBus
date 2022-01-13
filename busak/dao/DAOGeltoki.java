@@ -86,7 +86,6 @@ public class DAOGeltoki {
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Geltoki geltoki = new Geltoki();
-				
 				geltoki.setLineaKode(lineaKode);
 				geltoki.setOrden(rs.getInt("Orden"));
 				geltoki.setIzena(rs.getString("Nombre"));
