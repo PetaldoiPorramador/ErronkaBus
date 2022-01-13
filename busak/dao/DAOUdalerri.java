@@ -21,15 +21,15 @@ public class DAOUdalerri {
 	}
 
 	public Udalerri getByKode(int kode) {
-		Udalerri udalerri = new Udalerri();
+		Udalerri udalerri = null;
 		try {
 			String sql = "SELECT * FROM Municipio WHERE CodMun=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, kode);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				udalerri.setKode(kode);
-				udalerri.setIzena(rs.getString("Nombre"));
+				String izena = rs.getString("Numbre");
+				udalerri = new Udalerri(kode, izena);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

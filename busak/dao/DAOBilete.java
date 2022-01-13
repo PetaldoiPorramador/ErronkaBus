@@ -51,13 +51,14 @@ public class DAOBilete {
 
     public Bilete getByKode(int kode) {
 
-        Bilete bilete = new Bilete();
+        Bilete bilete = null;
         try {
             String sql = "SELECT * FROM Billete WHERE CodBil=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, kode);
             ResultSet rs = pst.executeQuery();
 
+            bilete = new Bilete();
             bilete.setKode(rs.getInt(1));
             bilete.setHasData(rs.getTime(2).toLocalTime());
             bilete.setNan(rs.getString(3));
@@ -83,6 +84,7 @@ public class DAOBilete {
             bilete.setOrdaintzekoa(rs.getFloat(1));
 
         } catch (SQLException e) {
+            bilete = null;
             e.printStackTrace();
         }
         return bilete;
