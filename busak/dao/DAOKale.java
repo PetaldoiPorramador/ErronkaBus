@@ -50,7 +50,7 @@ public class DAOKale {
 	}
 
 	public Kale getByIzena(String izena) {
-		Kale kale = new Kale();
+		Kale kale = null;
 		try {
 			String sql = "SELECT * FROM Calle WHERE Calle=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -58,18 +58,17 @@ public class DAOKale {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				DAOUdalerri udalDao = new DAOUdalerri();
-				kale.setIzena(izena);
-				kale.setPk(rs.getInt("CP"));
+				int pk = rs.getInt("CP");
 				int codMun = rs.getInt("CodMun");
 				Udalerri udalerri = udalDao.getByKode(codMun);
-				kale.setUdalerria(udalerri);
+				kale = new Kale(izena, pk, udalerri);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return kale;
 	}
-	
+
 	public void update(Kale kale) {
 		if (this.getByIzena(kale.getIzena()) == null) {
 			System.out.println("Kalea ez da existitzen");

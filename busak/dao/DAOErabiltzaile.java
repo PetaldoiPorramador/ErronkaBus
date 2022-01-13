@@ -52,7 +52,9 @@ public class DAOErabiltzaile {
 			pst.setString(1, nan);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile = new Erabiltzaile(rs.getString("DNI"), rs.getString("NomApe"), rs.getString("Pass"));
+				String izena = rs.getString("NomApe");
+				String pasahitza = rs.getString("Pass");
+				erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,7 +71,8 @@ public class DAOErabiltzaile {
 			pst.setString(2, pasahitza);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile = new Erabiltzaile(rs.getString("DNI"), rs.getString("NomApe"), rs.getString("Pass"));
+				String izena = rs.getString("NomApe");
+				erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
