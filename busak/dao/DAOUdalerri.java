@@ -28,7 +28,7 @@ public class DAOUdalerri {
 			pst.setInt(1, kode);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				String izena = rs.getString("Numbre");
+				String izena = rs.getString("Nombre");
 				udalerri = new Udalerri(kode, izena);
 			}
 		} catch (SQLException e) {

@@ -77,7 +77,7 @@ public class DAOGeltoki {
 	}
 
 	public ArrayList<Geltoki> getAll(int lineaKode) {
-		Geltoki geltoki = new Geltoki();
+		DAOKale kaleDao = new DAOKale();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
 		try {
 			String sql = "SELECT * FROM Parada WHERE CodLin=?";
@@ -85,7 +85,8 @@ public class DAOGeltoki {
 			pst.setInt(1, lineaKode);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				DAOKale kaleDao = new DAOKale();
+				Geltoki geltoki = new Geltoki();
+				
 				geltoki.setLineaKode(lineaKode);
 				geltoki.setOrden(rs.getInt("Orden"));
 				geltoki.setIzena(rs.getString("Nombre"));

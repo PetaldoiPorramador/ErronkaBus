@@ -1,11 +1,16 @@
 package busak;
 
+import java.util.ArrayList;
+
 import busak.dao.DAOErabiltzaile;
+import busak.dao.DAOLinea;
 import busak.objektuak.Erabiltzaile;
+import busak.objektuak.Linea;
 
 public class Main {
 
     private static Erabiltzaile unekoErabiltzaile = null;
+    private static ArrayList<Linea> lineak = new ArrayList<Linea>();
 
     public static void main(String[] args) {
         menu();
@@ -49,6 +54,28 @@ public class Main {
     }
 
     private static void bileteaErosi() {
+        System.out.println("\nAukeratu hurrengo linietako bat:");
+        DAOLinea daoL = new DAOLinea();
+        lineak = daoL.getAll();
+
+        for (Linea linea : lineak) {
+            System.out.println(linea);
+        }
+        Linea l = null;
+        do {
+            int aukera = Utilities.eskatuInt(Integer.MAX_VALUE);
+            for (Linea lin : lineak) {
+                if (lin.kodeaDa(aukera)) {
+                    l = lin;
+                    break;
+                }
+
+            }
+        } while (l == null);
+        System.out.println("\nAukeratu hurrengo geltokietako bat:");
+        l.printGeltoki();
+        
+
     }
 
     private static void erregistratu() {
@@ -104,6 +131,7 @@ public class Main {
                         unekoErabiltzaile = erabiltzailea;
                         ok = true;
                         System.out.println("Login-a ondo atera da");
+                        System.out.println("\nKaixo " + unekoErabiltzaile.getIzenAbizenak());
                     } else {
                         System.out.println("Pasahitza okerra da");
                         System.out.println("Login-etik atera nahi zara");
@@ -116,6 +144,6 @@ public class Main {
                 atera = Utilities.eskatuBaiEz();
             }
         } while (!ok && !atera);
-        System.out.println("\nKaixo " + unekoErabiltzaile.getIzenAbizenak());
+
     }
 }

@@ -84,7 +84,7 @@ public class Linea {
 	public LocalTime getBukOrdBer() {
 		return bukOrdBer;
 	}
-	
+
 	public void setBukOrdBer(LocalTime bukOrdBer) {
 		this.bukOrdBer = bukOrdBer;
 	}
@@ -114,9 +114,8 @@ public class Linea {
 	}
 
 	public void printGeltoki() {
-		System.out.println("Geltokiak:");
 		for (Geltoki geltoki : geltokiak) {
-			System.out.println(geltoki.getOrden() + " " + geltoki.getIzena() + ": " + geltoki.getKalea());
+			System.out.println(geltoki);
 		}
 	}
 
@@ -135,7 +134,7 @@ public class Linea {
 					hasOrdBer.getHour(), hasOrdBer.getMinute());
 			bukaera = LocalDateTime.of(bilaketa.getYear(), bilaketa.getMonth(), bilaketa.getDayOfMonth(),
 					bukOrdBer.getHour(), bukOrdBer.getMinute());
-			desfase = bidaiDenbora(geltokiak.size()-1, geltoki);
+			desfase = bidaiDenbora(geltokiak.size() - 1, geltoki);
 		}
 		hasiera = hasiera.plusMinutes(desfase);
 		bukaera = bukaera.plusMinutes(desfase);
@@ -169,9 +168,13 @@ public class Linea {
 	@Override
 	public String toString() {
 		return "Linearen izena: " + izena + " kodea: " + kodea +
-		"\n\tHasierako ordua(G): " + hasOrdGor + " bukaerako ordua: " + bukOrdGor
-		+ "\n\tHasierako ordua(B): " + hasOrdBer + " bukaerako ordua: " + bukOrdBer
-		+ "\n\tMaiztasuna " + maiztasuna + " eta geltokiko PSN-a: " + pvpu;
+				"\n\tHasierako ordua(G): " + hasOrdGor + " bukaerako ordua: " + bukOrdGor
+				+ "\n\tHasierako ordua(B): " + hasOrdBer + " bukaerako ordua: " + bukOrdBer
+				+ "\n\tMaiztasuna " + maiztasuna + " eta geltokiko PSN-a: " + pvpu;
+	}
+
+	public boolean kodeaDa(int aukera) {
+		return this.kodea == aukera;
 	}
 
 }
