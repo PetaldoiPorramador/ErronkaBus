@@ -82,6 +82,15 @@ public class Utilities {
 		return str;
 	}
 
+	public static String eskatuPass() {
+		String pass = String.valueOf(System.console().readPassword());
+		if (pass.length() < 5) {
+			System.out.println("Sartu 5 karaktere edo gehiago");
+			return eskatuPass();
+		}
+		return pass;
+	}
+
 	private static boolean nanKonprobatu(int nanZbk, char letra) {
 		char[] letrak = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
 				'L', 'C', 'K', 'E' };
@@ -92,7 +101,7 @@ public class Utilities {
 		String nan = null;
 		boolean ok = false;
 		do {
-			nan = System.console().readLine();
+			nan = System.console().readLine().toUpperCase();
 			if (nan.length() == 9) {
 				try {
 					int nanZbk = Integer.parseInt(nan.substring(0, 8));
@@ -113,16 +122,15 @@ public class Utilities {
 	}
 
 	public static boolean eskatuBaiEz() {
-	
-		do{
+		do {
 			String str = System.console().readLine();
-			if(str.equalsIgnoreCase("e")) {
+			if (str.equalsIgnoreCase("e")) {
 				return false;
-			}else if (str.equalsIgnoreCase("b")) {
+			} else if (str.equalsIgnoreCase("b")) {
 				return true;
-			}else {
+			} else {
 				System.out.print("GOGORATU! bai(b), ez(e)");
 			}
-		}while(true);
+		} while (true);
 	}
 }

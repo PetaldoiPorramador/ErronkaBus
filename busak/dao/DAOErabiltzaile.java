@@ -45,16 +45,14 @@ public class DAOErabiltzaile {
 	}
 
 	public Erabiltzaile getByNan(String nan) {
-		Erabiltzaile erabiltzaile = new Erabiltzaile();
+		Erabiltzaile erabiltzaile = null;
 		try {
 			String sql = "SELECT * FROM Cliente WHERE DNI=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, nan);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile.setNanAiz(nan);
-				erabiltzaile.setIzenAbizenak(rs.getString("NomApe"));
-				erabiltzaile.setPasahitza(rs.getString("Pass"));
+				erabiltzaile = new Erabiltzaile(rs.getString("DNI"), rs.getString("NomApe"), rs.getString("Pass"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,7 +61,7 @@ public class DAOErabiltzaile {
 	}
 
 	public Erabiltzaile getByNanPass(String nan, String pasahitza) {
-		Erabiltzaile erabiltzaile = new Erabiltzaile();
+		Erabiltzaile erabiltzaile = null;
 		try {
 			String sql = "SELECT * FROM Cliente WHERE DNI=? AND Pass=MD5(?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -71,9 +69,7 @@ public class DAOErabiltzaile {
 			pst.setString(2, pasahitza);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				erabiltzaile.setNanAiz(nan);
-				erabiltzaile.setIzenAbizenak(rs.getString("NomApe"));
-				erabiltzaile.setPasahitza(rs.getString("Pass"));
+				erabiltzaile = new Erabiltzaile(rs.getString("DNI"), rs.getString("NomApe"), rs.getString("Pass"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

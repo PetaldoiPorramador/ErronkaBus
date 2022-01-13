@@ -59,7 +59,7 @@ public class Main {
         erabiltzaileBerri.setIzenAbizenak(izenabiz);
 
         System.out.print("\n" + "Pasahitza sortu: ");
-        String pasahitza = Utilities.eskatuString(5);
+        String pasahitza = Utilities.eskatuPass();
         erabiltzaileBerri.setPasahitza(pasahitza);
 
         System.out.println("\n" + "DATUAK");
@@ -88,16 +88,17 @@ public class Main {
             System.out.println("Sartu NAN/AIZ:");
             String nanAiz = Utilities.eskatuNan();
             erabiltzailea = daoE.getByNan(nanAiz);
-            if (daoE.getByNan(nanAiz) != null) {
+            if (erabiltzailea != null) {
                 do {
                     System.out.println("Sartu pasahitza:");
-                    String pasa = Utilities.eskatuString(5);
+                    String pasa = Utilities.eskatuPass();
 
                     erabiltzailea = daoE.getByNanPass(nanAiz, pasa);
 
                     if (erabiltzailea != null) {
                         unekoErabiltzaile = erabiltzailea;
                         ok = true;
+                        System.out.println("estas dentro");
                     } else {
                         System.out.println("Pasahitza okerra da");
                         System.out.println("Login-etik atera nahi zara");
