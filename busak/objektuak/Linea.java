@@ -153,14 +153,13 @@ public class Linea {
 
 	public int bidaiDenbora(int hasiera, int bukaera) {
 		int denbora = 0;
-		if (hasiera < bukaera) {
-			for (int i = hasiera; i < bukaera; i++) {
-				denbora += geltokiak.get(i).getDenboraBzBs();
-			}
-		} else {
-			for (int i = hasiera; i > bukaera; i--) {
-				denbora += geltokiak.get(i - 1).getDenboraBzBs();
-			}
+		if (hasiera > bukaera) {
+			int aux = hasiera;
+			hasiera = bukaera;
+			bukaera = aux;
+		}
+		for (int i = hasiera; i < bukaera; i++) {
+			denbora += geltokiak.get(i).getDenboraBzBs();
 		}
 		return denbora;
 	}
