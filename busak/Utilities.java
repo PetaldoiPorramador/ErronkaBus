@@ -55,6 +55,7 @@ public class Utilities {
 		while (!ok) {
 			try {
 				eguna = LocalDate.parse(System.console().readLine());
+				ok = true;
 			} catch (DateTimeParseException e) {
 				System.out.println("Sartu egun formatu egokia(uuuu-hh-ee):");
 			}

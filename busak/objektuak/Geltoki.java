@@ -77,9 +77,9 @@ public class Geltoki {
     @Override
     public String toString() {
         if(zenbakia>0){
-            return izena + " kalea: " + kalea + " zenbakia: " + zenbakia + " lineako " + orden + ". geltokia";
+            return " lineako " + orden + ". geltokia" + izena + " kalea: " + kalea + " zenbakia: " + zenbakia;
         } else {
-            return izena + " kalea: " + kalea + " lineako " + orden + ". geltokia";
+            return  " lineako " + orden + ". geltokia" + izena + " kalea: " + kalea;
         }
     }
 

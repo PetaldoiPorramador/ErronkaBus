@@ -1,15 +1,17 @@
 package busak;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import busak.dao.DAOErabiltzaile;
 import busak.dao.DAOLinea;
 import busak.objektuak.Erabiltzaile;
+import busak.objektuak.Geltoki;
 import busak.objektuak.Linea;
 
 public class Main {
 
-    private static Erabiltzaile unekoErabiltzaile = null;
+    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("7","7","7");
     private static ArrayList<Linea> lineak = new ArrayList<Linea>();
 
     public static void main(String[] args) {
@@ -57,13 +59,16 @@ public class Main {
         System.out.println("\nAukeratu hurrengo linietako bat:");
         DAOLinea daoL = new DAOLinea();
         lineak = daoL.getAll();
+        int aukera = -1;
+        int geltoHas = -1;
+        int geltoBuk = -1;
 
         for (Linea linea : lineak) {
             System.out.println(linea);
         }
         Linea l = null;
         do {
-            int aukera = Utilities.eskatuInt(Integer.MAX_VALUE);
+            aukera = Utilities.eskatuInt(Integer.MAX_VALUE);
             for (Linea lin : lineak) {
                 if (lin.kodeaDa(aukera)) {
                     l = lin;
@@ -74,7 +79,28 @@ public class Main {
         } while (l == null);
         System.out.println("\nAukeratu hurrengo geltokietako bat:");
         l.printGeltoki();
-        
+        aukera = 0;
+        ArrayList<Geltoki> geltokiak = l.getGeltokiak();
+        int lTamaina = geltokiak.size();
+        do {
+            System.out.println("Sartu bidaiaren hasierako geltokiaren ordena:");
+            geltoHas = Utilities.eskatuInt(lTamaina);
+            System.out.println("Sartu bidaiaren bukaerako geltokiaren ordena:");
+            geltoBuk = Utilities.eskatuInt(lTamaina);
+            System.out.println("Akuera prozesatzen ... .. .");
+            if (geltoBuk==geltoHas) {
+                System.out.println("Ez duzu bileterik behar lekuan bertan geratzeko");
+            }
+        } while (geltoBuk == geltoHas);
+
+        LocalDateTime egunOrd = Utilities.eskatuOrdua();
+        ArrayList<LocalDateTime> ordPosi = l.getOrduEgoki(egunOrd, geltoHas, geltoBuk > geltoHas);
+        int max = ordPosi.size();
+        for (int i = 0; i < max; i++) {
+            System.out.println(" -" + (i+1) + "- " + ordPosi.get(i));
+        }
+        System.out.println("Sartu nahi duzun ordua (1-" + max +"):");
+        aukera = Utilities.eskatuInt(max);
 
     }
 
