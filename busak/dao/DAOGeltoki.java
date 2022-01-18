@@ -79,7 +79,7 @@ public class DAOGeltoki {
 	public ArrayList<Geltoki> getAll(int lineaKode) {
 		DAOKale kaleDao = new DAOKale();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
-		String sql = "SELECT * FROM Parada WHERE CodLin=?";
+		String sql = "SELECT * FROM Parada WHERE CodLin=? ORDER BY Orden";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			try (ResultSet rs = pst.executeQuery()) {
