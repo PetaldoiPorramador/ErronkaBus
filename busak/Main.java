@@ -33,7 +33,7 @@ public class Main {
         int aukera = -1;
         boolean atera = false;
         do {
-            
+
             if (unekoErabiltzaile == null) {
                 System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
                 System.out.println();
@@ -65,7 +65,7 @@ public class Main {
                 System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
                 System.out.println();
                 System.out.println("╔═══╦══════════════════╗");
-                System.out.println("║ 1 ║ Bileteak ikusi   ║");//TODO
+                System.out.println("║ 1 ║ Bileteak ikusi   ║");
                 System.out.println("╠═══╬══════════════════╣");
                 System.out.println("║ 2 ║ Bilete bat erosi ║");
                 System.out.println("╠═══╬══════════════════╣");
@@ -80,6 +80,7 @@ public class Main {
                         break;
                     case 2:
                         bileteaErosi();
+                        break;
                     default:
                         unekoErabiltzaile = null;
                         System.out.println("Ateratzen ... .. .");
@@ -91,12 +92,13 @@ public class Main {
 
     }
 
-    /**Bileteak ikusteko metodoa */
+    /** Bileteak ikusteko metodoa */
     private static void biletakIkusi() {
         System.out.println("Hona hemen erosi dituzun bileteak:");
         DAOBilete daoBil = new DAOBilete();
         unekoErabiltzaile.setBileteak(daoBil.getAll(unekoErabiltzaile.getNanAiz()));
         unekoErabiltzaile.ikusiBileteak();
+        System.out.println("\n");
     }
 
     /** Biletea erostearen aukera kudeatzen duen metodoa da */
@@ -129,9 +131,9 @@ public class Main {
         int lTamaina = geltokiak.size();
         do {
             System.out.println("Sartu bidaiaren hasierako geltokiaren ordena:");
-            geltoHas = Utilities.eskatuInt(lTamaina);
+            geltoHas = Utilities.eskatuInt(lTamaina) - 1;
             System.out.println("Sartu bidaiaren bukaerako geltokiaren ordena:");
-            geltoBuk = Utilities.eskatuInt(lTamaina);
+            geltoBuk = Utilities.eskatuInt(lTamaina) - 1;
             System.out.println("Akuera prozesatzen ... .. .");
             if (geltoBuk == geltoHas) {
                 System.out.println("Ez duzu bileterik behar lekuan bertan geratzeko");
@@ -238,14 +240,14 @@ public class Main {
             System.out.println(" -" + (i + 1) + "- " + ordPosi.get(i));
         }
         System.out.println("Sartu nahi duzun ordua (1-" + max + "):");
-        int aukera = Utilities.eskatuInt(max);
-        egunOrd = ordPosi.get(aukera - 1);
+        int aukera = Utilities.eskatuInt(max) - 1;
+        egunOrd = ordPosi.get(aukera);
 
         bil.setNan(unekoErabiltzaile.getNanAiz());
-        bil.setHasGeltoki(l.getGeltoki(geltoHas - 1));
-        bil.setBukGeltoki(l.getGeltoki(geltoBuk - 1));
+        bil.setHasGeltoki(l.getGeltoki(geltoHas));
+        bil.setBukGeltoki(l.getGeltoki(geltoBuk));
         bil.setHasData(egunOrd);
-        bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas - 1, geltoBuk - 1)));
+        bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas, geltoBuk)));
         bil.setOrdaintzekoa(l.getPvpu() * Math.abs(geltoHas - geltoBuk));
         DAOBilete daoB = new DAOBilete();
         System.out.println("Hurrengo biletea erosi nahi duzu (b/e)");
@@ -258,6 +260,7 @@ public class Main {
                 bil.setKode(daoB.insert(bil));
                 System.out.println("Hona hemen biletea:\n");
                 System.out.println(daoB.getByKode(bil.getKode()));
+                System.out.println("\n");
             }
         } else {
             System.out.println("Erosketa bertan bera utziko da");
@@ -319,7 +322,6 @@ public class Main {
                         unekoErabiltzaile = erabiltzailea;
                         ok = true;
                         System.out.println("Login-a ondo atera da");
-                        System.out.println("\nKaixo " + unekoErabiltzaile.getIzenAbizenak());
                     } else {
                         System.out.println("Pasahitza okerra da");
                         System.out.println("Login-etik atera nahi zara");
