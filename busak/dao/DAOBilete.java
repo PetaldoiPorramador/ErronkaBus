@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 
 import busak.objektuak.Bilete;
@@ -24,7 +25,7 @@ public class DAOBilete {
 
         try {
             String sql = "INSERT INTO Billete (FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?)";
-            PreparedStatement pst = conn.prepareStatement(sql);
+            PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pst.setTimestamp(1, Timestamp.valueOf(bilete.getHasData()));
             pst.setString(2, bilete.getNan());
             pst.setInt(3, bilete.getHasGeltoki().getLineaKode());
