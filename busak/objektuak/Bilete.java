@@ -133,6 +133,15 @@ public class Bilete {
         this.bukGeltoki = bukGeltoki;
     }
 
+    
+    public boolean berdinaDa(int kode, String nan) {
+        if (this.kode == kode && this.nan.equalsIgnoreCase(nan)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         if (kode != -1)
@@ -146,14 +155,6 @@ public class Bilete {
                     + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik "
                     + bukGeltoki + "-ra";
 
-    }
-
-    public boolean berdinaDa(int kode, String nan) {
-        if (this.kode == kode && this.nan.equalsIgnoreCase(nan)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public String toStringIzenak() {

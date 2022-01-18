@@ -64,4 +64,13 @@ public class Erabiltzaile {
     public String getPasahitza() {
         return pasahitza;
     }
+
+    public ArrayList<Bilete> getBileteak() {
+        return bileteak;
+    }
+
+    public void setBileteak(ArrayList<Bilete> bileteak) {
+        this.bileteak = bileteak;
+    }
+    
 }

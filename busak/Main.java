@@ -94,7 +94,7 @@ public class Main {
     private static void biletakIkusi() {
         System.out.println("Hona hemen erosi dituzun bileteak:");
         DAOBilete daoBil = new DAOBilete();
-        unekoErabiltzailea.daoBil.getAll(unekoErabiltzaile.getNanAiz());
+        unekoErabiltzaile.setBileteak(daoBil.getAll(unekoErabiltzaile.getNanAiz()));
     }
 
     /** Biletea erostearen aukera kudeatzen duen metodoa da */
