@@ -36,6 +36,9 @@ public class DAOBilete {
 				} else {
 					System.out.println("No se ha podido generar el codigo");
 				}
+			} catch (SQLException e) {
+				System.out.println("Error al generar el codigo");
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

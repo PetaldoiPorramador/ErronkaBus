@@ -26,9 +26,8 @@ public class DAOGeltoki {
 		if (lineaDao.getByKode(geltoki.getLineaKode()) == null) {
 			System.out.println("Linea ez da existitzen");
 		} else {
-			try {
-				String sql = "INSERT INTO Parada (CodLin, Orden, Nombre, Numero, TiempoE, Calle) VALUES (?,?,?,?,?,?)";
-				PreparedStatement pst = conn.prepareStatement(sql);
+			String sql = "INSERT INTO Parada (CodLin, Orden, Nombre, Numero, TiempoE, Calle) VALUES (?,?,?,?,?,?)";
+			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setInt(1, geltoki.getLineaKode());
 				pst.setInt(2, geltoki.getOrden());
 				pst.setString(3, geltoki.getIzena());
@@ -43,9 +42,8 @@ public class DAOGeltoki {
 	}
 
 	public void delete(int lineaKode, int orden) {
-		try {
-			String sql = "DELETE FROM Parada WHERE CodLin=? AND Orden=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "DELETE FROM Parada WHERE CodLin=? AND Orden=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			pst.setInt(2, orden);
 			pst.executeUpdate();
@@ -56,19 +54,21 @@ public class DAOGeltoki {
 
 	public Geltoki getByKode(int lineaKode, int orden) {
 		Geltoki geltoki = null;
-		try {
-			String sql = "SELECT * FROM Parada WHERE CodLin=? AND Orden=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "SELECT * FROM Parada WHERE CodLin=? AND Orden=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			pst.setInt(2, orden);
-			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-				DAOKale kaleDao = new DAOKale();
-				String izena = rs.getString("Nombre");
-				int zenbakia = rs.getInt("Numero");
-				int denboraBzBs = rs.getInt("TiempoE");
-				Kale kale = kaleDao.getByIzena(rs.getString("Calle"));
-				geltoki = new Geltoki(lineaKode, orden, izena, zenbakia, denboraBzBs, kale);
+			try (ResultSet rs = pst.executeQuery()) {
+				if (rs.next()) {
+					DAOKale kaleDao = new DAOKale();
+					String izena = rs.getString("Nombre");
+					int zenbakia = rs.getInt("Numero");
+					int denboraBzBs = rs.getInt("TiempoE");
+					Kale kale = kaleDao.getByIzena(rs.getString("Calle"));
+					geltoki = new Geltoki(lineaKode, orden, izena, zenbakia, denboraBzBs, kale);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -79,20 +79,22 @@ public class DAOGeltoki {
 	public ArrayList<Geltoki> getAll(int lineaKode) {
 		DAOKale kaleDao = new DAOKale();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
-		try {
-			String sql = "SELECT * FROM Parada WHERE CodLin=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "SELECT * FROM Parada WHERE CodLin=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
-			ResultSet rs = pst.executeQuery();
-			while (rs.next()) {
-				Geltoki geltoki = new Geltoki();
-				geltoki.setLineaKode(lineaKode);
-				geltoki.setOrden(rs.getInt("Orden"));
-				geltoki.setIzena(rs.getString("Nombre"));
-				geltoki.setZenbakia(rs.getInt("Numero"));
-				geltoki.setDenboraBzBs(rs.getInt("TiempoE"));
-				geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
-				lGeltokiak.add(geltoki);
+			try (ResultSet rs = pst.executeQuery()) {
+				while (rs.next()) {
+					Geltoki geltoki = new Geltoki();
+					geltoki.setLineaKode(lineaKode);
+					geltoki.setOrden(rs.getInt("Orden"));
+					geltoki.setIzena(rs.getString("Nombre"));
+					geltoki.setZenbakia(rs.getInt("Numero"));
+					geltoki.setDenboraBzBs(rs.getInt("TiempoE"));
+					geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
+					lGeltokiak.add(geltoki);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,9 +106,8 @@ public class DAOGeltoki {
 		if (this.getByKode(geltoki.getLineaKode(), geltoki.getOrden()) == null) {
 			System.out.println("Geltokia ez da existitzen");
 		} else {
-			try {
-				String sql = "UPDATE Parada SET CodLin=?, Orden=?, Nombre=?, Numero=?, TiempoE=?, Calle=? WHERE CodLin=? AND Orden=?";
-				PreparedStatement pst = conn.prepareStatement(sql);
+			String sql = "UPDATE Parada SET CodLin=?, Orden=?, Nombre=?, Numero=?, TiempoE=?, Calle=? WHERE CodLin=? AND Orden=?";
+			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setInt(1, geltoki.getLineaKode());
 				pst.setInt(2, geltoki.getOrden());
 				pst.setString(3, geltoki.getIzena());

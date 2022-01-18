@@ -11,7 +11,6 @@ public class DAOErabiltzaile {
 
 	Connection conn;
 
-	
 	/**
 	 * Constructor vacio
 	 */
@@ -21,9 +20,8 @@ public class DAOErabiltzaile {
 	}
 
 	public void insert(Erabiltzaile erabiltzaile) {
-		try {
-			String sql = "INSERT INTO Cliente (DNI, NomApe, Pass) VALUES (?,?,MD5(?))";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "INSERT INTO Cliente (DNI, NomApe, Pass) VALUES (?,?,MD5(?))";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, erabiltzaile.getNanAiz());
 			pst.setString(2, erabiltzaile.getIzenAbizenak());
 			pst.setString(3, erabiltzaile.getPasahitza());
@@ -34,9 +32,8 @@ public class DAOErabiltzaile {
 	}
 
 	public void delete(String nan) {
-		try {
-			String sql = "DELETE FROM Cliente WHERE DNI=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "DELETE FROM Cliente WHERE DNI=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -46,15 +43,17 @@ public class DAOErabiltzaile {
 
 	public Erabiltzaile getByNan(String nan) {
 		Erabiltzaile erabiltzaile = null;
-		try {
-			String sql = "SELECT * FROM Cliente WHERE DNI=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "SELECT * FROM Cliente WHERE DNI=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
-			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-				String izena = rs.getString("NomApe");
-				String pasahitza = rs.getString("Pass");
-				erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
+			try (ResultSet rs = pst.executeQuery()) {
+				if (rs.next()) {
+					String izena = rs.getString("NomApe");
+					String pasahitza = rs.getString("Pass");
+					erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,15 +63,17 @@ public class DAOErabiltzaile {
 
 	public Erabiltzaile getByNanPass(String nan, String pasahitza) {
 		Erabiltzaile erabiltzaile = null;
-		try {
-			String sql = "SELECT * FROM Cliente WHERE DNI=? AND Pass=MD5(?)";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "SELECT * FROM Cliente WHERE DNI=? AND Pass=MD5(?)";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
 			pst.setString(2, pasahitza);
-			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-				String izena = rs.getString("NomApe");
-				erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
+			try (ResultSet rs = pst.executeQuery()) {
+				if (rs.next()) {
+					String izena = rs.getString("NomApe");
+					erabiltzaile = new Erabiltzaile(nan, izena, pasahitza);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,9 +85,8 @@ public class DAOErabiltzaile {
 		if (this.getByNan(erabiltzaile.getNanAiz()) == null) {
 			System.out.println("Erabiltzailea ez da existitzen");
 		} else {
-			try {
-				String sql = "UPDATE Cliente SET NomApe=?, Pass=MD5(?) WHERE DNI=?";
-				PreparedStatement pst = conn.prepareStatement(sql);
+			String sql = "UPDATE Cliente SET NomApe=?, Pass=MD5(?) WHERE DNI=?";
+			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setString(1, erabiltzaile.getIzenAbizenak());
 				pst.setString(2, erabiltzaile.getPasahitza());
 				pst.setString(3, erabiltzaile.getNanAiz());
@@ -94,7 +94,6 @@ public class DAOErabiltzaile {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
