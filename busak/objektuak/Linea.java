@@ -118,6 +118,9 @@ public class Linea {
 			System.out.println(geltoki);
 		}
 	}
+	public Geltoki getGeltoki(int ordena) {
+		return this.geltokiak.get(ordena);
+	}
 
 	public ArrayList<LocalDateTime> getOrduEgoki(LocalDateTime bilaketa, int geltoki, boolean gora) {
 		LocalDateTime hasiera;
