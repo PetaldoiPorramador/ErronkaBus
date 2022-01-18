@@ -66,24 +66,26 @@ public class DAOBilete {
 			pst.setInt(1, kode);
 			try (ResultSet rs = pst.executeQuery()) {
 
-				bilete = new Bilete();
-				bilete.setKode(kode);
-				bilete.setHasData(rs.getTimestamp("FechaInicio").toLocalDateTime());
-				bilete.setNan(rs.getString("DNI"));
-				int kodeLin = rs.getInt("CodLin");
-				int ordenEmp = rs.getInt("OrdenEmp");
-				int ordenTer = rs.getInt("OrdenTer");
+				if (rs.next()) {
+					bilete = new Bilete();
+					bilete.setKode(kode);
+					bilete.setHasData(rs.getTimestamp("FechaInicio").toLocalDateTime());
+					bilete.setNan(rs.getString("DNI"));
+					int kodeLin = rs.getInt("CodLin");
+					int ordenEmp = rs.getInt("OrdenEmp");
+					int ordenTer = rs.getInt("OrdenTer");
 
-				DAOGeltoki daoGeltoki = new DAOGeltoki();
-				bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
-				bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
+					DAOGeltoki daoGeltoki = new DAOGeltoki();
+					bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
+					bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
 
-				DAOLinea daoLinea = new DAOLinea();
+					DAOLinea daoLinea = new DAOLinea();
 
-				bilete.setBukData(bilete.getHasData()
-						.plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
+					bilete.setBukData(bilete.getHasData()
+							.plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
 
-				bilete.setOrdaintzekoa(rs.getFloat("PVP"));
+					bilete.setOrdaintzekoa(rs.getFloat("PVP"));
+				}
 			} catch (SQLException e) {
 				bilete = null;
 				e.printStackTrace();

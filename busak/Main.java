@@ -11,15 +11,23 @@ import busak.objektuak.Erabiltzaile;
 import busak.objektuak.Geltoki;
 import busak.objektuak.Linea;
 
+/**
+ * Klase honek menu gisa funtzoinatzen du
+ * @author Julen Unai Oier
+ * @version 0.1
+ * 
+ */
+
 public class Main {
 
+    /**Testak egiteko lagungarria da*/
     private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A", "Txanrru", "kowabunga");
-    private static ArrayList<Linea> lineak = new ArrayList<Linea>();
 
     public static void main(String[] args) {
         menu();
     }
 
+    /**Menua eta aukerak kudeatzen dituen metodoa da*/
     private static void menu() {
         int aukera = -1;
         do {
@@ -56,11 +64,12 @@ public class Main {
 
         } while (0 < aukera && aukera < 4);
     }
-
+    
+    /**Biletea erostearen aukera kudeatzen duen metodoa da*/
     private static void bileteaErosi() {
         System.out.println("\nAukeratu hurrengo linietako bat:");
         DAOLinea daoL = new DAOLinea();
-        lineak = daoL.getAll();
+        ArrayList<Linea> lineak = daoL.getAll();
         int aukera = -1;
         int geltoHas = -1;
         int geltoBuk = -1;
@@ -97,7 +106,11 @@ public class Main {
 
         bileteaEratu(geltoHas, geltoBuk, l);
     }
-
+    /**
+     * Ordainketarako dirua eskatu eta nahikoa gehiegi edo gutxiegi den arabera beharrezko kanbioa eskaera egiten du
+     * @param ordaintzekoa ordaindu behareko kantitatea
+     * @return ordainketa gauzatu bada true beztela false
+     */
     private static boolean ordaindu(double ordaintzekoa) {
         System.out.println("Sartu dirua (erabili puntoa hamartarrak banatzeko):");
         Double sartutakoDirua = Utilities.eskatuDouble();
@@ -121,7 +134,6 @@ public class Main {
             if (Utilities.eskatuBaiEz()) {
                 return ordaindu(kanbio);
             } else {
-                // oinarrizko baloreak 0 bihurtzen ditu
                 if (sartutakoDirua != 0) {
                     System.out.println(sartutakoDirua + "€ bueltatuko zaizkizu.");
                     return false;
@@ -132,20 +144,11 @@ public class Main {
     }
 
     /**
-     * <p>
-     * Erabiltzaileari ahalik eta billete edo txanpon gutxien itzultzen zaio
-     * itzulketa. balioak[i] 5 edo gehiagoko balorea hartzen duenean billete bat
-     * bueltatuko da ++ bestela txanponkop-ari gehituko zaioa kantitatea. Zenb
-     * array-aren bere >= balio batera heltzen denean txanpon/billete hori
-     * bueltatzen da "zenb -= balioak[i];" kanbioa 0 izan arte Emandako txanponak
-     * printeatzen ditu.
-     * </p>
+     * Ahalik eta txanpon/bilete gutxien bueltatzen duen metodoa
+     * @param zenb bueltatu beharreko diru kantitatea
      */
-
     private static void kanbioaEman(double zenb) {
-        double[] balioak = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.049, 0.019, 0.009 };// 0.049, 0.019 eta
-                                                                                                 // 0.009 doubleen
-                                                                                                 // berdiketengatik da
+        double[] balioak = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.049, 0.019, 0.009 };
         String[] dirua = { "200 euro", "100 euro", "50 euro", "20 euro", "10 euro", "5 euro", "2 euro", "euro 1",
                 "50 zentimo", "20 zentimo", "10 zentimo", "5 zentimo", "2 zentimo", "zentimo 1" };
         int[] zenbat = new int[14];
@@ -180,6 +183,12 @@ public class Main {
         System.out.println("");
     }
 
+    /**
+     * Behin erabiltzaileak eskatuta nondik nora joan nahi den, noiz eta zein ordutan galdetzen duen metodoa
+     * @param geltoHas bidaiaren hasierako geltokia
+     * @param geltoBuk bidaiaren amaierako geltokia
+     * @param l bidaia egingo den linea
+     */
     private static void bileteaEratu(int geltoHas, int geltoBuk, Linea l) {
         Bilete bil = new Bilete();
         LocalDateTime egunOrd = Utilities.eskatuOrdua();
@@ -215,6 +224,7 @@ public class Main {
         }
     }
 
+    /**Erabltzaile berrien erregistroa kudeazten duen metodoa*/
     private static void erregistratu() {
         Erabiltzaile erabiltzaileBerri = new Erabiltzaile();
 
@@ -246,6 +256,7 @@ public class Main {
 
     }
 
+    /**Bileteak erosteko erabiltzaileen login-a kudeatzen duen metodoa*/
     private static void logeatu() {
         DAOErabiltzaile daoE = new DAOErabiltzaile();
         Erabiltzaile erabiltzailea;
@@ -276,9 +287,15 @@ public class Main {
                     }
                 } while (!ok && !atera);
             } else {
-                System.out.println("Erabiltzailea ez da existitzen");
-                System.out.println("Login-etik atera nahi zara");
-                atera = Utilities.eskatuBaiEz();
+                System.out.println(nanAiz + " NAN/AIZ duen erabiltzailea ez da existitzen");
+                System.out.println("Erregistratu nahi zara?");
+                if (Utilities.eskatuBaiEz()) {
+                    atera = true;
+                    erregistratu();
+                } else {
+                    System.out.println("Login-etik atera nahi zara");
+                    atera = Utilities.eskatuBaiEz();
+                }
             }
         } while (!ok && !atera);
 
