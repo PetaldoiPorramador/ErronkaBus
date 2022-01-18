@@ -24,9 +24,8 @@ public class DAOLinea {
 	}
 
 	public void insert(Linea linea) {
-		try {
-			String sql = "INSERT INTO Linea (CodLin, Nombre, HoraInicioAsc, HoraFinAsc, HoraInicioDsc, HoraFinDsc, PVPU, Frecuencia) VALUES (?,?,?,?,?,?,?,?)";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "INSERT INTO Linea (CodLin, Nombre, HoraInicioAsc, HoraFinAsc, HoraInicioDsc, HoraFinDsc, PVPU, Frecuencia) VALUES (?,?,?,?,?,?,?,?)";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, linea.getKodea());
 			pst.setString(2, linea.getIzena());
 			pst.setTime(3, Time.valueOf(linea.getHasOrdGor()));
@@ -42,9 +41,8 @@ public class DAOLinea {
 	}
 
 	public void delete(int kodea) {
-		try {
-			String sql = "DELETE FROM Linea WHERE CodLin=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "DELETE FROM Linea WHERE CodLin=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kodea);
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -55,22 +53,24 @@ public class DAOLinea {
 	public Linea getByKode(int kode) {
 		Linea linea = null;
 		DAOGeltoki daoGeltoki = new DAOGeltoki();
-		try {
-			String sql = "SELECT * FROM Linea WHERE CodLin=?";
-			PreparedStatement pst = conn.prepareStatement(sql);
+		String sql = "SELECT * FROM Linea WHERE CodLin=?";
+		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kode);
-			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-				String izena = rs.getString("Nombre");
-				LocalTime hasOrdGor = rs.getTime("HoraInicioAsc").toLocalTime();
-				LocalTime bukOrdGor = rs.getTime("HoraFinAsc").toLocalTime();
-				LocalTime hasOrdBer = rs.getTime("HoraInicioDsc").toLocalTime();
-				LocalTime bukOrdBer = rs.getTime("HoraFinDsc").toLocalTime();
-				float pvpu = rs.getFloat("PVPU");
-				int maiztasuna = rs.getInt("Frecuencia");
-				ArrayList<Geltoki> geltokienLista = daoGeltoki.getAll(kode);
-				linea = new Linea(kode, izena, hasOrdGor, bukOrdGor, hasOrdBer, bukOrdBer, pvpu, maiztasuna,
-						geltokienLista);
+			try (ResultSet rs = pst.executeQuery()) {
+				if (rs.next()) {
+					String izena = rs.getString("Nombre");
+					LocalTime hasOrdGor = rs.getTime("HoraInicioAsc").toLocalTime();
+					LocalTime bukOrdGor = rs.getTime("HoraFinAsc").toLocalTime();
+					LocalTime hasOrdBer = rs.getTime("HoraInicioDsc").toLocalTime();
+					LocalTime bukOrdBer = rs.getTime("HoraFinDsc").toLocalTime();
+					float pvpu = rs.getFloat("PVPU");
+					int maiztasuna = rs.getInt("Frecuencia");
+					ArrayList<Geltoki> geltokienLista = daoGeltoki.getAll(kode);
+					linea = new Linea(kode, izena, hasOrdGor, bukOrdGor, hasOrdBer, bukOrdBer, pvpu, maiztasuna,
+							geltokienLista);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,10 +81,8 @@ public class DAOLinea {
 	public ArrayList<Linea> getAll() {
 		ArrayList<Linea> lineak = new ArrayList<Linea>();
 		DAOGeltoki daoGeltoki = new DAOGeltoki();
-		try {
-			String sql = "SELECT * FROM Linea";
-			PreparedStatement pst = conn.prepareStatement(sql);
-			ResultSet rs = pst.executeQuery();
+		String sql = "SELECT * FROM Linea";
+		try (PreparedStatement pst = conn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
 			while (rs.next()) {
 				Linea linea = new Linea();
 				linea.setKodea(rs.getInt("CodLin"));
@@ -108,9 +106,8 @@ public class DAOLinea {
 		if (this.getByKode(linea.getKodea()) == null) {
 			System.out.println("Linea ez da existitzen");
 		} else {
-			try {
-				String sql = "UPDATE Linea SET CodLin=? Nombre=?, HoraInicioAsc=?, HoraFinAsc=?, HoraInicioDsc=?, HoraFinDsc=?, PVPU=?, Frecuencia=? WHERE CodLin=?";
-				PreparedStatement pst = conn.prepareStatement(sql);
+			String sql = "UPDATE Linea SET CodLin=? Nombre=?, HoraInicioAsc=?, HoraFinAsc=?, HoraInicioDsc=?, HoraFinDsc=?, PVPU=?, Frecuencia=? WHERE CodLin=?";
+			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setInt(1, linea.getKodea());
 				pst.setString(2, linea.getIzena());
 				pst.setTime(3, Time.valueOf(linea.getHasOrdGor()));
