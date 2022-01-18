@@ -111,4 +111,11 @@ public class Bilete {
         }
     }
 
+    public String toStringIzenak() {
+        return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
+                + "\nBidaiaren hasierako eguna eta ordua: " + hasData
+                + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki.toStringBakarrikIzena() + "-tik "
+                + bukGeltoki.toStringBakarrikIzena() + "-ra";
+    }
+
 }

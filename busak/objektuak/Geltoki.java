@@ -82,5 +82,8 @@ public class Geltoki {
             return  " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea;
         }
     }
+    public String toStringBakarrikIzena() {
+        return izena;
+    }
 
 }

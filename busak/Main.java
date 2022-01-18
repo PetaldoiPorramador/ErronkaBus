@@ -99,6 +99,7 @@ public class Main {
     }
 
     private static boolean ordaindu(double ordaintzekoa) {
+        System.out.println("Sartu dirua (erabili puntoa hamartarrak banatzeko):");
         Double sartutakoDirua = Utilities.eskatuDouble();
 
         double kanbio = sartutakoDirua - ordaintzekoa;
@@ -199,7 +200,7 @@ public class Main {
         bil.setOrdaintzekoa(l.getPvpu() * Math.abs(geltoHas - geltoBuk));
         DAOBilete daoB = new DAOBilete();
         System.out.println("Hurrengo biletea erosi nahi duzu (b/e)");
-        System.out.println(bil);
+        System.out.println(bil.toStringIzenak());
 
         if (Utilities.eskatuBaiEz()) {
             float ord = bil.getOrdaintzekoa();
