@@ -13,6 +13,7 @@ import busak.objektuak.Linea;
 
 /**
  * Klase honek menu gisa funtzoinatzen du
+ * 
  * @author Julen Unai Oier
  * @version 0.1
  * 
@@ -20,52 +21,83 @@ import busak.objektuak.Linea;
 
 public class Main {
 
-    /**Testak egiteko lagungarria da*/
-    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A", "Txanrru", "kowabunga");
+    /** Testak egiteko lagungarria da */
+    private static Erabiltzaile unekoErabiltzaile = null;// Erabiltzaile("78955162A", "Txanrru", "kowabunga");
 
     public static void main(String[] args) {
         menu();
     }
 
-    /**Menua eta aukerak kudeatzen dituen metodoa da*/
+    /** Menua eta aukerak kudeatzen dituen metodoa da */
     private static void menu() {
         int aukera = -1;
+        boolean atera = false;
         do {
-            System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
-            System.out.println();
-            System.out.println("╔═══╦══════════════════╗");
-            System.out.println("║ 1 ║ Logeatu          ║");
-            System.out.println("╠═══╬══════════════════╣");
-            System.out.println("║ 2 ║ Erregistratu     ║");
-            System.out.println("╠═══╬══════════════════╣");
-            System.out.println("║ 3 ║ Bilete bat erosi ║");
-            System.out.println("╠═══╬══════════════════╣");
-            System.out.println("║ 4 ║ Atera            ║");
-            System.out.println("╚═══╩══════════════════╝");
+            
+            if (unekoErabiltzaile == null) {
+                System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
+                System.out.println();
+                System.out.println("╔═══╦══════════════════╗");
+                System.out.println("║ 1 ║ Logeatu          ║");
+                System.out.println("╠═══╬══════════════════╣");
+                System.out.println("║ 2 ║ Erregistratu     ║");
+                System.out.println("╠═══╬══════════════════╣");
+                System.out.println("║ 3 ║ Atera            ║");
+                System.out.println("╚═══╩══════════════════╝");
 
-            aukera = Utilities.eskatuInt(3);
+                aukera = Utilities.eskatuInt(3);
 
-            switch (aukera) {
-                case 1:
-                    logeatu();
-                    break;
-                case 2:
-                    erregistratu();
-                    break;
-                case 3:
-                    if (unekoErabiltzaile != null) {
+                switch (aukera) {
+                    case 1:
+                        logeatu();
+                        break;
+                    case 2:
+                        erregistratu();
+                        break;
+                    default:
+                        System.out.println("Ateratzen ... .. .");
+                        atera = true;
+                        break;
+                }
+
+            } else {
+                System.out.println("Kaixo " + unekoErabiltzaile.getIzenAbizenak());
+                System.out.println("Sartu behean dagoen aukeretako zenbaki bat");
+                System.out.println();
+                System.out.println("╔═══╦══════════════════╗");
+                System.out.println("║ 1 ║ Bileteak ikusi   ║");//TODO
+                System.out.println("╠═══╬══════════════════╣");
+                System.out.println("║ 2 ║ Bilete bat erosi ║");
+                System.out.println("╠═══╬══════════════════╣");
+                System.out.println("║ 3 ║ Irten            ║");
+                System.out.println("╚═══╩══════════════════╝");
+
+                aukera = Utilities.eskatuInt(3);
+
+                switch (aukera) {
+                    case 1:
+                        biletakIkusi();
+                        break;
+                    case 2:
                         bileteaErosi();
-                    } else {
-                        System.out.println("Logeatu behar zara bilete bat erosteko");
-                    }
-                default:
-                    break;
+                    default:
+                        unekoErabiltzaile = null;
+                        System.out.println("Ateratzen ... .. .");
+                        break;
+                }
             }
 
-        } while (0 < aukera && aukera < 4);
+        } while (!atera);
+
     }
-    
-    /**Biletea erostearen aukera kudeatzen duen metodoa da*/
+
+    private static void biletakIkusi() {
+        System.out.println("Hona hemen erosi dituzun bileteak:");
+        DAOBilete daoBil = new DAOBilete();
+        unekoErabiltzailea.daoBil.getAll(unekoErabiltzaile.getNanAiz());
+    }
+
+    /** Biletea erostearen aukera kudeatzen duen metodoa da */
     private static void bileteaErosi() {
         System.out.println("\nAukeratu hurrengo linietako bat:");
         DAOLinea daoL = new DAOLinea();
@@ -106,8 +138,11 @@ public class Main {
 
         bileteaEratu(geltoHas, geltoBuk, l);
     }
+
     /**
-     * Ordainketarako dirua eskatu eta nahikoa gehiegi edo gutxiegi den arabera beharrezko kanbioa eskaera egiten du
+     * Ordainketarako dirua eskatu eta nahikoa gehiegi edo gutxiegi den arabera
+     * beharrezko kanbioa eskaera egiten du
+     * 
      * @param ordaintzekoa ordaindu behareko kantitatea
      * @return ordainketa gauzatu bada true beztela false
      */
@@ -145,6 +180,7 @@ public class Main {
 
     /**
      * Ahalik eta txanpon/bilete gutxien bueltatzen duen metodoa
+     * 
      * @param zenb bueltatu beharreko diru kantitatea
      */
     private static void kanbioaEman(double zenb) {
@@ -184,10 +220,12 @@ public class Main {
     }
 
     /**
-     * Behin erabiltzaileak eskatuta nondik nora joan nahi den, noiz eta zein ordutan galdetzen duen metodoa
+     * Behin erabiltzaileak eskatuta nondik nora joan nahi den, noiz eta zein
+     * ordutan galdetzen duen metodoa
+     * 
      * @param geltoHas bidaiaren hasierako geltokia
      * @param geltoBuk bidaiaren amaierako geltokia
-     * @param l bidaia egingo den linea
+     * @param l        bidaia egingo den linea
      */
     private static void bileteaEratu(int geltoHas, int geltoBuk, Linea l) {
         Bilete bil = new Bilete();
@@ -224,7 +262,7 @@ public class Main {
         }
     }
 
-    /**Erabltzaile berrien erregistroa kudeazten duen metodoa*/
+    /** Erabltzaile berrien erregistroa kudeazten duen metodoa */
     private static void erregistratu() {
         Erabiltzaile erabiltzaileBerri = new Erabiltzaile();
 
@@ -256,7 +294,7 @@ public class Main {
 
     }
 
-    /**Bileteak erosteko erabiltzaileen login-a kudeatzen duen metodoa*/
+    /** Bileteak erosteko erabiltzaileen login-a kudeatzen duen metodoa */
     private static void logeatu() {
         DAOErabiltzaile daoE = new DAOErabiltzaile();
         Erabiltzaile erabiltzailea;
