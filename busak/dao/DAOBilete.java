@@ -23,7 +23,7 @@ public class DAOBilete {
     public int insert(Bilete bilete) {
 
         try {
-            String sql = "INSERT INTO Billete (FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO Billete (FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setTimestamp(1, Timestamp.valueOf(bilete.getHasData()));
             pst.setString(2, bilete.getNan());

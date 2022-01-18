@@ -3,6 +3,7 @@ package busak;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import busak.dao.DAOBilete;
 import busak.dao.DAOErabiltzaile;
 import busak.dao.DAOLinea;
 import busak.objektuak.Bilete;
@@ -12,7 +13,7 @@ import busak.objektuak.Linea;
 
 public class Main {
 
-    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("7","7","7");
+    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A","Txanrru","kowabunga");
     private static ArrayList<Linea> lineak = new ArrayList<Linea>();
 
     public static void main(String[] args) {
@@ -103,16 +104,17 @@ public class Main {
         }
         System.out.println("Sartu nahi duzun ordua (1-" + max +"):");
         aukera = Utilities.eskatuInt(max);
-        egunOrd = ordPosi.get(aukera);
+        egunOrd = ordPosi.get(aukera-1);
 
         bil.setNan(unekoErabiltzaile.getNanAiz());
-        bil.setHasGeltoki(l.getGeltoki(geltoHas));
-        bil.setBukGeltoki(l.getGeltoki(geltoBuk));
+        bil.setHasGeltoki(l.getGeltoki(geltoHas-1));
+        bil.setBukGeltoki(l.getGeltoki(geltoBuk-1));
         bil.setHasData(egunOrd);
-        bil.setBukData();
+        bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas-1, geltoBuk-1)));
         bil.setOrdaintzekoa(l.getPvpu()*Math.abs(geltoHas-geltoBuk));
-
-        bil.setKode();
+        DAOBilete daoB = new DAOBilete();
+        bil.setKode(daoB.insert(bil));
+        System.out.println(daoB.getByKode(bil.getKode()));
     }
 
     private static void erregistratu() {
