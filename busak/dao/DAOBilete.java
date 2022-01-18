@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.sql.Timestamp;
+
 import busak.objektuak.Bilete;
 
 public class DAOBilete {
@@ -19,23 +20,28 @@ public class DAOBilete {
         conn = ConnectionManager.getConnection();
     }
 
-    public void insert(Bilete bilete) {
+    public int insert(Bilete bilete) {
 
         try {
-            String sql = "INSERT INTO Billete (CodBil, FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO Billete (FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, bilete.getKode());
-            pst.setTime(2, Time.valueOf(bilete.getHasData()));
-            pst.setString(3, bilete.getNan());
-            pst.setInt(4, bilete.getHasGeltoki().getLineaKode());
-            pst.setInt(5, bilete.getHasGeltoki().getOrden());
-            pst.setInt(6, bilete.getBukGeltoki().getOrden());
-
+            pst.setTimestamp(1, Timestamp.valueOf(bilete.getHasData()));
+            pst.setString(2, bilete.getNan());
+            pst.setInt(3, bilete.getHasGeltoki().getLineaKode());
+            pst.setInt(4, bilete.getHasGeltoki().getOrden());
+            pst.setInt(5, bilete.getBukGeltoki().getOrden());
             pst.executeUpdate();
+            try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    bilete.setKode(generatedKeys.getInt(1));
+                } else {
+                    System.out.println("No se ha podido generar el codigo");
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return bilete.getKode();
     }
 
     public void delete(int kode) {
@@ -60,7 +66,7 @@ public class DAOBilete {
 
             bilete = new Bilete();
             bilete.setKode(rs.getInt(1));
-            bilete.setHasData(rs.getTime(2).toLocalTime());
+            bilete.setHasData(rs.getTimestamp(2).toLocalDateTime());
             bilete.setNan(rs.getString(3));
             int kodeLin = rs.getInt("CodLin");
             int ordenEmp = rs.getInt("OrdenEmp");
@@ -98,7 +104,7 @@ public class DAOBilete {
                 String sql = "UPDATE Bilete SET CodBil=?, FechaInicio=?, DNI=?, CodLin=?, OrdenEmp=?, OrdenTer=?, WHERE CodBil=?";
                 PreparedStatement pst = conn.prepareStatement(sql);
                 pst.setInt(1, bilete.getKode());
-                pst.setTime(2, Time.valueOf(bilete.getHasData()));
+                pst.setTimestamp(2, Timestamp.valueOf(bilete.getHasData()));
                 pst.setString(3, bilete.getNan());
                 pst.setInt(4, bilete.getBukGeltoki().getLineaKode());
                 pst.setInt(5, bilete.getHasGeltoki().getOrden());
