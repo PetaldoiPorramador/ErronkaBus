@@ -91,10 +91,12 @@ public class Main {
 
     }
 
+    /**Bileteak ikusteko metodoa */
     private static void biletakIkusi() {
         System.out.println("Hona hemen erosi dituzun bileteak:");
         DAOBilete daoBil = new DAOBilete();
         unekoErabiltzaile.setBileteak(daoBil.getAll(unekoErabiltzaile.getNanAiz()));
+        unekoErabiltzaile.ikusiBileteak();
     }
 
     /** Biletea erostearen aukera kudeatzen duen metodoa da */
