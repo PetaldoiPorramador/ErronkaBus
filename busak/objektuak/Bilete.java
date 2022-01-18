@@ -1,18 +1,18 @@
 package busak.objektuak;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 
 public class Bilete {
     private int kode;
     private float ordaintzekoa;
     private String nan;
-    private LocalTime hasData;
-    private LocalTime bukData;
+    private LocalDateTime hasData;
+    private LocalDateTime bukData;
     private Geltoki hasGeltoki;
     private Geltoki bukGeltoki;
 
-    public Bilete(int kode, float ordaintzekoa,String nan, LocalTime hasData, LocalTime bukData, Geltoki hasGeltoki, Geltoki bukGeltoki) {
+    public Bilete(int kode, float ordaintzekoa,String nan, LocalDateTime hasData, LocalDateTime bukData, Geltoki hasGeltoki, Geltoki bukGeltoki) {
         this.kode = kode;
         this.ordaintzekoa = ordaintzekoa;
         this.nan = nan;
@@ -56,19 +56,19 @@ public class Bilete {
         this.ordaintzekoa = ordaintzekoa;
     }
 
-    public LocalTime getHasData() {
+    public LocalDateTime getHasData() {
         return hasData;
     }
 
-    public void setHasData(LocalTime hasData) {
+    public void setHasData(LocalDateTime hasData) {
         this.hasData = hasData;
     }
 
-    public LocalTime getBukData() {
+    public LocalDateTime getBukData() {
         return bukData;
     }
 
-    public void setBukData(LocalTime bukData) {
+    public void setBukData(LocalDateTime bukData) {
         this.bukData = bukData;
     }
 

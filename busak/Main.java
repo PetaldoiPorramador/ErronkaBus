@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import busak.dao.DAOErabiltzaile;
 import busak.dao.DAOLinea;
+import busak.objektuak.Bilete;
 import busak.objektuak.Erabiltzaile;
 import busak.objektuak.Geltoki;
 import busak.objektuak.Linea;
@@ -62,6 +63,7 @@ public class Main {
         int aukera = -1;
         int geltoHas = -1;
         int geltoBuk = -1;
+        Bilete bil = new Bilete();
 
         for (Linea linea : lineak) {
             System.out.println(linea);
@@ -101,7 +103,16 @@ public class Main {
         }
         System.out.println("Sartu nahi duzun ordua (1-" + max +"):");
         aukera = Utilities.eskatuInt(max);
+        egunOrd = ordPosi.get(aukera);
 
+        bil.setNan(unekoErabiltzaile.getNanAiz());
+        bil.setHasGeltoki(l.getGeltoki(geltoHas));
+        bil.setBukGeltoki(l.getGeltoki(geltoBuk));
+        bil.setHasData(egunOrd);
+        bil.setBukData();
+        bil.setOrdaintzekoa(l.getPvpu()*Math.abs(geltoHas-geltoBuk));
+
+        bil.setKode();
     }
 
     private static void erregistratu() {
