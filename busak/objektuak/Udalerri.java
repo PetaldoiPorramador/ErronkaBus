@@ -30,4 +30,9 @@ public class Udalerri {
         this.izena = izena;
     }
 
+    @Override
+    public String toString() {
+        return izena + " (" + kode + " kodea)";
+    }
+
 }

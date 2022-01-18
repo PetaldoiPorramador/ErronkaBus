@@ -2,7 +2,6 @@ package busak.objektuak;
 
 import java.time.LocalDateTime;
 
-
 public class Bilete {
     private int kode;
     private float ordaintzekoa;
@@ -12,7 +11,8 @@ public class Bilete {
     private Geltoki hasGeltoki;
     private Geltoki bukGeltoki;
 
-    public Bilete(int kode, float ordaintzekoa,String nan, LocalDateTime hasData, LocalDateTime bukData, Geltoki hasGeltoki, Geltoki bukGeltoki) {
+    public Bilete(int kode, float ordaintzekoa, String nan, LocalDateTime hasData, LocalDateTime bukData,
+            Geltoki hasGeltoki, Geltoki bukGeltoki) {
         this.kode = kode;
         this.ordaintzekoa = ordaintzekoa;
         this.nan = nan;
@@ -90,16 +90,25 @@ public class Bilete {
 
     @Override
     public String toString() {
-        return "Kodea: " + kode + " ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan + " Bidaiaren hasierako eguna eta ordua: "
-                + hasData + " estimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik " + bukGeltoki + "-ra";
+        if (kode != -1)
+            return "Kodea: " + kode + " ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
+                    + "\nBidaiaren hasierako eguna eta ordua: " + hasData
+                    + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik "
+                    + bukGeltoki + "-ra";
+        else
+            return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
+                    + "\nBidaiaren hasierako eguna eta ordua: " + hasData
+                    + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik "
+                    + bukGeltoki + "-ra";
+
     }
 
     public boolean berdinaDa(int kode, String nan) {
-       if(this.kode == kode && this.nan.equalsIgnoreCase(nan)){
-           return true;
-       } else {
-           return false;
-       }
+        if (this.kode == kode && this.nan.equalsIgnoreCase(nan)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
