@@ -64,31 +64,32 @@ public class DAOBilete {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, kode);
             ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                bilete = new Bilete();
+                bilete.setKode(rs.getInt(1));
+                bilete.setHasData(rs.getTimestamp(2).toLocalDateTime());
+                bilete.setNan(rs.getString("DNI"));
+                int kodeLin = rs.getInt("CodLin");
+                int ordenEmp = rs.getInt("OrdenEmp");
+                int ordenTer = rs.getInt("OrdenTer");
 
-            bilete = new Bilete();
-            bilete.setKode(rs.getInt(1));
-            bilete.setHasData(rs.getTimestamp(2).toLocalDateTime());
-            bilete.setNan(rs.getString(3));
-            int kodeLin = rs.getInt("CodLin");
-            int ordenEmp = rs.getInt("OrdenEmp");
-            int ordenTer = rs.getInt("OrdenTer");
+                DAOGeltoki daoGeltoki = new DAOGeltoki();
+                bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
+                bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
 
-            DAOGeltoki daoGeltoki = new DAOGeltoki();
-            bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
-            bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
+                DAOLinea daoLinea = new DAOLinea();
 
-            DAOLinea daoLinea = new DAOLinea();
+                bilete.setBukData(bilete.getHasData()
+                        .plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
 
-            bilete.setBukData(bilete.getHasData()
-                    .plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
-
-            sql = "SELECT round(PVPU*abs(OrdenTer-OrdenEmp)) FROM Linea WHERE CodLin=? AND OrdenEmp=? AND OrdenTer=?";
-            pst = conn.prepareStatement(sql);
-            pst.setInt(1, kodeLin);
-            pst.setInt(2, ordenEmp);
-            pst.setInt(3, ordenTer);
-            rs = pst.executeQuery();
-            bilete.setOrdaintzekoa(rs.getFloat(1));
+                sql = "SELECT round(PVPU*abs(?-?)) FROM Linea WHERE CodLin=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(3, kodeLin);
+                pst.setInt(1, ordenEmp);
+                pst.setInt(2, ordenTer);
+                rs = pst.executeQuery();
+                if (rs.next()) bilete.setOrdaintzekoa(rs.getFloat(1));
+            }
 
         } catch (SQLException e) {
             bilete = null;

@@ -13,7 +13,7 @@ import busak.objektuak.Linea;
 
 public class Main {
 
-    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A","Txanrru","kowabunga");
+    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A", "Txanrru", "kowabunga");
     private static ArrayList<Linea> lineak = new ArrayList<Linea>();
 
     public static void main(String[] args) {
@@ -91,7 +91,7 @@ public class Main {
             System.out.println("Sartu bidaiaren bukaerako geltokiaren ordena:");
             geltoBuk = Utilities.eskatuInt(lTamaina);
             System.out.println("Akuera prozesatzen ... .. .");
-            if (geltoBuk==geltoHas) {
+            if (geltoBuk == geltoHas) {
                 System.out.println("Ez duzu bileterik behar lekuan bertan geratzeko");
             }
         } while (geltoBuk == geltoHas);
@@ -100,21 +100,27 @@ public class Main {
         ArrayList<LocalDateTime> ordPosi = l.getOrduEgoki(egunOrd, geltoHas, geltoBuk > geltoHas);
         int max = ordPosi.size();
         for (int i = 0; i < max; i++) {
-            System.out.println(" -" + (i+1) + "- " + ordPosi.get(i));
+            System.out.println(" -" + (i + 1) + "- " + ordPosi.get(i));
         }
-        System.out.println("Sartu nahi duzun ordua (1-" + max +"):");
+        System.out.println("Sartu nahi duzun ordua (1-" + max + "):");
         aukera = Utilities.eskatuInt(max);
-        egunOrd = ordPosi.get(aukera-1);
+        egunOrd = ordPosi.get(aukera - 1);
 
         bil.setNan(unekoErabiltzaile.getNanAiz());
-        bil.setHasGeltoki(l.getGeltoki(geltoHas-1));
-        bil.setBukGeltoki(l.getGeltoki(geltoBuk-1));
+        bil.setHasGeltoki(l.getGeltoki(geltoHas - 1));
+        bil.setBukGeltoki(l.getGeltoki(geltoBuk - 1));
         bil.setHasData(egunOrd);
-        bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas-1, geltoBuk-1)));
-        bil.setOrdaintzekoa(l.getPvpu()*Math.abs(geltoHas-geltoBuk));
+        bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas - 1, geltoBuk - 1)));
+        bil.setOrdaintzekoa(l.getPvpu() * Math.abs(geltoHas - geltoBuk));
         DAOBilete daoB = new DAOBilete();
-        bil.setKode(daoB.insert(bil));
-        System.out.println(daoB.getByKode(bil.getKode()));
+        if (ordaindu(bil.getOrdaintzekoa())) {
+            bil.setKode(daoB.insert(bil));
+            System.out.println(daoB.getByKode(bil.getKode()));
+        }
+    }
+
+    private static boolean ordaindu(float f) {
+        return  ordaindu(f);
     }
 
     private static void erregistratu() {
