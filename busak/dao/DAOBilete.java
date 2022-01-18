@@ -35,7 +35,6 @@ public class DAOBilete {
 					bilete.setKode(generatedKeys.getInt(1));
 				} else {
 					System.out.println("No se ha podido generar el codigo");
-					e.printStackTrace();
 				}
 			}
 		} catch (SQLException e) {
