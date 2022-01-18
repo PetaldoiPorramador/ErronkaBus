@@ -59,7 +59,7 @@ public class DAOBilete {
 
 	public Bilete getByKode(int kode) {
 		Bilete bilete = null;
-		String sql = "SELECT FechaInicio, DNI, B.CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE CodBil=?;";
+		String sql = "SELECT FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE CodBil=?;";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kode);
 			try (ResultSet rs = pst.executeQuery()) {
@@ -97,7 +97,7 @@ public class DAOBilete {
 
 	public ArrayList<Bilete> getAll(String nan) {
 		ArrayList<Bilete> bileteak = new ArrayList<>();
-		String sql = "SELECT CodBil, FechaInicio, B.CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE DNI=?;";
+		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE DNI=?;";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
 			try (ResultSet rs = pst.executeQuery()) {
