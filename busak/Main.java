@@ -22,7 +22,7 @@ import busak.objektuak.Linea;
 public class Main {
 
     /** Testak egiteko lagungarria da */
-    private static Erabiltzaile unekoErabiltzaile = null;// Erabiltzaile("78955162A", "Txanrru", "kowabunga");
+    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile("78955162A", "Txanrru", "kowabunga");
 
     public static void main(String[] args) {
         menu();
@@ -273,7 +273,8 @@ public class Main {
             if (ordaindu(ord)) {
                 bil.setKode(daoB.insert(bil));
                 System.out.println("Hona hemen biletea:\n");
-                System.out.println(daoB.getByKode(bil.getKode()));
+                System.out.println(
+                        daoB.getByKode(bil.getKode()) + "\nEroslearen Izen Abizenak: " + unekoErabiltzaile.getIzenAbizenak());
                 System.out.println("\n");
             }
         } else {
@@ -338,7 +339,7 @@ public class Main {
                         System.out.println("Login-a ondo atera da");
                     } else {
                         System.out.println("Pasahitza okerra da");
-                        System.out.println("Login-etik atera nahi zara");
+                        System.out.println("Login-etik atera nahi zara(b/e)");
                         atera = Utilities.eskatuBaiEz();
                     }
                 } while (!ok && !atera);
@@ -349,7 +350,7 @@ public class Main {
                     atera = true;
                     erregistratu();
                 } else {
-                    System.out.println("Login-etik atera nahi zara");
+                    System.out.println("Login-etik atera nahi zara(b/e)");
                     atera = Utilities.eskatuBaiEz();
                 }
             }
