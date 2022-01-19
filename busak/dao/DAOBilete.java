@@ -39,7 +39,7 @@ public class DAOBilete {
 			pst.setInt(3, bilete.getHasGeltoki().getLineaKode());
 			pst.setInt(4, bilete.getHasGeltoki().getOrden());
 			pst.setInt(5, bilete.getBukGeltoki().getOrden());
-			int i = pst.executeUpdate();
+			pst.executeUpdate();
 			try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
 					return generatedKeys.getInt(1);
