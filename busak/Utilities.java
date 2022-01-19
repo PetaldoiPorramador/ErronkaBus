@@ -9,7 +9,11 @@ public class Utilities {
 
 	private Utilities() {
 	}
-
+	/**
+	 * Kontsolatik zenbaki bat eskatzen eta bueltatzen duen metodoa
+	 * @param max zenbakiaren balio maximoa
+	 * @return int 0 eta max arteko zenbaki bat
+	 */
 	public static int eskatuInt(int max) {
 		int num = 0;
 		boolean ok = false;
@@ -28,6 +32,10 @@ public class Utilities {
 		return num;
 	}
 
+	/**
+	 * Hamartarrak izan dezakeen zenbaki bat eskatzen eta bueltatzen duen metodoa
+	 * @return double 0 baino handiagoa den zenbaki bat
+	 */
 	public static double eskatuDouble() {
 		double num = 0;
 		boolean ok = false;
@@ -46,6 +54,10 @@ public class Utilities {
 		return num;
 	}
 
+	/**
+	 * 
+	 * @return LocalDateTime 
+	 */
 	public static LocalDateTime eskatuOrdua() {
 		LocalDateTime data = null;
 		LocalDate eguna = null;

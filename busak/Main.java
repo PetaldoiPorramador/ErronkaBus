@@ -148,7 +148,7 @@ public class Main {
      * beharrezko kanbioa eskaera egiten du
      * 
      * @param ordaintzekoa ordaindu behareko kantitatea
-     * @return ordainketa gauzatu bada true beztela false
+     * @return boolean ordainketa gauzatu bada true beztela false
      */
     private static boolean ordaindu(double ordaintzekoa) {
         System.out.println("Sartu dirua (erabili puntoa hamartarrak banatzeko):");
