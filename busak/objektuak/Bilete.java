@@ -45,7 +45,7 @@ public class Bilete {
 
     /**
     * kode atributua bueltatzen du
-    * @return biletearen kodea
+    * @return int biletearen kodea
     */
     public int getKode() {
         return kode;
@@ -53,7 +53,7 @@ public class Bilete {
 
     /**
      * nan atributua bueltatzen du
-     * @return biletea erosi duen erabiltzailearen NAN edo AIZ
+     * @return String biletea erosi duen erabiltzailearen NAN edo AIZ
      */
     public String getNan() {
         return nan;
@@ -61,7 +61,7 @@ public class Bilete {
 
     /**
      * ordaintzekoa atributua bueltatzen du
-     * @return biletearen prezioa
+     * @return float biletearen prezioa
      */
     public float getOrdaintzekoa() {
         return ordaintzekoa;
@@ -69,7 +69,7 @@ public class Bilete {
 
     /**
      * hasData atributua bueltatzen du
-     * @return bidaiaren hasierako eguna eta ordua
+     * @return LocalDateTime bidaiaren hasierako eguna eta ordua
      */
     public LocalDateTime getHasData() {
         return hasData;
@@ -77,7 +77,7 @@ public class Bilete {
 
      /**
      * hasData atributua bueltatzen du
-     * @return bidaiaren amaierako eguna eta ordua
+     * @return LocalDateTime bidaiaren amaierako eguna eta ordua
      */
     public LocalDateTime getBukData() {
         return bukData;
@@ -85,7 +85,7 @@ public class Bilete {
 
     /**
      * hasGeltoki atributua bueltatzen du
-     * @return bidaiaren hasierako geltokia
+     * @return Geltoki bidaiaren hasierako geltokia
      */
     public Geltoki getHasGeltoki() {
         return hasGeltoki;
@@ -93,22 +93,20 @@ public class Bilete {
 
     /**
      * bukGeltoki atributua bueltatzen du
-     * @return bidaiaren amaierako geltokia
+     * @return Geltoki bidaiaren amaierako geltokia
      */
     public Geltoki getBukGeltoki() {
         return bukGeltoki;
     }
     
     //SETERRAK
-    
-    /**
-     * 
-     * @param nan
-     */
+
+
     public void setNan(String nan) {
         this.nan = nan;
     }
 
+  
     public void setKode(int kode) {
         this.kode = kode;
     }
@@ -121,10 +119,12 @@ public class Bilete {
         this.hasData = hasData;
     }
 
+    
     public void setBukData(LocalDateTime bukData) {
         this.bukData = bukData;
     }
 
+    
     public void setHasGeltoki(Geltoki hasGeltoki) {
         this.hasGeltoki = hasGeltoki;
     }
