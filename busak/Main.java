@@ -15,7 +15,7 @@ import busak.objektuak.Linea;
  * Klase honek menu gisa funtzoinatzen du
  * 
  * @author Julen Unai Oier
- * @version 0.1
+ * @version 0.2
  * 
  */
 
@@ -233,8 +233,22 @@ public class Main {
      */
     private static void bileteaEratu(int geltoHas, int geltoBuk, Linea l) {
         Bilete bil = new Bilete();
-        LocalDateTime egunOrd = Utilities.eskatuOrdua();
-        ArrayList<LocalDateTime> ordPosi = l.getOrduEgoki(egunOrd, geltoHas, geltoBuk > geltoHas);
+        LocalDateTime egunOrd;
+        ArrayList<LocalDateTime> ordPosi;
+        boolean ok = false;
+        do {
+            egunOrd = Utilities.eskatuOrdua();
+            ordPosi = l.getOrduEgoki(egunOrd, geltoHas, geltoBuk > geltoHas);
+            if (LocalDateTime.now().isBefore(egunOrd)) {
+                if (ordPosi.size() > 0) {
+                    ok = true;
+                } else {
+                    System.out.println("Ordu horretarako ez dago bidairik");
+                }
+            } else {
+                System.out.println("Ezin da iraganeko egun bat aukeratu");
+            }
+        } while (!ok);
         int max = ordPosi.size();
         for (int i = 0; i < max; i++) {
             System.out.println(" -" + (i + 1) + "- " + ordPosi.get(i));

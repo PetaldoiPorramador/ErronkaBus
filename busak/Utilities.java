@@ -50,7 +50,7 @@ public class Utilities {
 		LocalDateTime data = null;
 		LocalDate eguna = null;
 		LocalTime ordua = null;
-		System.out.println("Sartu eguna(uuuu-hh-ee):");
+		System.out.println("Sartu bidaiaren eguna(uuuu-hh-ee):");
 		boolean ok = false;
 		while (!ok) {
 			try {
@@ -61,7 +61,7 @@ public class Utilities {
 			}
 		}
 		ok = false;
-		System.out.println("Sartu ordua(hh:mm):");
+		System.out.println("Sartu bidaiatzeko ordu(hh:mm) desiratua:");
 		while (!ok) {
 			try {
 				ordua = LocalTime.parse(System.console().readLine());
