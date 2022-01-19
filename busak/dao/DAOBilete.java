@@ -59,7 +59,7 @@ public class DAOBilete {
 
 	public Bilete getByKode(int kode) {
 		Bilete bilete = null;
-		String sql = "SELECT FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE CodBil=?;";
+		String sql = "SELECT FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE CodBil=?;";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kode);
 			try (ResultSet rs = pst.executeQuery()) {
@@ -69,6 +69,9 @@ public class DAOBilete {
 					bilete.setKode(kode);
 					bilete.setHasData(rs.getTimestamp("FechaInicio").toLocalDateTime());
 					bilete.setNan(rs.getString("DNI"));
+					bilete.setOrdaintzekoa(rs.getFloat("PVP"));
+					bilete.setBukData(rs.getTimestamp("FechaFin").toLocalDateTime());
+
 					int kodeLin = rs.getInt("CodLin");
 					int ordenEmp = rs.getInt("OrdenEmp");
 					int ordenTer = rs.getInt("OrdenTer");
@@ -77,12 +80,6 @@ public class DAOBilete {
 					bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
 					bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
 
-					DAOLinea daoLinea = new DAOLinea();
-
-					bilete.setBukData(bilete.getHasData()
-							.plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
-
-					bilete.setOrdaintzekoa(rs.getFloat("PVP"));
 				}
 			} catch (SQLException e) {
 				bilete = null;
@@ -97,7 +94,7 @@ public class DAOBilete {
 
 	public ArrayList<Bilete> getAll(String nan) {
 		ArrayList<Bilete> bileteak = new ArrayList<>();
-		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP FROM billetes WHERE DNI=?;";
+		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE DNI=?;";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
 			try (ResultSet rs = pst.executeQuery()) {
@@ -106,6 +103,9 @@ public class DAOBilete {
 					bilete.setKode(rs.getInt("CodBil"));
 					bilete.setHasData(rs.getTimestamp("FechaInicio").toLocalDateTime());
 					bilete.setNan(nan);
+					bilete.setOrdaintzekoa(rs.getFloat("PVP"));
+					bilete.setBukData(rs.getTimestamp("FechaFin").toLocalDateTime());
+
 					int kodeLin = rs.getInt("CodLin");
 					int ordenEmp = rs.getInt("OrdenEmp");
 					int ordenTer = rs.getInt("OrdenTer");
@@ -114,20 +114,12 @@ public class DAOBilete {
 					bilete.setHasGeltoki(daoGeltoki.getByKode(kodeLin, ordenEmp));
 					bilete.setBukGeltoki(daoGeltoki.getByKode(kodeLin, ordenTer));
 
-					DAOLinea daoLinea = new DAOLinea();
-
-					bilete.setBukData(bilete.getHasData()
-							.plusMinutes(daoLinea.getByKode(kodeLin).bidaiDenbora(ordenEmp, ordenTer)));
-
-					bilete.setOrdaintzekoa(rs.getFloat("PVP"));
 					bileteak.add(bilete);
 				}
 			} catch (SQLException e) {
-				bileteak = null;
 				e.printStackTrace();
 			}
 		} catch (SQLException e) {
-			bileteak = null;
 			e.printStackTrace();
 		}
 		return bileteak;
