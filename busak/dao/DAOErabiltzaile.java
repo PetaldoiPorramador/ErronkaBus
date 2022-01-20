@@ -28,7 +28,7 @@ public class DAOErabiltzaile {
 	/**
 	 * Erabiltzaile bat datu basean sartzeko metodoa
 	 *
-	 * @param erabiltzaile Sartu nahi dugun metodoa
+	 * @param erabiltzaile Sartu nahi dugun erabiltzailea
 	 * @return boolean True erroreak ez badaude, false erroreak badaude
 	 */
 	public boolean insert(Erabiltzaile erabiltzaile) {

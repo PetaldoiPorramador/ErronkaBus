@@ -2,23 +2,50 @@ package busak.objektuak;
 
 import java.time.LocalDateTime;
 
-/** */
+/**
+ * Bilete objektua
+ */
 public class Bilete {
+
+    /**
+     * Biletearen kodea
+     */
     private int kode;
-    private float ordaintzekoa;
+    /**
+     * Biletea erosi duen erabiltzailearen NAN edo AIZ
+     */
     private String nan;
+    /**
+     * Biletearen prezioa
+     */
+    private float ordaintzekoa;
+    /**
+     * Bidaiaren hasierako eguna eta ordua
+     */
     private LocalDateTime hasData;
+    /**
+     * Bidaiaren amaierako eguna eta ordua
+     */
     private LocalDateTime bukData;
+    /**
+     * Bidaiaren hasierako geltokia
+     */
     private Geltoki hasGeltoki;
+    /**
+     * Bidaiaren amaierako geltokia
+     */
     private Geltoki bukGeltoki;
-    
-    /**@param kode biletearen kodea(bakarra)
-     * @param ordaintzekoa bileteak zenbat balio duen
-     * @param nan biletea erosi duen erabiltzailearen NAN edo AIZ
-     * @param hasData bidaiaren hasierako eguna eta ordua
-     * @param bukData bidaiaren amaierako eguna eta ordua
-     * @param hasGeltoki bidaiaren hasierako geltokia
-     * @param bukGeltoki bidaiaren amaierako geltokia
+
+    /**
+     * Eraikitzailea datu guztiekin
+     * 
+     * @param kode         Biletearen kodea(bakarra)
+     * @param ordaintzekoa Bileteak zenbat balio duen
+     * @param nan          Biletea erosi duen erabiltzailearen NAN edo AIZ
+     * @param hasData      Bidaiaren hasierako eguna eta ordua
+     * @param bukData      Bidaiaren amaierako eguna eta ordua
+     * @param hasGeltoki   Bidaiaren hasierako geltokia
+     * @param bukGeltoki   Bidaiaren amaierako geltokia
      */
     public Bilete(int kode, float ordaintzekoa, String nan, LocalDateTime hasData, LocalDateTime bukData,
             Geltoki hasGeltoki, Geltoki bukGeltoki) {
@@ -31,6 +58,9 @@ public class Bilete {
         this.bukGeltoki = bukGeltoki;
     }
 
+    /**
+     * Eraikitzaile hutsa
+     */
     public Bilete() {
         this.kode = -1;
         this.ordaintzekoa = -1;
@@ -41,105 +71,134 @@ public class Bilete {
         this.bukGeltoki = null;
     }
 
-    //GETERRAK
+    // GETERRAK
 
     /**
-    * kode atributua bueltatzen du
-    * @return int biletearen kodea
-    */
+     * Kode atributua bueltatzen du
+     *
+     * @return int Biletearen kodea
+     */
     public int getKode() {
         return kode;
     }
 
     /**
-     * nan atributua bueltatzen du
-     * @return String biletea erosi duen erabiltzailearen NAN edo AIZ
+     * Nan atributua bueltatzen du
+     * 
+     * @return String Biletea erosi duen erabiltzailearen NAN edo AIZ
      */
     public String getNan() {
         return nan;
     }
 
     /**
-     * ordaintzekoa atributua bueltatzen du
-     * @return float biletearen prezioa
+     * Ordaintzekoa atributua bueltatzen du
+     * 
+     * @return float Biletearen prezioa
      */
     public float getOrdaintzekoa() {
         return ordaintzekoa;
     }
 
     /**
-     * hasData atributua bueltatzen du
-     * @return LocalDateTime bidaiaren hasierako eguna eta ordua
+     * HasData atributua bueltatzen du
+     * 
+     * @return LocalDateTime Bidaiaren hasierako eguna eta ordua
      */
     public LocalDateTime getHasData() {
         return hasData;
     }
 
-     /**
-     * hasData atributua bueltatzen du
-     * @return LocalDateTime bidaiaren amaierako eguna eta ordua
+    /**
+     * HasData atributua bueltatzen du
+     * 
+     * @return LocalDateTime Bidaiaren amaierako eguna eta ordua
      */
     public LocalDateTime getBukData() {
         return bukData;
     }
 
     /**
-     * hasGeltoki atributua bueltatzen du
-     * @return Geltoki bidaiaren hasierako geltokia
+     * HasGeltoki atributua bueltatzen du
+     * 
+     * @return Geltoki Bidaiaren hasierako geltokia
      */
     public Geltoki getHasGeltoki() {
         return hasGeltoki;
     }
 
     /**
-     * bukGeltoki atributua bueltatzen du
-     * @return Geltoki bidaiaren amaierako geltokia
+     * BukGeltoki atributua bueltatzen du
+     * 
+     * @return Geltoki Bidaiaren amaierako geltokia
      */
     public Geltoki getBukGeltoki() {
         return bukGeltoki;
     }
-    
-    //SETERRAK
 
+    // SETERRAK
 
-    public void setNan(String nan) {
-        this.nan = nan;
-    }
-
-  
+    /**
+     * Kode atributua ezartzen du
+     * 
+     * @param kode Biletearen kodea
+     */
     public void setKode(int kode) {
         this.kode = kode;
     }
 
+    /**
+     * Nan atributua ezartzen du
+     * 
+     * @param nan Biletea erosi duen erabiltzailearen NAN edo AIZ
+     */
+    public void setNan(String nan) {
+        this.nan = nan;
+    }
+
+    /**
+     * Ordaintzekoa atributua ezartzen du
+     * 
+     * @param ordaintzekoa Biletearen prezioa
+     */
     public void setOrdaintzekoa(float ordaintzekoa) {
         this.ordaintzekoa = ordaintzekoa;
     }
 
+    /**
+     * HasData atributua ezartzen du
+     * 
+     * @param hasData Bidaiaren hasierako eguna eta ordua
+     */
     public void setHasData(LocalDateTime hasData) {
         this.hasData = hasData;
     }
 
-    
+    /**
+     * BukData atributua ezartzen du
+     * 
+     * @param bukData Bidaiaren amaierako eguna eta ordua
+     */
     public void setBukData(LocalDateTime bukData) {
         this.bukData = bukData;
     }
 
-    
+    /**
+     * HasGeltoki atributua ezartzen du
+     * 
+     * @param hasGeltoki Bidaiaren hasierako geltokia
+     */
     public void setHasGeltoki(Geltoki hasGeltoki) {
         this.hasGeltoki = hasGeltoki;
     }
 
+    /**
+     * BukGeltoki atributua ezartzen du
+     * 
+     * @param bukGeltoki Bidaiaren amaierako geltokia
+     */
     public void setBukGeltoki(Geltoki bukGeltoki) {
         this.bukGeltoki = bukGeltoki;
-    }
-
-    
-    public boolean berdinaDa(int kode, String nan) {
-        if (this.kode == kode && this.nan.equalsIgnoreCase(nan)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override
@@ -157,11 +216,19 @@ public class Bilete {
 
     }
 
+    /**
+     * Biletearen datu guztiak string baten ematen ditu, geltokien izenak bakarrik
+     * ematen ditu eta ez beraien datu guztiak
+     * 
+     * @return String Biletearen informazioa
+     * @see toString()
+     */
     public String toStringIzenak() {
         return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
                 + "\nBidaiaren hasierako eguna eta ordua: " + hasData
-                + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki.toStringBakarrikIzena() + "-tik "
-                + bukGeltoki.toStringBakarrikIzena() + "-ra";
+                + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " "
+                + hasGeltoki.getIzena() + "-tik "
+                + bukGeltoki.getIzena() + "-ra";
     }
 
 }

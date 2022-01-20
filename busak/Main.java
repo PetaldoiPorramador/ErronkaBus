@@ -18,12 +18,19 @@ import busak.objektuak.Linea;
  * @version 0.2
  * 
  */
-
 public class Main {
 
-    /** Testak egiteko lagungarria da */
-    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile(/*"78955162A", "Txanrru", "kowabunga"*/);
+    /**
+     * Logeatuta dagoen erabiltzailea
+     */
+    private static Erabiltzaile unekoErabiltzaile = null;
 
+    /**
+     * Programa hasieratzen du
+     * 
+     * @param args
+     *             Programaren parametroak
+     */
     public static void main(String[] args) {
         menu();
     }
@@ -117,11 +124,10 @@ public class Main {
         do {
             aukera = Utilities.eskatuInt(Integer.MAX_VALUE);
             for (Linea lin : lineak) {
-                if (lin.kodeaDa(aukera)) {
+                if (lin.getKodea() == aukera) {
                     l = lin;
                     break;
                 }
-
             }
         } while (l == null);
         System.out.println("\nAukeratu hurrengo geltokietako bat:");
@@ -146,8 +152,10 @@ public class Main {
     /**
      * Ordainketarako dirua eskatu eta nahikoa gehiegi edo gutxiegi den arabera
      * beharrezko kanbioa eskaera egiten du
+     * 
      * @param ordaintzekoa <b>double</b> ordaindu behareko kantitatea
-     * @return <b>boolean</b> ordainketa gauzatu bada <b>true</b> beztela <b>false</b>
+     * @return <b>boolean</b> ordainketa gauzatu bada <b>true</b> beztela
+     *         <b>false</b>
      */
     private static boolean ordaindu(double ordaintzekoa) {
         System.out.println("Sartu dirua (erabili puntoa hamartarrak banatzeko):");
@@ -225,6 +233,7 @@ public class Main {
     /**
      * Behin erabiltzaileak eskatuta nondik nora joan nahi den, noiz eta zein
      * ordutan galdetzen duen metodoa
+     * 
      * @param geltoHas <b>int</b> bidaiaren hasierako geltokia
      * @param geltoBuk <b>int</b> bidaiaren amaierako geltokia
      * @param l        <b>Linea</b> bidaia egingo den linea
