@@ -3,6 +3,8 @@ package busak;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.mysql.cj.util.Util;
+
 import busak.dao.DAOBilete;
 import busak.dao.DAOErabiltzaile;
 import busak.dao.DAOLinea;
@@ -22,7 +24,7 @@ import busak.objektuak.Linea;
 public class Main {
 
     /** Testak egiteko lagungarria da */
-    private static Erabiltzaile unekoErabiltzaile = null;// Erabiltzaile("78955162A", "Txanrru", "kowabunga");
+    private static Erabiltzaile unekoErabiltzaile = new Erabiltzaile(/*"78955162A", "Txanrru", "kowabunga"*/);
 
     public static void main(String[] args) {
         menu();
@@ -83,7 +85,7 @@ public class Main {
                         break;
                     default:
                         unekoErabiltzaile = null;
-                        System.out.println("Ateratzen ... .. .");
+                        System.out.println("Erabiltzailearen sesioa ixten ... .. .");
                         break;
                 }
             }
@@ -146,13 +148,12 @@ public class Main {
     /**
      * Ordainketarako dirua eskatu eta nahikoa gehiegi edo gutxiegi den arabera
      * beharrezko kanbioa eskaera egiten du
-     * 
-     * @param ordaintzekoa ordaindu behareko kantitatea
-     * @return ordainketa gauzatu bada true beztela false
+     * @param ordaintzekoa <b>double</b> ordaindu behareko kantitatea
+     * @return <b>boolean</b> ordainketa gauzatu bada <b>true</b> beztela <b>false</b>
      */
     private static boolean ordaindu(double ordaintzekoa) {
         System.out.println("Sartu dirua (erabili puntoa hamartarrak banatzeko):");
-        Double sartutakoDirua = Utilities.eskatuDouble();
+        double sartutakoDirua = Utilities.eskatuDouble();
 
         double kanbio = sartutakoDirua - ordaintzekoa;
 
@@ -174,7 +175,7 @@ public class Main {
                 return ordaindu(kanbio);
             } else {
                 if (sartutakoDirua != 0) {
-                    System.out.println(sartutakoDirua + "€ bueltatuko zaizkizu.");
+                    System.out.println(sartutakoDirua + " euro bueltatuko zaizkizu.");
                     return false;
                 }
             }
@@ -185,7 +186,7 @@ public class Main {
     /**
      * Ahalik eta txanpon/bilete gutxien bueltatzen duen metodoa
      * 
-     * @param zenb bueltatu beharreko diru kantitatea
+     * @param zenb <b>double</b> bueltatu beharreko diru kantitatea
      */
     private static void kanbioaEman(double zenb) {
         double[] balioak = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.049, 0.019, 0.009 };
@@ -226,10 +227,9 @@ public class Main {
     /**
      * Behin erabiltzaileak eskatuta nondik nora joan nahi den, noiz eta zein
      * ordutan galdetzen duen metodoa
-     * 
-     * @param geltoHas bidaiaren hasierako geltokia
-     * @param geltoBuk bidaiaren amaierako geltokia
-     * @param l        bidaia egingo den linea
+     * @param geltoHas <b>int</b> bidaiaren hasierako geltokia
+     * @param geltoBuk <b>int</b> bidaiaren amaierako geltokia
+     * @param l        <b>Linea</b> bidaia egingo den linea
      */
     private static void bileteaEratu(int geltoHas, int geltoBuk, Linea l) {
         Bilete bil = new Bilete();
@@ -269,11 +269,16 @@ public class Main {
 
         if (Utilities.eskatuBaiEz()) {
             float ord = bil.getOrdaintzekoa();
-            System.out.println(ord + " € ordaindu behar dituzu");
+            System.out.println(ord + " euro ordaindu behar dituzu");
             if (ordaindu(ord)) {
                 bil.setKode(daoB.insert(bil));
-                System.out.println("Hona hemen biletea:\n");
-                System.out.println(daoB.getByKode(bil.getKode()));
+                System.out.println("Erosketaren tiketa gorde nahi duzu(b/e)");
+                if (Utilities.eskatuBaiEz()) {
+                    System.out.println("Hona hemen tiketa:\n");
+                    System.out.println(
+                            daoB.getByKode(bil.getKode()) + "\nEroslearen Izen Abizenak: "
+                                    + unekoErabiltzaile.getIzenAbizenak());
+                }
                 System.out.println("\n");
             }
         } else {
@@ -338,7 +343,7 @@ public class Main {
                         System.out.println("Login-a ondo atera da");
                     } else {
                         System.out.println("Pasahitza okerra da");
-                        System.out.println("Login-etik atera nahi zara");
+                        System.out.println("Login-etik atera nahi zara(b/e)");
                         atera = Utilities.eskatuBaiEz();
                     }
                 } while (!ok && !atera);
@@ -349,7 +354,7 @@ public class Main {
                     atera = true;
                     erregistratu();
                 } else {
-                    System.out.println("Login-etik atera nahi zara");
+                    System.out.println("Login-etik atera nahi zara(b/e)");
                     atera = Utilities.eskatuBaiEz();
                 }
             }

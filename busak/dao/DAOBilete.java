@@ -45,7 +45,7 @@ public class DAOBilete {
 			pst.executeUpdate();
 			try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
-					return generatedKeys.getInt("CodBil");
+					return generatedKeys.getInt(1);
 				} else {
 					System.out.println("No se ha podido generar el codigo");
 				}
