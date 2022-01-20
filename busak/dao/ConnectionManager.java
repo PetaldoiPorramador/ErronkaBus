@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Contiene los metodos para gestionar la conexion a base de datos
- * 
+ * Datu basearekiko conexioa kudeatzeko clasea
  */
 public class ConnectionManager {
 

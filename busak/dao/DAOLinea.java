@@ -11,19 +11,31 @@ import java.util.ArrayList;
 import busak.objektuak.Geltoki;
 import busak.objektuak.Linea;
 
+/**
+ * Linea objektuak datu basearekin erlazionatzen duen klasea
+ */
 public class DAOLinea {
 
+	/**
+	 * Datu basearekiko konexioa
+	 */
 	Connection conn;
 
 	/**
-	 * Constructor vacio
+	 * Eraikitzailea
 	 */
 	public DAOLinea() {
 		super();
 		conn = ConnectionManager.getConnection();
 	}
 
-	public void insert(Linea linea) {
+	/**
+	 * Linea bat datu basean sartzeko metodoa
+	 * 
+	 * @param linea Sartu nahi dugun linea
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean insert(Linea linea) {
 		String sql = "INSERT INTO Linea (CodLin, Nombre, HoraInicioAsc, HoraFinAsc, HoraInicioDsc, HoraFinDsc, PVPU, Frecuencia) VALUES (?,?,?,?,?,?,?,?)";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, linea.getKodea());
@@ -35,21 +47,37 @@ public class DAOLinea {
 			pst.setFloat(7, linea.getPvpu());
 			pst.setInt(8, linea.getMaiztasuna());
 			pst.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
-	public void delete(int kodea) {
+	/**
+	 * Linea bat datu basetik ezabatzeko metodoa
+	 * 
+	 * @param kodea Ezabatu nahi dugun linearen kodea
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean delete(int kodea) {
 		String sql = "DELETE FROM Linea WHERE CodLin=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kodea);
 			pst.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
+	/**
+	 * Linea bat datu basetik eskuratzeko metodoa
+	 * 
+	 * @param kode Eskuratu nahi dugun linearen kodea
+	 * @return Linea Eskuratu den linea, null ez bada aurkitu
+	 */
 	public Linea getByKode(int kode) {
 		Linea linea = null;
 		DAOGeltoki daoGeltoki = new DAOGeltoki();
@@ -78,6 +106,11 @@ public class DAOLinea {
 		return linea;
 	}
 
+	/**
+	 * Linea guztiak datu basetik eskuratzeko metodoa
+	 * 
+	 * @return ArrayList<Linea> Linea guztiak
+	 */
 	public ArrayList<Linea> getAll() {
 		ArrayList<Linea> lineak = new ArrayList<Linea>();
 		DAOGeltoki daoGeltoki = new DAOGeltoki();
@@ -102,7 +135,13 @@ public class DAOLinea {
 		return lineak;
 	}
 
-	public void update(Linea linea) {
+	/**
+	 * Linea bat datu basean aldatzeko metodoa
+	 * 
+	 * @param linea Linea datu berriekin
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean update(Linea linea) {
 		if (this.getByKode(linea.getKodea()) == null) {
 			System.out.println("Linea ez da existitzen");
 		} else {
@@ -118,9 +157,11 @@ public class DAOLinea {
 				pst.setInt(8, linea.getMaiztasuna());
 				pst.setInt(9, linea.getKodea());
 				pst.executeUpdate();
+				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 }

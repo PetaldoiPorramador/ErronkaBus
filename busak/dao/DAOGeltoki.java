@@ -9,19 +9,31 @@ import java.util.ArrayList;
 import busak.objektuak.Geltoki;
 import busak.objektuak.Kale;
 
+/**
+ * Geltoki objektuak datu basearekin erlazionatzen duen klasea
+ */
 public class DAOGeltoki {
 
+	/**
+	 * Datu basearekiko konexioa
+	 */
 	Connection conn;
 
 	/**
-	 * Constructor vacio
+	 * Eraikitzailea
 	 */
 	public DAOGeltoki() {
 		super();
 		conn = ConnectionManager.getConnection();
 	}
 
-	public void insert(Geltoki geltoki) {
+	/**
+	 * Geltoki bat datu basean sartzeko metodoa
+	 * 
+	 * @param geltoki Sartu nahi dugun geltokia
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean insert(Geltoki geltoki) {
 		DAOLinea lineaDao = new DAOLinea();
 		if (lineaDao.getByKode(geltoki.getLineaKode()) == null) {
 			System.out.println("Linea ez da existitzen");
@@ -35,23 +47,41 @@ public class DAOGeltoki {
 				pst.setInt(5, geltoki.getDenboraBzBs());
 				pst.setString(6, geltoki.getKalea().getIzena());
 				pst.executeUpdate();
+				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 
-	public void delete(int lineaKode, int orden) {
+	/**
+	 * Geltoki bat datu basetik ezabatzeko metodoa
+	 * 
+	 * @param lineaKode Ezabatu nahi dugun geltokiaren linearen kodea
+	 * @param orden Ezabatu nahi dugun geltokiaren ordena
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean delete(int lineaKode, int orden) {
 		String sql = "DELETE FROM Parada WHERE CodLin=? AND Orden=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			pst.setInt(2, orden);
 			pst.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
+	/**
+	 * Geltoki bat datu basetik eskuratzeko metodoa
+	 * 
+	 * @param lineaKode Eskuratu nahi dugun geltokiaren linearen kodea
+	 * @param orden Eskuratu nahi dugun geltokiaren ordena
+	 * @return Geltoki Eskuratu den objektua, null ez bada aurkitu
+	 */
 	public Geltoki getByKode(int lineaKode, int orden) {
 		Geltoki geltoki = null;
 		String sql = "SELECT * FROM Parada WHERE CodLin=? AND Orden=?";
@@ -76,6 +106,12 @@ public class DAOGeltoki {
 		return geltoki;
 	}
 
+	/**
+	 * Linea baten geltoki guztiak datu basetik eskuratzeko metodoa
+	 * 
+	 * @param lineaKode Eskuratu nahi dugun geltokien linearen kodea
+	 * @return ArrayList<Geltoki> guztiak dituen ArrayLista
+	 */
 	public ArrayList<Geltoki> getAll(int lineaKode) {
 		DAOKale kaleDao = new DAOKale();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
@@ -102,7 +138,13 @@ public class DAOGeltoki {
 		return lGeltokiak;
 	}
 
-	public void update(Geltoki geltoki) {
+	/**
+	 * Geltoki bat datu basean aldatzeko metodoa
+	 * 
+	 * @param geltoki Geltokia datu berriekin
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
+	 */
+	public boolean update(Geltoki geltoki) {
 		if (this.getByKode(geltoki.getLineaKode(), geltoki.getOrden()) == null) {
 			System.out.println("Geltokia ez da existitzen");
 		} else {
@@ -117,9 +159,11 @@ public class DAOGeltoki {
 				pst.setInt(7, geltoki.getLineaKode());
 				pst.setInt(8, geltoki.getOrden());
 				pst.executeUpdate();
+				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 }

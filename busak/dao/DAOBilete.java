@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import busak.objektuak.Bilete;
 
+/**
+ * Bilete objektuak datu basearekin erlazionatzen duen klasea
+ */
 public class DAOBilete {
 
 	/**
@@ -28,7 +31,7 @@ public class DAOBilete {
 	/**
 	 * Bilete bat datu basean sartzeko metodoa
 	 *
-	 * @param bilete Sartu nahi dugun metodoa
+	 * @param bilete Sartu nahi dugun biletea
 	 * @return int Sartutako biletearen kodea, -1 ez bada sartzen
 	 */
 	public int insert(Bilete bilete) {
@@ -60,22 +63,25 @@ public class DAOBilete {
 	 * Bilete bat datu basetik ezabatzeko metodoa
 	 * 
 	 * @param kode Ezabatu nahi dugun biletearen kodea
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
 	 */
-	public void delete(int kode) {
+	public boolean delete(int kode) {
 		String sql = "DELETE FROM Billete WHERE CodBil=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, kode);
 			pst.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	/**
 	 * Bilete bat datu basetik eskuratzeko metodoa
 	 * 
 	 * @param kode Eskuratu nahi dugun biletearen kodea
-	 * @return Bilete eskuratu den biletea, null ez bada aurkitu
+	 * @return Bilete Eskuratu den biletea, null ez bada aurkitu
 	 */
 	public Bilete getByKode(int kode) {
 		Bilete bilete = null;
@@ -155,8 +161,9 @@ public class DAOBilete {
 	 * Bilete bat datu basean aldatzeko metodoa
 	 * 
 	 * @param bilete Biletea datu berriekin
+	 * @return boolean True erroreak ez badaude, false erroreak badaude
 	 */
-	public void update(Bilete bilete) {
+	public boolean update(Bilete bilete) {
 		if (this.getByKode(bilete.getKode()) == null) {
 			System.out.println("Biletea ez da existitzen");
 		} else {
@@ -170,11 +177,12 @@ public class DAOBilete {
 				pst.setInt(6, bilete.getBukGeltoki().getOrden());
 				pst.setInt(7, bilete.getKode());
 				pst.executeUpdate();
+				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
+		return false;
 	}
 
 }
