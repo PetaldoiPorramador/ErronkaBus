@@ -12,16 +12,25 @@ import busak.objektuak.Bilete;
 
 public class DAOBilete {
 
+	/**
+	 * Datu basearekiko konexioa
+	 */
 	Connection conn;
 
 	/**
-	 * Constructor vacio
+	 * Eraikitzailea
 	 */
 	public DAOBilete() {
 		super();
 		conn = ConnectionManager.getConnection();
 	}
 
+	/**
+	 * Bilete bat datu basean sartzeko metodoa
+	 *
+	 * @param bilete Sartu nahi dugun metodoa
+	 * @return int Sartutako biletearen kodea, -1 ez bada sartzen
+	 */
 	public int insert(Bilete bilete) {
 		String sql = "INSERT INTO Billete (FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer) VALUES (?,?,?,?,?)";
 		try (PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
@@ -33,7 +42,7 @@ public class DAOBilete {
 			pst.executeUpdate();
 			try (ResultSet generatedKeys = pst.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
-					bilete.setKode(generatedKeys.getInt(1));
+					return generatedKeys.getInt(1);
 				} else {
 					System.out.println("No se ha podido generar el codigo");
 				}
@@ -44,9 +53,14 @@ public class DAOBilete {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return bilete.getKode();
+		return -1;
 	}
 
+	/**
+	 * Bilete bat datu basetik ezabatzeko metodoa
+	 * 
+	 * @param kode Ezabatu nahi dugun biletearen kodea
+	 */
 	public void delete(int kode) {
 		String sql = "DELETE FROM Billete WHERE CodBil=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -57,6 +71,12 @@ public class DAOBilete {
 		}
 	}
 
+	/**
+	 * Bilete bat datu basetik eskuratzeko metodoa
+	 * 
+	 * @param kode Eskuratu nahi dugun biletearen kodea
+	 * @return Bilete eskuratu den biletea, null ez bada aurkitu
+	 */
 	public Bilete getByKode(int kode) {
 		Bilete bilete = null;
 		String sql = "SELECT FechaInicio, DNI, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE CodBil=?;";
@@ -92,6 +112,12 @@ public class DAOBilete {
 		return bilete;
 	}
 
+	/**
+	 * Erabiltzaile baten bilete guztiak datu basetik eskuratzeko metodoa
+	 * 
+	 * @param nan Erabiltzailearen nan
+	 * @return ArrayList<Bilete> Erabiltzailearen bilete guztiak
+	 */
 	public ArrayList<Bilete> getAll(String nan) {
 		ArrayList<Bilete> bileteak = new ArrayList<>();
 		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE DNI=?;";
@@ -125,6 +151,11 @@ public class DAOBilete {
 		return bileteak;
 	}
 
+	/**
+	 * Bilete bat datu basean aldatzeko metodoa
+	 * 
+	 * @param bilete Biletea datu berriekin
+	 */
 	public void update(Bilete bilete) {
 		if (this.getByKode(bilete.getKode()) == null) {
 			System.out.println("Biletea ez da existitzen");

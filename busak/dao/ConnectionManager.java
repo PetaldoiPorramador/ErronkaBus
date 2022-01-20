@@ -10,43 +10,57 @@ import java.sql.SQLException;
  */
 public class ConnectionManager {
 
+	/**
+	 * Conexioa egiteko erabili behar den drivera
+	 */
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	/**
+	 * Datu baseko URL
+	 */
 	private static final String URL = "jdbc:mysql://erronkabus.ddns.net:3306/ErronkaBus";
+	/**
+	 * Datu baseko erabiltzaile izena
+	 */
 	private static final String USER = "dam";
+	/**
+	 * Datu baseko pasahitza
+	 */
 	private static final String PASS = "elorrieta";
 
 	static private Connection conn = null;
 
 	/**
-	 * Constructor privado, solo accesible desde la clase
+	 * Eraikitzaile pribatua, ezin da kanpotik erabili
 	 */
 	private ConnectionManager() {
 		super();
 	}
 
 	/**
-	 * Devuelve la conexion a la base de datos
+	 * Datu basearekiko konexioa hartzeko metodoa
 	 * 
-	 * @return Connection la conexion a la base de datos
-	 * @throws Exception
+	 * @return Connection Datu basearekiko konexioa
 	 */
 	static public Connection getConnection() {
 		if (conn == null) {
 			try {
 				Class.forName(DRIVER);
 			} catch (ClassNotFoundException e) {
-				System.out.println("No se ha encontrado el driver");
+				System.out.println("Drivera ez da aurkitu");
 			}
-			// Crear conexion a la base de datos
+			// Conexioa sortzen da
 			try {
 				conn = DriverManager.getConnection(URL, USER, PASS);
 			} catch (SQLException e) {
-				System.out.println("No se ha podido conectar a la base de datos");
+				System.out.println("Ezin izan da konexioa ezarri");
 			}
 		}
 		return conn;
 	}
 
+	/**
+	 * Datu basearekiko konexia ixten du
+	 */
 	public static void closeConnection() {
 		if (conn != null) {
 			try {
