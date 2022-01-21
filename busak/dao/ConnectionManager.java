@@ -26,6 +26,9 @@ public class ConnectionManager {
 	 */
 	private static final String PASS = "elorrieta";
 
+	/**
+	 * Datu basearekiko konexioa
+	 */
 	static private Connection conn = null;
 
 	/**

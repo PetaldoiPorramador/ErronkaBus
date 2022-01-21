@@ -59,7 +59,7 @@ public class DAOGeltoki {
 	 * Geltoki bat datu basetik ezabatzeko metodoa
 	 * 
 	 * @param lineaKode Ezabatu nahi dugun geltokiaren linearen kodea
-	 * @param orden Ezabatu nahi dugun geltokiaren ordena
+	 * @param orden     Ezabatu nahi dugun geltokiaren ordena
 	 * @return boolean True erroreak ez badaude, false erroreak badaude
 	 */
 	public boolean delete(int lineaKode, int orden) {
@@ -79,7 +79,7 @@ public class DAOGeltoki {
 	 * Geltoki bat datu basetik eskuratzeko metodoa
 	 * 
 	 * @param lineaKode Eskuratu nahi dugun geltokiaren linearen kodea
-	 * @param orden Eskuratu nahi dugun geltokiaren ordena
+	 * @param orden     Eskuratu nahi dugun geltokiaren ordena
 	 * @return Geltoki Eskuratu den objektua, null ez bada aurkitu
 	 */
 	public Geltoki getByKode(int lineaKode, int orden) {
@@ -110,7 +110,7 @@ public class DAOGeltoki {
 	 * Linea baten geltoki guztiak datu basetik eskuratzeko metodoa
 	 * 
 	 * @param lineaKode Eskuratu nahi dugun geltokien linearen kodea
-	 * @return ArrayList<Geltoki> guztiak dituen ArrayLista
+	 * @return {@code ArrayList<Geltoki>} guztiak dituen ArrayLista
 	 */
 	public ArrayList<Geltoki> getAll(int lineaKode) {
 		DAOKale kaleDao = new DAOKale();

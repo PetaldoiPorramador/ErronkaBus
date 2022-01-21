@@ -122,7 +122,7 @@ public class DAOBilete {
 	 * Erabiltzaile baten bilete guztiak datu basetik eskuratzeko metodoa
 	 * 
 	 * @param nan Erabiltzailearen nan
-	 * @return ArrayList<Bilete> Erabiltzailearen bilete guztiak
+	 * @return {@code ArrayList<Bilete>} Erabiltzailearen bilete guztiak
 	 */
 	public ArrayList<Bilete> getAll(String nan) {
 		ArrayList<Bilete> bileteak = new ArrayList<>();

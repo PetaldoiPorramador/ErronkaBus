@@ -92,7 +92,7 @@ public class DAOErabiltzaile {
 	/**
 	 * Erabiltzaile bat datu basetik eskuratzeko metodoa
 	 * 
-	 * @param nan Eskuratu nahi dugun erabiltzailearen nan
+	 * @param nan       Eskuratu nahi dugun erabiltzailearen nan
 	 * @param pasahitza Eskuratu nahi dugun erabiltzailearen pasahitza
 	 * @return Erabiltzaile Eskuratu den erabiltzailea, null ez bada aurkitu
 	 */
@@ -119,7 +119,7 @@ public class DAOErabiltzaile {
 	/**
 	 * Erabiltzaile bat datu basean aldatzeko metodoa
 	 * 
-	 * @param erabilzaile Erabiltzailea datu berriekin
+	 * @param erabiltzaile Erabiltzailea datu berriekin
 	 * @return boolean True erroreak ez badaude, false erroreak badaude
 	 */
 	public boolean update(Erabiltzaile erabiltzaile) {

@@ -164,7 +164,7 @@ public class Linea {
 	/**
 	 * Geltokiak atributua bueltatzen du
 	 * 
-	 * @return ArrayList<Geltoki> Linearen geltokiak
+	 * @return {@code ArrayList<Geltoki>} Linearen geltokiak
 	 */
 	public ArrayList<Geltoki> getGeltokiak() {
 		return geltokiak;
@@ -279,7 +279,7 @@ public class Linea {
 	 * @param bilaketa Eguna eta ordua
 	 * @param geltoki  Geltokiaren ordena
 	 * @param gora     Bidaiaren norantza, true gora, false behera
-	 * @return ArrayList<LocalTime> Bidaiaren hasierako orduen lista
+	 * @return {@code ArrayList<LocalDateTime>} Bidaiaren hasierako orduen lista
 	 */
 	public ArrayList<LocalDateTime> getOrduEgoki(LocalDateTime bilaketa, int geltoki, boolean gora) {
 		LocalDateTime hasiera;
@@ -336,10 +336,9 @@ public class Linea {
 
 	@Override
 	public String toString() {
-		return "Linearen izena: " + izena + " kodea: " + kodea +
-				"\n\tHasierako ordua(G): " + hasOrdGor + " bukaerako ordua: " + bukOrdGor
-				+ "\n\tHasierako ordua(B): " + hasOrdBer + " bukaerako ordua: " + bukOrdBer
-				+ "\n\tMaiztasuna " + maiztasuna + " eta geltokiko PSN-a: " + pvpu;
+		return "Linearen izena: " + izena + " kodea: " + kodea + "\n\tHasierako ordua(G): " + hasOrdGor
+				+ " bukaerako ordua: " + bukOrdGor + "\n\tHasierako ordua(B): " + hasOrdBer + " bukaerako ordua: "
+				+ bukOrdBer + "\n\tMaiztasuna " + maiztasuna + " eta geltokiko PSN-a: " + pvpu;
 	}
 
 }

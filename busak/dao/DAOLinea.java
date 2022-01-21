@@ -109,7 +109,7 @@ public class DAOLinea {
 	/**
 	 * Linea guztiak datu basetik eskuratzeko metodoa
 	 * 
-	 * @return ArrayList<Linea> Linea guztiak
+	 * @return {@code ArrayList<Linea>} Linea guztiak
 	 */
 	public ArrayList<Linea> getAll() {
 		ArrayList<Linea> lineak = new ArrayList<Linea>();

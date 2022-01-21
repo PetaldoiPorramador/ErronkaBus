@@ -101,7 +101,7 @@ public class Utilities {
 	 * Kontsolatik karaktere kate bat eskatzen eta bueltatzen duen metodoa
 	 * 
 	 * @param min <b>int</b> sartutako karaktere katearen luzera minimoa
-	 * @return <b></b>String min baino handiagoa edo berdina den luzera izanda
+	 * @return <b>String</b> min baino handiagoa edo berdina den luzera izanda
 	 */
 	public static String eskatuString(int min) {
 		String str = System.console().readLine();
