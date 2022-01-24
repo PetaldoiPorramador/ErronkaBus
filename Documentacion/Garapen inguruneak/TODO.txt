@@ -1,7 +1,5 @@
 TODO
-    Programa nagusiaren konplexutasun ziklomatikoaren kalkulua
     Programa nagusiaren sasikodea
-    Arazketa/Errore txostena
     Erabilera kasuen dokumentazioa
     Klase diagrama DAO etc
     Aplikazioaren aurkezpena
