@@ -51,6 +51,7 @@ public class Utilities {
 		while (!ok) {
 			try {
 				num = Double.parseDouble(System.console().readLine());
+				num = Math.round(num*100.0)/100.0;
 				if (num > 0) {
 					ok = true;
 				} else {

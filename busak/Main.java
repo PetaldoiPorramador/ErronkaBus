@@ -276,7 +276,9 @@ public class Main {
 		bil.setBukGeltoki(l.getGeltoki(geltoBuk));
 		bil.setHasData(egunOrd);
 		bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas, geltoBuk)));
-		bil.setOrdaintzekoa(l.getPvpu() * Math.abs(geltoHas - geltoBuk));
+		float ordaintzekoa = l.getPvpu() * Math.abs(geltoHas - geltoBuk);
+		ordaintzekoa = Math.round(ordaintzekoa*100f)/100f;
+		bil.setOrdaintzekoa(ordaintzekoa);
 		DAOBilete daoB = new DAOBilete();
 		System.out.println("Hurrengo biletea erosi nahi duzu (b/e)");
 		System.out.println(bil.toStringIzenak());
