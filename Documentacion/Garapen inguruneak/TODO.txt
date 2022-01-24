@@ -1,5 +1,3 @@
 TODO
-    Programa nagusiaren sasikodea
     Erabilera kasuen dokumentazioa
-    Klase diagrama DAO etc
     Aplikazioaren aurkezpena
