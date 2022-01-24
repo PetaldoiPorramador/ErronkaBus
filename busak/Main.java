@@ -3,8 +3,6 @@ package busak;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import com.mysql.cj.jdbc.ConnectionGroupManager;
-
 import busak.dao.ConnectionManager;
 import busak.dao.DAOBilete;
 import busak.dao.DAOErabiltzaile;
