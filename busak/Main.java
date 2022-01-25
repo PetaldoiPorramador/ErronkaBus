@@ -16,7 +16,7 @@ import busak.objektuak.Linea;
  * Klase honek menu gisa funtzoinatzen du
  * 
  * @author Julen Unai Oier
- * @version 0.2
+ * @version 0.5
  * 
  */
 public class Main {

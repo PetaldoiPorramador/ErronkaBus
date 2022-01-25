@@ -86,7 +86,7 @@ public class DAOGeltoki {
 	 */
 	public Geltoki getByKode(int lineaKode, int orden) {
 		Geltoki geltoki = null;
-		String sql = "SELECT * FROM Parada P JOIN CodigoPostal C USING (CP) NATURAL JOIN Municipio M WHERE CodLin=? AND Orden=?";
+		String sql = "SELECT * FROM CodigoPostal C NATURAL JOIN Municipio M JOIN Parada P USING (CP) WHERE CodLin=? AND Orden=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			pst.setInt(2, orden);
@@ -119,20 +119,23 @@ public class DAOGeltoki {
 	 * @return {@code ArrayList<Geltoki>} guztiak dituen ArrayLista
 	 */
 	public ArrayList<Geltoki> getAll(int lineaKode) {
-		DAOPk kaleDao = new DAOPk();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
-		String sql = "SELECT * FROM Parada WHERE CodLin=? ORDER BY Orden";
+		String sql = "SELECT * FROM CodigoPostal C NATURAL JOIN Municipio M JOIN Parada P USING (CP) WHERE CodLin=? ORDER BY Orden";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			try (ResultSet rs = pst.executeQuery()) {
 				while (rs.next()) {
-					Geltoki geltoki = new Geltoki();
-					geltoki.setLineaKode(lineaKode);
-					geltoki.setOrden(rs.getInt("Orden"));
-					geltoki.setIzena(rs.getString("Nombre"));
-					geltoki.setZenbakia(rs.getInt("Numero"));
-					geltoki.setDenboraBzBs(rs.getInt("TiempoE"));
-					//geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
+					String izena = rs.getString("P.Nombre");
+					int orden = rs.getInt("Orden");
+					int zenbakia = rs.getInt("Numero");
+					int denboraBzBs = rs.getInt("TiempoE");
+					String kalea =rs.getString("Calle");
+					int pKode = rs.getInt("CP");
+					int udaKode = rs.getInt("CodMun");
+					String udaIzen = rs.getString("M.Nombre");
+					Udalerri uda = new Udalerri(udaKode, udaIzen);
+					Pk pk = new Pk(pKode, uda);
+					Geltoki geltoki = new Geltoki(lineaKode, orden, izena, zenbakia, denboraBzBs, pk, kalea);
 					lGeltokiak.add(geltoki);
 				}
 			} catch (SQLException e) {
@@ -154,16 +157,17 @@ public class DAOGeltoki {
 		if (this.getByKode(geltoki.getLineaKode(), geltoki.getOrden()) == null) {
 			System.out.println("Geltokia ez da existitzen");
 		} else {
-			String sql = "UPDATE Parada SET CodLin=?, Orden=?, Nombre=?, Numero=?, TiempoE=?, Calle=? WHERE CodLin=? AND Orden=?";
+			String sql = "UPDATE Parada SET CodLin=?, Orden=?, Nombre=?, Numero=?, TiempoE=?, Calle=?, CP=? WHERE CodLin=? AND Orden=?";
 			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setInt(1, geltoki.getLineaKode());
 				pst.setInt(2, geltoki.getOrden());
 				pst.setString(3, geltoki.getIzena());
 				pst.setInt(4, geltoki.getZenbakia());
 				pst.setInt(5, geltoki.getDenboraBzBs());
-				//pst.setString(6, geltoki.getKalea().getIzena());
-				pst.setInt(7, geltoki.getLineaKode());
-				pst.setInt(8, geltoki.getOrden());
+				pst.setString(6, geltoki.getKalea());
+				pst.setInt(7, geltoki.getPk().getPk());
+				pst.setInt(8, geltoki.getLineaKode());
+				pst.setInt(9, geltoki.getOrden());
 				pst.executeUpdate();
 				return true;
 			} catch (SQLException e) {
