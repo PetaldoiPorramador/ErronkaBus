@@ -26,15 +26,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ErronkaBus`.`Calle`
+-- Table `ErronkaBus`.`CodigoPostal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ErronkaBus`.`Calle` (
-  `Calle` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ErronkaBus`.`CodigoPostal` (
   `CP` INT NOT NULL,
   `CodMun` INT NOT NULL,
-  PRIMARY KEY (`Calle`),
-  INDEX `fk_Calle_Municipio_idx` (`CodMun` ASC) VISIBLE,
-  CONSTRAINT `fk_Calle_Municipio`
+  PRIMARY KEY (`CP`),
+  INDEX `fk_CP_Municipio_idx` (`CodMun` ASC) VISIBLE,
+  CONSTRAINT `fk_CP_Municipio`
     FOREIGN KEY (`CodMun`)
     REFERENCES `ErronkaBus`.`Municipio` (`CodMun`)
     ON DELETE NO ACTION
@@ -68,18 +67,19 @@ CREATE TABLE IF NOT EXISTS `ErronkaBus`.`Parada` (
   `Nombre` VARCHAR(45) NOT NULL,
   `Numero` INT NULL,
   `TiempoE` INT NOT NULL,
+  `CP` INT NOT NULL,
   `Calle` VARCHAR(45) NOT NULL,
   UNIQUE INDEX `Nombre_UNIQUE` (`Nombre` ASC) VISIBLE,
   PRIMARY KEY (`CodLin`, `Orden`),
-  INDEX `fk_Parada_Calle1_idx` (`Calle` ASC) VISIBLE,
+  INDEX `fk_Parada_CodigoPostal1_idx` (`CP` ASC) VISIBLE,
   CONSTRAINT `fk_Parada_Linea1`
     FOREIGN KEY (`CodLin`)
     REFERENCES `ErronkaBus`.`Linea` (`CodLin`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Parada_Calle1`
-    FOREIGN KEY (`Calle`)
-    REFERENCES `ErronkaBus`.`Calle` (`Calle`)
+  CONSTRAINT `fk_Parada_CodigoPostal1`
+    FOREIGN KEY (`CP`)
+    REFERENCES `ErronkaBus`.`CodigoPostal` (`CP`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
