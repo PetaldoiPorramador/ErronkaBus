@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import busak.objektuak.Geltoki;
-import busak.objektuak.Kale;
+import busak.objektuak.Pk;
+import busak.objektuak.Udalerri;
 
 /**
  * Geltoki objektuak datu basearekin erlazionatzen duen klasea
@@ -38,14 +39,15 @@ public class DAOGeltoki {
 		if (lineaDao.getByKode(geltoki.getLineaKode()) == null) {
 			System.out.println("Linea ez da existitzen");
 		} else {
-			String sql = "INSERT INTO Parada (CodLin, Orden, Nombre, Numero, TiempoE, Calle) VALUES (?,?,?,?,?,?)";
+			String sql = "INSERT INTO Parada (CodLin, Orden, Nombre, Numero, TiempoE, Calle, CP) VALUES (?,?,?,?,?,?,?)";
 			try (PreparedStatement pst = conn.prepareStatement(sql)) {
 				pst.setInt(1, geltoki.getLineaKode());
 				pst.setInt(2, geltoki.getOrden());
 				pst.setString(3, geltoki.getIzena());
 				pst.setInt(4, geltoki.getZenbakia());
 				pst.setInt(5, geltoki.getDenboraBzBs());
-				pst.setString(6, geltoki.getKalea().getIzena());
+				pst.setInt(6, geltoki.getDenboraBzBs());
+				pst.setInt(7, geltoki.getPk().getPk());
 				pst.executeUpdate();
 				return true;
 			} catch (SQLException e) {
@@ -84,18 +86,22 @@ public class DAOGeltoki {
 	 */
 	public Geltoki getByKode(int lineaKode, int orden) {
 		Geltoki geltoki = null;
-		String sql = "SELECT * FROM Parada WHERE CodLin=? AND Orden=?";
+		String sql = "SELECT * FROM Parada P JOIN CodigoPostal C USING (CP) NATURAL JOIN Municipio M WHERE CodLin=? AND Orden=?";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setInt(1, lineaKode);
 			pst.setInt(2, orden);
 			try (ResultSet rs = pst.executeQuery()) {
 				if (rs.next()) {
-					DAOKale kaleDao = new DAOKale();
-					String izena = rs.getString("Nombre");
+					String izena = rs.getString("P.Nombre");
 					int zenbakia = rs.getInt("Numero");
 					int denboraBzBs = rs.getInt("TiempoE");
-					Kale kale = kaleDao.getByIzena(rs.getString("Calle"));
-					geltoki = new Geltoki(lineaKode, orden, izena, zenbakia, denboraBzBs, kale);
+					String kalea =rs.getString("Calle");
+					int pKode = rs.getInt("CP");
+					int udaKode = rs.getInt("CodMun");
+					String udaIzen = rs.getString("M.Nombre");
+					Udalerri uda = new Udalerri(udaKode, udaIzen);
+					Pk pk = new Pk(pKode, uda);
+					geltoki = new Geltoki(lineaKode, orden, izena, zenbakia, denboraBzBs, pk, kalea);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -113,7 +119,7 @@ public class DAOGeltoki {
 	 * @return {@code ArrayList<Geltoki>} guztiak dituen ArrayLista
 	 */
 	public ArrayList<Geltoki> getAll(int lineaKode) {
-		DAOKale kaleDao = new DAOKale();
+		DAOPk kaleDao = new DAOPk();
 		ArrayList<Geltoki> lGeltokiak = new ArrayList<Geltoki>();
 		String sql = "SELECT * FROM Parada WHERE CodLin=? ORDER BY Orden";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -126,7 +132,7 @@ public class DAOGeltoki {
 					geltoki.setIzena(rs.getString("Nombre"));
 					geltoki.setZenbakia(rs.getInt("Numero"));
 					geltoki.setDenboraBzBs(rs.getInt("TiempoE"));
-					geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
+					//geltoki.setKalea(kaleDao.getByIzena(rs.getString("Calle")));
 					lGeltokiak.add(geltoki);
 				}
 			} catch (SQLException e) {
@@ -155,7 +161,7 @@ public class DAOGeltoki {
 				pst.setString(3, geltoki.getIzena());
 				pst.setInt(4, geltoki.getZenbakia());
 				pst.setInt(5, geltoki.getDenboraBzBs());
-				pst.setString(6, geltoki.getKalea().getIzena());
+				//pst.setString(6, geltoki.getKalea().getIzena());
 				pst.setInt(7, geltoki.getLineaKode());
 				pst.setInt(8, geltoki.getOrden());
 				pst.executeUpdate();

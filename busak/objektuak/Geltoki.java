@@ -17,12 +17,17 @@ public class Geltoki {
      * Geltokiaren izena
      */
     private String izena;
+
     /**
-     * Geltokiaren kalea
+     * GEltokiaren kalea
      */
-    private Kale kalea;
+    private String kalea;
     /**
-     * Geltokiaren kalearen zenbakia
+     * Geltokiaren pk
+     */
+    private Pk pk;
+    /**
+     * Geltokiaren pkren zenbakia
      */
     private int zenbakia;
     /**
@@ -36,16 +41,18 @@ public class Geltoki {
      * @param lineaKode   Geltokiaren linearen kodea
      * @param orden       Geltokiaren ordena linean
      * @param izena       Geltokiaren izena
-     * @param zenbakia    Geltokiaren kalearen zenbakia
+     * @param zenbakia    Geltokiaren pkren zenbakia
      * @param denboraBzBs Hurrengo geltokira joateko denbora minututan
+     * @param pk          Geltokiaren pk
      * @param kalea       Geltokiaren kalea
      */
-    public Geltoki(int lineaKode, int orden, String izena, int zenbakia, int denboraBzBs, Kale kalea) {
+    public Geltoki(int lineaKode, int orden, String izena, int zenbakia, int denboraBzBs, Pk pk, String kalea) {
         this.lineaKode = lineaKode;
         this.orden = orden;
         this.izena = izena;
         this.zenbakia = zenbakia;
         this.denboraBzBs = denboraBzBs;
+        this.pk = pk;
         this.kalea = kalea;
     }
 
@@ -57,9 +64,10 @@ public class Geltoki {
         this.izena = null;
         this.zenbakia = -1;
         this.denboraBzBs = -1;
+        this.pk = null;
         this.kalea = null;
     }
-    
+
     // GETERRAK
 
     /**
@@ -79,7 +87,7 @@ public class Geltoki {
     public int getOrden() {
         return orden;
     }
-    
+
     /**
      * Izena atributua bueltatzen du
      * 
@@ -92,16 +100,25 @@ public class Geltoki {
     /**
      * Kalea atributua bueltatzen du
      * 
-     * @return Kale Geltokiaren kalea
+     * @return String Geltokiaren kalea
      */
-    public Kale getKalea() {
+    public String getKalea() {
         return kalea;
+    }
+
+    /**
+     * Pk atributua bueltatzen du
+     * 
+     * @return Pk Geltokiaren pk
+     */
+    public Pk getPk() {
+        return pk;
     }
 
     /**
      * Zenbakia atributua bueltatzen du
      * 
-     * @return int Geltokiaren kalearen zenbakia
+     * @return int Geltokiaren pkren zenbakia
      */
     public int getZenbakia() {
         return zenbakia;
@@ -148,16 +165,25 @@ public class Geltoki {
     /**
      * Kalea atributua ezartzen du
      * 
-     * @param kalea Kale Geltokiaren kalea
+     * @param kalea String Geltokiaren kalea
      */
-    public void setKalea(Kale kalea) {
+    public void setKalea(String kalea) {
         this.kalea = kalea;
+    }
+
+    /**
+     * Pk atributua ezartzen du
+     * 
+     * @param pk Pk Geltokiaren pk
+     */
+    public void setPk(Pk pk) {
+        this.pk = pk;
     }
 
     /**
      * Zenbakia atributua ezartzen du
      * 
-     * @param zenbakia int Geltokiaren kalearen zenbakia
+     * @param zenbakia int Geltokiaren pkren zenbakia
      */
     public void setZenbakia(int zenbakia) {
         this.zenbakia = zenbakia;
@@ -175,9 +201,10 @@ public class Geltoki {
     @Override
     public String toString() {
         if (zenbakia > 0) {
-            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea + " zenbakia: " + zenbakia;
+            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea + " zenbakia: " + zenbakia + " pk: "
+                    + pk;
         } else {
-            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea;
+            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea + " pk: " + pk;
         }
     }
 

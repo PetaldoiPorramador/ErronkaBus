@@ -3,12 +3,8 @@ package busak.objektuak;
 /**
  * Kale objektua
  */
-public class Kale {
+public class Pk {
 
-    /**
-     * Kalearen izena
-     */
-    private String izena;
     /**
      * Kalearen posta kodea
      */
@@ -21,12 +17,10 @@ public class Kale {
     /**
      * Eraikitzailea datu guztiekin
      * 
-     * @param izena     Kalearen izena
      * @param pk        Kalearen posta kodea
      * @param udalerria Kalearen udalerria
      */
-    public Kale(String izena, int pk, Udalerri udalerria) {
-        this.izena = izena;
+    public Pk(int pk, Udalerri udalerria) {
         this.pk = pk;
         this.udalerria = udalerria;
     }
@@ -34,22 +28,12 @@ public class Kale {
     /**
      * Eraikitzaile hutsa
      */
-    public Kale() {
-        this.izena = null;
+    public Pk() {
         this.pk = -1;
         this.udalerria = null;
     }
 
     // GETERRAK
-
-    /**
-     * Izena atributua bueltatzen du
-     * 
-     * @return String Kalearen izena
-     */
-    public String getIzena() {
-        return izena;
-    }
 
     /**
      * Pk atributua bueltatzen du
@@ -72,15 +56,6 @@ public class Kale {
     // SETERRAK
 
     /**
-     * Izena atributua ezartzen du
-     * 
-     * @param izena Kalearen izena
-     */
-    public void setIzena(String izena) {
-        this.izena = izena;
-    }
-
-    /**
      * Pk atributua ezartzen du
      * 
      * @param pk Kalearen posta kodea
@@ -100,6 +75,6 @@ public class Kale {
 
     @Override
     public String toString() {
-        return izena + "Posta Kodea:" + pk + ", udalerria: " + udalerria;
+        return "Posta Kodea:" + pk + ", udalerria: " + udalerria;
     }
 }
