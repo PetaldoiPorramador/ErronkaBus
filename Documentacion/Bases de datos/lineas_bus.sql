@@ -14,12 +14,6 @@ INSERT INTO Municipio VALUES (2, 'Güeñes');#48840
 
 INSERT INTO CodigoPostal VALUES ('48010', 1);
 INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
-INSERT INTO CodigoPostal VALUES ('48840', 2);
 
 INSERT INTO Parada VALUES (1, 1, 'Bilbao Intermodal', 2, 'Gurtubay', 1,'48010');
 INSERT INTO Parada VALUES (1, 2, 'Iorgi', 3, 'Iorgi', 24,'48840');
@@ -39,10 +33,6 @@ INSERT INTO Municipio VALUES (3, 'Barakaldo');
 INSERT INTO Municipio VALUES (4, 'Leioa');
 
 INSERT INTO CodigoPostal VALUES ('48903', 3);
-INSERT INTO CodigoPostal VALUES ('48903', 3);
-INSERT INTO CodigoPostal VALUES ('48903', 3);
-INSERT INTO CodigoPostal VALUES ('48903', 3);
-INSERT INTO CodigoPostal VALUES ('48903', 4);
 
 INSERT INTO Parada VALUES (2, 1, 'Balejo (Gurutzeta/Cruces)', 2, 'Balejo', 4172, '48903');
 INSERT INTO Parada VALUES (2, 2, 'Argenta', 2, 'Argenta', 0399, '48903');
