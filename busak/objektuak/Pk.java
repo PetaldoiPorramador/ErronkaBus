@@ -75,6 +75,6 @@ public class Pk {
 
     @Override
     public String toString() {
-        return "Posta Kodea:" + pk + ", udalerria: " + udalerria;
+        return udalerria + ", " + pk;
     }
 }

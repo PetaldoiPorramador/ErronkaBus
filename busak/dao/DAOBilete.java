@@ -126,7 +126,7 @@ public class DAOBilete {
 	 */
 	public ArrayList<Bilete> getAll(String nan) {
 		ArrayList<Bilete> bileteak = new ArrayList<>();
-		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE DNI=?";
+		String sql = "SELECT CodBil, FechaInicio, CodLin, OrdenEmp, OrdenTer, PVP, FechaFin FROM VistaBillete WHERE DNI=? ORDER BY FechaInicio";
 		try (PreparedStatement pst = conn.prepareStatement(sql)) {
 			pst.setString(1, nan);
 			try (ResultSet rs = pst.executeQuery()) {

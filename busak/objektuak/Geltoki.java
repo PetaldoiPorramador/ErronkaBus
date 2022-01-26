@@ -201,10 +201,9 @@ public class Geltoki {
     @Override
     public String toString() {
         if (zenbakia > 0) {
-            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea + " zenbakia: " + zenbakia + " pk: "
-                    + pk;
+            return "Lineako " + orden + ". geltokia " + izena + " helbidea: " + kalea + " " + zenbakia + ", " + pk;
         } else {
-            return " lineako " + orden + ". geltokia " + izena + " kalea: " + kalea + " pk: " + pk;
+            return "Lineako " + orden + ". geltokia " + izena + " helbidea: " + kalea + ", " + pk;
         }
     }
 

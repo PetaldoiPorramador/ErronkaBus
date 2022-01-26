@@ -106,7 +106,7 @@ public class Main {
 	 * Bileteak ikusteko metodoa
 	 */
 	private static void biletakIkusi() {
-		System.out.println("Hona hemen erosi dituzun bileteak:");
+		System.out.println("Hona hemen erosi dituzun bileteak:\n");
 		DAOBilete daoBil = new DAOBilete();
 		unekoErabiltzaile.setBileteak(daoBil.getAll(unekoErabiltzaile.getNanAiz()));
 		unekoErabiltzaile.ikusiBileteak();
@@ -129,7 +129,7 @@ public class Main {
 		}
 		Linea l = null;
 		do {
-			aukera = Utilities.eskatuInt(Integer.MAX_VALUE);
+			aukera = Utilities.eskatuInt(lineak.size());
 			for (Linea lin : lineak) {
 				if (lin.getKodea() == aukera) {
 					l = lin;
@@ -280,7 +280,7 @@ public class Main {
 		ordaintzekoa = Math.round(ordaintzekoa*100f)/100f;
 		bil.setOrdaintzekoa(ordaintzekoa);
 		DAOBilete daoB = new DAOBilete();
-		System.out.println("Hurrengo biletea erosi nahi duzu (b/e)");
+		System.out.println("Hurrengo biletea erosi nahi duzu? (b/e)");
 		System.out.println(bil.toStringIzenak());
 
 		if (Utilities.eskatuBaiEz()) {
@@ -288,10 +288,10 @@ public class Main {
 			System.out.println(ord + " euro ordaindu behar dituzu");
 			if (ordaindu(ord)) {
 				bil.setKode(daoB.insert(bil));
-				System.out.println("Erosketaren tiketa gorde nahi duzu(b/e)");
+				System.out.println("Erosketaren tiketa gorde nahi duzu? (b/e)");
 				if (Utilities.eskatuBaiEz()) {
 					System.out.println("Hona hemen tiketa:\n");
-					System.out.println(daoB.getByKode(bil.getKode()) + "\nEroslearen Izen Abizenak: "
+					System.out.println(daoB.getByKode(bil.getKode()) + "\n\tEroslearen Izen Abizenak: "
 							+ unekoErabiltzaile.getIzenAbizenak());
 				}
 				System.out.println("\n");

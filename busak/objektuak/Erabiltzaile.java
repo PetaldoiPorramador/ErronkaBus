@@ -130,7 +130,7 @@ public class Erabiltzaile {
 	public void ikusiBileteak() {
 		// erakutsi erabiltzailearen bilete guztiak
 		for (int i = 0; i < bileteak.size(); i++) {
-			System.out.println("\t" + bileteak.get(i));
+			System.out.println(bileteak.get(i));
 		}
 	}
 }

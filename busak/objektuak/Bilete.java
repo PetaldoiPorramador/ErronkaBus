@@ -205,14 +205,14 @@ public class Bilete {
     public String toString() {
         if (kode != -1)
             return "Kodea: " + kode + " ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
-                    + "\nBidaiaren hasierako eguna eta ordua: " + hasData
-                    + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik "
-                    + bukGeltoki + "-ra";
+                    + "\n\tBidaiaren hasierako eguna eta ordua: " + hasData
+                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData
+                    + "\n\t" + hasGeltoki + "-tik \n\t" + bukGeltoki + "-ra";
         else
-            return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
-                    + "\nBidaiaren hasierako eguna eta ordua: " + hasData
-                    + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " " + hasGeltoki + "-tik "
-                    + bukGeltoki + "-ra";
+            return "\tOrdaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
+                    + "\n\tBidaiaren hasierako eguna eta ordua: " + hasData
+                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData
+                    + "\n\t" + hasGeltoki + "-tik \n\t" + bukGeltoki + "-ra";
 
     }
 
@@ -226,7 +226,7 @@ public class Bilete {
     public String toStringIzenak() {
         return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
                 + "\nBidaiaren hasierako eguna eta ordua: " + hasData
-                + "\nEstimatutako bidaiaren amaierako eguna eta ordua" + bukData + " "
+                + "\nEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData + " "
                 + hasGeltoki.getIzena() + "-tik "
                 + bukGeltoki.getIzena() + "-ra";
     }
