@@ -3,6 +3,7 @@ package busak;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
@@ -205,5 +206,15 @@ public class Utilities {
 				System.out.print("GOGORATU! bai(b), ez(e)");
 			}
 		} while (true);
+	}
+
+	/**
+	 * LocalDateTime-a string formatu egokian bueltatzen du imprimatzeko
+	 * 
+	 * @param ordua <b>LocalDateTime</b> imprimatzeko ordua
+	 * @return <b>String</b> ordua string formatuan
+	 */
+	public static String dateTimeToString(LocalDateTime ordua) {
+		return ordua.format(DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm"));
 	}
 }
