@@ -51,7 +51,7 @@ public class Utilities {
 		while (!ok) {
 			try {
 				num = Double.parseDouble(System.console().readLine());
-				num = Math.round(num*100.0)/100.0;
+				num = Math.round(num * 100.0) / 100.0;
 				if (num > 0) {
 					ok = true;
 				} else {
@@ -78,7 +78,15 @@ public class Utilities {
 		boolean ok = false;
 		while (!ok) {
 			try {
-				eguna = LocalDate.parse(System.console().readLine());
+				String joined = System.console().readLine();
+				String[] splited = joined.split("-");
+				for (int i = 0; i < splited.length; i++) {
+					if (splited[i].length() == 1) {
+						splited[i] = "0" + splited[i];
+					}
+				}
+				joined = String.join("-",splited);
+				eguna = LocalDate.parse(joined);
 				ok = true;
 			} catch (DateTimeParseException e) {
 				System.out.println("Sartu egun formatu egokia(uuuu-hh-ee):");
@@ -88,7 +96,15 @@ public class Utilities {
 		System.out.println("Sartu bidaiatzeko ordu(hh:mm) desiratua:");
 		while (!ok) {
 			try {
-				ordua = LocalTime.parse(System.console().readLine());
+				String joined = System.console().readLine();
+				String[] splited = joined.split(":");
+				for (int i = 0; i < splited.length; i++) {
+					if (splited[i].length() == 1) {
+						splited[i] = "0" + splited[i];
+					}
+				}
+				joined = String.join(":",splited);
+				ordua = LocalTime.parse(joined);
 				ok = true;
 			} catch (DateTimeParseException e) {
 				System.out.println("Sartu ordu formatu egokia (hh:mm):");
