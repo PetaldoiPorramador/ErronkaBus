@@ -107,13 +107,12 @@ public class DAOLinea {
 	}
 
 	/**
-	 * Linea guztiak datu basetik eskuratzeko metodoa
+	 * Linea guztiak datu basetik eskuratzeko metodoa, ez ditu haien geltokiak eskuratzen
 	 * 
-	 * @return {@code ArrayList<Linea>} Linea guztiak
+	 * @return {@code ArrayList<Linea>} Linea guztiak geltoki barik
 	 */
 	public ArrayList<Linea> getAll() {
 		ArrayList<Linea> lineak = new ArrayList<Linea>();
-		DAOGeltoki daoGeltoki = new DAOGeltoki();
 		String sql = "SELECT * FROM Linea";
 		try (PreparedStatement pst = conn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
 			while (rs.next()) {
@@ -126,7 +125,6 @@ public class DAOLinea {
 				linea.setBukOrdBer(rs.getTime("HoraFinDsc").toLocalTime());
 				linea.setPvpu(rs.getFloat("PVPU"));
 				linea.setMaiztasuna(rs.getInt("Frecuencia"));
-				linea.setGeltokiak(daoGeltoki.getAll(linea.getKodea()));
 				lineak.add(linea);
 			}
 		} catch (SQLException e) {
