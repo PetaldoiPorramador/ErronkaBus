@@ -265,7 +265,7 @@ public class Main {
 		} while (!ok);
 		int max = ordPosi.size();
 		for (int i = 0; i < max; i++) {
-			System.out.println(" -" + (i + 1) + "- " + ordPosi.get(i));
+			System.out.println(" -" + (i + 1) + "- " + Utilities.dateTimeToString(ordPosi.get(i)));
 		}
 		System.out.println("Sartu nahi duzun ordua (1-" + max + "):");
 		int aukera = Utilities.eskatuInt(max) - 1;

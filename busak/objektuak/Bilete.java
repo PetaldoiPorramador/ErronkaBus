@@ -2,6 +2,8 @@ package busak.objektuak;
 
 import java.time.LocalDateTime;
 
+import busak.Utilities;
+
 /**
  * Bilete objektua
  */
@@ -205,13 +207,13 @@ public class Bilete {
     public String toString() {
         if (kode != -1)
             return "Kodea: " + kode + " ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
-                    + "\n\tBidaiaren hasierako eguna eta ordua: " + hasData
-                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData
+                    + "\n\tBidaiaren hasierako eguna eta ordua: " + Utilities.dateTimeToString(hasData)
+                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + Utilities.dateTimeToString(bukData)
                     + "\n\t" + hasGeltoki + "-tik \n\t" + bukGeltoki + "-ra";
         else
             return "\tOrdaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
-                    + "\n\tBidaiaren hasierako eguna eta ordua: " + hasData
-                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData
+                    + "\n\tBidaiaren hasierako eguna eta ordua: " + Utilities.dateTimeToString(hasData)
+                    + "\n\tEstimatutako bidaiaren amaierako eguna eta ordua: " + Utilities.dateTimeToString(bukData)
                     + "\n\t" + hasGeltoki + "-tik \n\t" + bukGeltoki + "-ra";
 
     }
@@ -225,8 +227,8 @@ public class Bilete {
      */
     public String toStringIzenak() {
         return "Ordaintzekoa: " + ordaintzekoa + " Eroslearen NAN/AIZ-a: " + nan
-                + "\nBidaiaren hasierako eguna eta ordua: " + hasData
-                + "\nEstimatutako bidaiaren amaierako eguna eta ordua: " + bukData + " "
+                + "\nBidaiaren hasierako eguna eta ordua: " + Utilities.dateTimeToString(hasData)
+                + "\nEstimatutako bidaiaren amaierako eguna eta ordua: " + Utilities.dateTimeToString(bukData) + " "
                 + hasGeltoki.getIzena() + "-tik "
                 + bukGeltoki.getIzena() + "-ra";
     }
