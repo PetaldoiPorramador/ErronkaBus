@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import busak.dao.ConnectionManager;
 import busak.dao.DAOBilete;
 import busak.dao.DAOErabiltzaile;
+import busak.dao.DAOGeltoki;
 import busak.dao.DAOLinea;
 import busak.objektuak.Bilete;
 import busak.objektuak.Erabiltzaile;
@@ -33,7 +34,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		menu();
-        ConnectionManager.closeConnection();
+		ConnectionManager.closeConnection();
 	}
 
 	/**
@@ -58,16 +59,16 @@ public class Main {
 				aukera = Utilities.eskatuInt(3);
 
 				switch (aukera) {
-				case 1:
-					logeatu();
-					break;
-				case 2:
-					erregistratu();
-					break;
-				default:
-					System.out.println("Ateratzen ... .. .");
-					atera = true;
-					break;
+					case 1:
+						logeatu();
+						break;
+					case 2:
+						erregistratu();
+						break;
+					default:
+						System.out.println("Ateratzen ... .. .");
+						atera = true;
+						break;
 				}
 
 			} else {
@@ -85,16 +86,16 @@ public class Main {
 				aukera = Utilities.eskatuInt(3);
 
 				switch (aukera) {
-				case 1:
-					biletakIkusi();
-					break;
-				case 2:
-					bileteaErosi();
-					break;
-				default:
-					unekoErabiltzaile = null;
-					System.out.println("Erabiltzailearen sesioa ixten ... .. .");
-					break;
+					case 1:
+						biletakIkusi();
+						break;
+					case 2:
+						bileteaErosi();
+						break;
+					default:
+						unekoErabiltzaile = null;
+						System.out.println("Erabiltzailearen sesioa ixten ... .. .");
+						break;
 				}
 			}
 
@@ -137,6 +138,9 @@ public class Main {
 				}
 			}
 		} while (l == null);
+		DAOGeltoki daoG = new DAOGeltoki();
+		ArrayList<Geltoki> geltokiak = daoG.getAll(l.getKodea());
+		l.setGeltokiak(geltokiak);
 		System.out.println("\nAukeratu hurrengo geltokietako bat:");
 		l.printGeltoki();
 		aukera = 0;
@@ -277,7 +281,7 @@ public class Main {
 		bil.setHasData(egunOrd);
 		bil.setBukData(egunOrd.plusMinutes(l.bidaiDenbora(geltoHas, geltoBuk)));
 		float ordaintzekoa = l.getPvpu() * Math.abs(geltoHas - geltoBuk);
-		ordaintzekoa = Math.round(ordaintzekoa*100f)/100f;
+		ordaintzekoa = Math.round(ordaintzekoa * 100f) / 100f;
 		bil.setOrdaintzekoa(ordaintzekoa);
 		DAOBilete daoB = new DAOBilete();
 		System.out.println("Hurrengo biletea erosi nahi duzu? (b/e)");
