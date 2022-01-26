@@ -144,7 +144,6 @@ public class Main {
 		System.out.println("\nAukeratu hurrengo geltokietako bat:");
 		l.printGeltoki();
 		aukera = 0;
-		ArrayList<Geltoki> geltokiak = l.getGeltokiak();
 		int lTamaina = geltokiak.size();
 		do {
 			System.out.println("Sartu bidaiaren hasierako geltokiaren ordena:");
