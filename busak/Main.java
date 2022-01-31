@@ -313,6 +313,8 @@ public class Main {
 		System.out.println("ERABILTZAILE BERRIA ESKATU");
 		System.out.print("Erabiltzailearen NAN: ");
 		String nan = Utilities.eskatuNan();
+
+
 		erabiltzaileBerri.setNanAiz(nan);
 
 		System.out.print("\n" + "Erabiltzailearen Izen Abizenak: ");
@@ -333,7 +335,14 @@ public class Main {
 
 		if (baiez) {
 			DAOErabiltzaile erabil = new DAOErabiltzaile();
-			erabil.insert(erabiltzaileBerri);
+			if (erabil.insert(erabiltzaileBerri)) {
+				System.out.println("Zorionak eta erabiltzaile berri on");
+			} else {
+				System.out.println("Erabiltzailea existitzen da beste bat sortu nahi duzu (b/e)");
+				if (Utilities.eskatuBaiEz()) {
+					erregistratu();
+				}
+			}
 		}
 
 	}

@@ -40,7 +40,6 @@ public class DAOErabiltzaile {
 			pst.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		return false;
 	}
