@@ -8,8 +8,8 @@
    sodipodi:docname="clase diagrama asul2.svg"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    inkscape:export-filename="/mnt/4E74157374155F51/Users/Julen/Desktop/FP/ErronkaBus/Documentacion/Garapen inguruneak/clase diagrama asul2.png"
-   inkscape:export-xdpi="1000"
-   inkscape:export-ydpi="1000"
+   inkscape:export-xdpi="800"
+   inkscape:export-ydpi="800"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.1743708"
-     inkscape:cx="1293.0177"
-     inkscape:cy="1063.2961"
+     inkscape:zoom="0.27179635"
+     inkscape:cx="1631.7364"
+     inkscape:cy="916.12709"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
@@ -144,7 +144,8 @@
          y="0"
          width="217"
          height="144"
-         id="rect22" />
+         id="rect22"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -193,14 +194,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5.3125"
-         y="14.5"
+         x="5.4531298"
+         y="14.218902"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="700"
          font-style="normal"
          id="text30"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">busak.dao.ConnectionManager</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3824px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.980614"
+         transform="scale(0.98061392,1.0197693)">busak.dao.ConnectionManager</text>
     </g>
     <g
        fill="#ffffff"
@@ -957,14 +959,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="122.5"
+         x="5.0649629"
+         y="121.33257"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text146"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ getConnection() : Connection</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.5269px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.99047"
+         transform="scale(0.99046991,1.0096218)">+ getConnection() : Connection</text>
     </g>
     <g
        fill="#ffffff"
@@ -1349,7 +1352,8 @@
          y="0"
          width="274"
          height="144"
-         id="rect208" />
+         id="rect208"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -2082,14 +2086,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="122.5"
+         x="5.2216449"
+         y="118.59533"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text316"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ getAll(nan : String) : ArrayList «Bilete»</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.1992px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.968125"
+         transform="scale(0.96812512,1.0329243)">+ getAll(nan : String) : ArrayList «Bilete»</text>
     </g>
     <g
        fill="#ffffff"
@@ -2550,7 +2555,8 @@
          y="0"
          width="331"
          height="144"
-         id="rect390" />
+         id="rect390"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -3185,14 +3191,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="104.5"
+         x="5.1334577"
+         y="102.47186"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text484"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ getByKode(lineaKode : int, orden : int) : Geltoki</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.382px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.980592"
+         transform="scale(0.98059191,1.0197922)">+ getByKode(lineaKode : int, orden : int) : Geltoki</text>
     </g>
     <g
        fill="#ffffff"
@@ -3635,7 +3642,8 @@
          y="0"
          width="220"
          height="144"
-         id="rect552" />
+         id="rect552"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -4466,14 +4474,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="140.5"
+         x="5.1001682"
+         y="138.44464"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text674"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ update(linea : Linea) : boolean</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.4521px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.985371"
+         transform="scale(0.98537115,1.014846)">+ update(linea : Linea) : boolean</text>
     </g>
     <g
        fill="#ffffff"
@@ -4720,7 +4729,8 @@
          y="0"
          width="206"
          height="126"
-         id="rect714" />
+         id="rect714"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -5257,14 +5267,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="86.5"
+         x="5.0865889"
+         y="85.404251"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text794"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ delete(kodea : int) : boolean</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.4809px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.987332"
+         transform="scale(0.98733235,1.0128302)">+ delete(kodea : int) : boolean</text>
     </g>
     <g
        fill="#ffffff"
@@ -5823,13 +5834,15 @@
          y="0"
          width="50"
          height="18"
-         id="rect882" />
+         id="rect882"
+         style="fill:none" />
       <rect
          x="0"
          y="17"
          width="70"
          height="28"
-         id="rect884" />
+         id="rect884"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -7168,7 +7181,8 @@
          y="0"
          width="1261"
          height="630"
-         id="rect1106" />
+         id="rect1106"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -12622,13 +12636,15 @@
          y="0"
          width="50"
          height="18"
-         id="rect1926" />
+         id="rect1926"
+         style="fill:none" />
       <rect
          x="0"
          y="17"
          width="70"
          height="28"
-         id="rect1928" />
+         id="rect1928"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -12773,7 +12789,8 @@
          y="0"
          width="352"
          height="207"
-         id="rect1950" />
+         id="rect1950"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -13662,14 +13679,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="149.5"
+         x="5.1276293"
+         y="146.58737"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2086"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">- nanKonprobatu(nanZbk : int, letra : char) : boolean</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.381px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.980518"
+         transform="scale(0.9805175,1.0198696)">- nanKonprobatu(nanZbk : int, letra : char) : boolean</text>
     </g>
     <g
        fill="#ffffff"
@@ -14016,14 +14034,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="203.5"
+         x="5.1416097"
+         y="199.31354"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2140"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ dateTimeToString(ordua : LocalDateTime) : String</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.365px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.979428"
+         transform="scale(0.97942769,1.0210044)">+ dateTimeToString(ordua : LocalDateTime) : String</text>
     </g>
     <g
        fill="#ffffff"
@@ -14174,13 +14193,18 @@
          y="0"
          width="50"
          height="18"
-         id="rect2164" />
+         id="rect2164"
+         style="fill:none" />
       <rect
          x="0"
          y="17"
          width="75"
          height="28"
-         id="rect2166" />
+         id="rect2166"
+         style="fill:none"
+         inkscape:export-filename="/mnt/4E74157374155F51/Users/Julen/Desktop/FP/ErronkaBus/Documentacion/Garapen inguruneak/rect2166.png"
+         inkscape:export-xdpi="800"
+         inkscape:export-ydpi="800" />
     </g>
     <g
        fill="#ffffff"
@@ -14325,7 +14349,8 @@
          y="0"
          width="967"
          height="468"
-         id="rect2188" />
+         id="rect2188"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -15254,14 +15279,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="158.5"
+         x="5.159112"
+         y="154.84442"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2324"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ Bilete(kode : int, ordaintzekoa : float, nan : String, hasData : LocalDateTime, bukData : LocalDateTime, hasGeltoki : Geltoki, bukGeltoki : Geltoki)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3284px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.976936"
+         transform="scale(0.97693637,1.0236081)">+ Bilete(kode : int, ordaintzekoa : float, nan : String, hasData : LocalDateTime, bukData : LocalDateTime, hasGeltoki : Geltoki, bukGeltoki : Geltoki)</text>
     </g>
     <g
        fill="#ffffff"
@@ -17058,7 +17084,8 @@
          y="0"
          width="350"
          height="198"
-         id="rect2582" />
+         id="rect2582"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -18127,14 +18154,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="158.5"
+         x="5.1598749"
+         y="154.64877"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2746"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">- bileteaEratu(geltoHas : int, geltoBuk : int, l : Linea)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3103px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.975702"
+         transform="scale(0.97570201,1.0249031)">- bileteaEratu(geltoHas : int, geltoBuk : int, l : Linea)</text>
     </g>
     <g
        fill="#ffffff"
@@ -18521,7 +18549,8 @@
          y="0"
          width="257"
          height="126"
-         id="rect2806" />
+         id="rect2806"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -18960,14 +18989,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="68.5"
+         x="5.0528584"
+         y="67.968002"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2872"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ insert(udalerri : Udalerri) : boolean</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.5528px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.992234"
+         transform="scale(0.99223362,1.0078272)">+ insert(udalerri : Udalerri) : boolean</text>
     </g>
     <g
        fill="#ffffff"
@@ -19254,14 +19284,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="122.5"
+         x="5.1332211"
+         y="120.12665"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text2914"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ update(udalerri : Udalerri) : boolean</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3825px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.980626"
+         transform="scale(0.98062569,1.0197571)">+ update(udalerri : Udalerri) : boolean</text>
     </g>
     <g
        fill="#ffffff"
@@ -19392,7 +19423,8 @@
          y="0"
          width="408"
          height="144"
-         id="rect2934" />
+         id="rect2934"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -20125,14 +20157,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="122.5"
+         x="5.1700959"
+         y="119.48386"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text3042"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ getByNanPass(nan : String, pasahitza : String) : Erabiltzaile</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3056px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.975378"
+         transform="scale(0.97537848,1.025243)">+ getByNanPass(nan : String, pasahitza : String) : Erabiltzaile</text>
     </g>
     <g
        fill="#ffffff"
@@ -20493,7 +20526,8 @@
          y="0"
          width="493"
          height="288"
-         id="rect3096" />
+         id="rect3096"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -21128,14 +21162,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="104.5"
+         x="5.1831188"
+         y="101.73463"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text3190"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ Erabiltzaile(EnanAiz : String, EizenAbizenak : String, Epasahitza : String)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.2786px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.973537"
+         transform="scale(0.97353713,1.0271822)">+ Erabiltzaile(EnanAiz : String, EizenAbizenak : String, Epasahitza : String)</text>
     </g>
     <g
        fill="#ffffff"
@@ -22246,7 +22281,8 @@
          y="0"
          width="236"
          height="180"
-         id="rect3350" />
+         id="rect3350"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -23175,14 +23211,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="158.5"
+         x="5.17945"
+         y="154.38776"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text3486"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ setUdalerria(udalerria : Udalerri)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.2862px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.974055"
+         transform="scale(0.97405523,1.0266358)">+ setUdalerria(udalerria : Udalerri)</text>
     </g>
     <g
        fill="#ffffff"
@@ -23411,7 +23448,8 @@
          y="0"
          width="238"
          height="180"
-         id="rect3520" />
+         id="rect3520"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -23850,14 +23888,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="68.5"
+         x="5.1424479"
+         y="67.082603"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text3586"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ Udalerri(kode : int, izena : String)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3632px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.979308"
+         transform="scale(0.9793081,1.0211291)">+ Udalerri(kode : int, izena : String)</text>
     </g>
     <g
        fill="#ffffff"
@@ -24576,7 +24615,8 @@
          y="0"
          width="699"
          height="450"
-         id="rect3690" />
+         id="rect3690"
+         style="fill:none" />
     </g>
     <g
        fill="#ffffff"
@@ -25505,14 +25545,15 @@
          fill-opacity="1"
          stroke="none"
          xml:space="preserve"
-         x="5"
-         y="158.5"
+         x="5.1480169"
+         y="155.09453"
          font-family="Cantarell"
          font-size="14.6667"
          font-weight="400"
          font-style="normal"
          id="text3826"
-         style="-inkscape-font-specification:'Cantarell, Ultra-Bold';font-family:Cantarell;font-weight:800;font-style:normal;font-stretch:normal;font-variant:normal;font-size:14.66670044px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">+ Geltoki(lineaKode : int, orden : int, izena : String, zenbakia : int, denboraBzBs : int, pk : Pk, kalea : String)</text>
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:14.3516px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.978514"
+         transform="scale(0.97851438,1.0219574)">+ Geltoki(lineaKode : int, orden : int, izena : String, zenbakia : int, denboraBzBs : int, pk : Pk, kalea : String)</text>
     </g>
     <g
        fill="#ffffff"
