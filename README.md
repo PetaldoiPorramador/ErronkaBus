@@ -40,42 +40,42 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 [Codigo](/busak)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## Diagrama de flujo
 
-![Diagrama](/documentacion/garapen-inguruneak/fluxu diagrama.svg)
+![Diagrama](/documentacion/garapen-inguruneak/fluxu%20diagrama.svg)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## Konplexutasun Ziklomatikoa
 
-![Diagrama](/documentacion/garapen-inguruneak/konplexutasun ziklomatikoa.svg)
+![Diagrama](/documentacion/garapen-inguruneak/konplexutasun%20ziklomatikoa.svg)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## Sasikodea
 
-[Menu](/dokumentazioa/erronnkabusMenu.psc)\
-[EskatuDirua](/dokumentazioa/erronnkabusEskatuDirua.psc)\
-[Kanbioak](/dokumentazioa/erronnkabusKanbioak.psc)
+[Menu](/dokumentazioa/erronkabusMenu.psc)\
+[EskatuDirua](/dokumentazioa/erronkabusEskatuDirua.psc)\
+[Kanbioak](/dokumentazioa/erronkabusKanbioak.psc)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## Arazketa/Errore Txostena
 
 [Arazketa/Errore Txostena](/dokumentazioa/ArazketaTxostena.pdf)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## Aurkezpena
 
 [Aurkezpena](/dokumentazioa/Aurkezpena.odp)
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
 
 ## JavaDoc Dokumentazioa
 
 Aqui se puede acceder a la documentacion en forma de web [JavaDoc API](https://petaldoiporramador.github.io/ErronkaBus/).
 
-[:arrow_up:](#erronnkabus)
+[:arrow_up:](#erronkabus)
