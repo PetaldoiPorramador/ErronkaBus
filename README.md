@@ -10,8 +10,13 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 5. [Complejidad ciclomatica](#complejidad-ciclomatica)
 6. [Pseudocodigo](#pseudocodigo)
 7. [Memoria de errores](#memoria-de-errores)
-8. [Presentacion](#presentacion)
-9. [Documentacion javadoc](#documentacion-javadoc)
+8. [Esquema ER](#esquema-er)
+9. [Esquema fisico](#esquema-fisico)
+10. [Normalizacion](#normalizacion)
+11. [Consultas utilizadas](#consultas-utilizadas)
+12. [Scripts](#scripts)
+13. [Presentacion](#presentacion)
+14. [Documentacion javadoc](#documentacion-javadoc)
 
 ## Parametros
 
@@ -51,7 +56,7 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Casos de uso
 
-![Casos de uso](/Documentacion/Garapen%20inguruneak/erabili_kasua.svg)
+![Casos de uso](/Documentacion/Garapen%20inguruneak/erabileraKasuak/erabili_kasua.svg)
 
 [Documentacion](/Documentacion/Garapen%20inguruneak/erabileraKasuak/)
 
@@ -63,7 +68,7 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 [:arrow_up:](#erronkabus)
 
-## Konplexutasun Ziklomatikoa
+## Complejidad ciclomatica
 
 ![Diagrama](/Documentacion/Garapen%20inguruneak/konplexutasun%20ziklomatikoa.svg)
 
@@ -81,13 +86,35 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 [:arrow_up:](#erronkabus)
 
-## Aurkezpena
+## Esquema ER
 
-[Aurkezpena](/dokumentazioa/Aurkezpena.odp)
+![Primer diseño](/Documentacion/Bases%20de%20datos/esquemaER-Primer%20Diseño.svg)
+![Diseño final](/Documentacion/Bases%20de%20datos/esquemaER-Diseño%20final.svg)
 
 [:arrow_up:](#erronkabus)
 
-## JavaDoc Dokumentazioa
+## Esquema fisico
+
+![Esquema fisico](/Documentacion/Bases%20de%20datos/esquemaFisico.svg)
+
+[:arrow_up:](#erronkabus)
+
+## Normalizacion
+
+![Normalizacion](/Documentacion/Bases%20de%20datos/Normalizacion.pdf)
+
+[:arrow_up:](#erronkabus)
+
+11. [Consultas utilizadas](#consultas-utilizadas)
+12. [Scripts](#scripts)
+
+## Presentacion
+
+[Presentacion]()
+
+[:arrow_up:](#erronkabus)
+
+## Documentacion javadoc
 
 Aqui se puede acceder a la documentacion en forma de web [JavaDoc API](https://petaldoiporramador.github.io/ErronkaBus/).
 
