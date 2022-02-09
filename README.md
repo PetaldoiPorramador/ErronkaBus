@@ -5,12 +5,13 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 1. [Parametros](#parametros)
 2. [Codigo fuente](#codigo-fuente)
-3. [Diagrama de flujo](#diagrama-de-flujo)
-4. [Complejidad ciclomatica](#complejidad-ciclomatica)
-5. [Pseudocodigo](#pseudocodigo)
-6. [Memoria de errores](#memoria-de-errores)
-7. [Presentacion](#presentacion)
-8. [Documentacion javadoc](#documentacion-javadoc)
+3. [Diagrama de clases](#diagrama-de-clases)
+4. [Diagrama de flujo](#diagrama-de-flujo)
+5. [Complejidad ciclomatica](#complejidad-ciclomatica)
+6. [Pseudocodigo](#pseudocodigo)
+7. [Memoria de errores](#memoria-de-errores)
+8. [Presentacion](#presentacion)
+9. [Documentacion javadoc](#documentacion-javadoc)
 
 ## Parametros
 
@@ -38,7 +39,21 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Codigo fuente
 
-[Codigo](/busak)
+[Codigo](/busak/)
+
+[:arrow_up:](#erronkabus)
+
+## Diagrama de clases
+
+![Diagrama de clases](/Documentacion/Garapen%20inguruneak/clase%20diagrama.svg)
+  
+[:arrow_up:](#erronkabus)
+
+## Casos de uso
+
+![Casos de uso](/Documentacion/Garapen%20inguruneak/erabili_kasua.svg)
+
+[Documentacion](/Documentacion/Garapen%20inguruneak/erabileraKasuak/)
 
 [:arrow_up:](#erronkabus)
 
@@ -54,17 +69,15 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 [:arrow_up:](#erronkabus)
 
-## Sasikodea
+## Pseudocodigo
 
-[Menu](/dokumentazioa/erronkabusMenu.psc)\
-[EskatuDirua](/dokumentazioa/erronkabusEskatuDirua.psc)\
-[Kanbioak](/dokumentazioa/erronkabusKanbioak.psc)
+[Menu](/Documentacion/Garapen%20inguruneak/menu_sasi.txt)
 
 [:arrow_up:](#erronkabus)
 
-## Arazketa/Errore Txostena
+## Memoria de errores
 
-[Arazketa/Errore Txostena](/dokumentazioa/ArazketaTxostena.pdf)
+[Memoria de errores](/Documentacion/Garapen%20inguruneak/Arazketa%20txostena.pdf)
 
 [:arrow_up:](#erronkabus)
 
