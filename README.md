@@ -44,13 +44,13 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Diagrama de flujo
 
-![Diagrama](/documentacion/garapen%20inguruneak/fluxu%20diagrama.svg)
+![Diagrama](/Documentacion/Garapen%20inguruneak/fluxu%20diagrama.svg)
 
 [:arrow_up:](#erronkabus)
 
 ## Konplexutasun Ziklomatikoa
 
-![Diagrama](/documentacion/garapen%20inguruneak/konplexutasun%20ziklomatikoa.svg)
+![Diagrama](/Documentacion/Garapen%20inguruneak/konplexutasun%20ziklomatikoa.svg)
 
 [:arrow_up:](#erronkabus)
 
