@@ -101,12 +101,22 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Normalizacion
 
-![Normalizacion](/Documentacion/Bases%20de%20datos/Normalizacion.pdf)
+[Normalizacion](/Documentacion/Bases%20de%20datos/Normalizacion.pdf)
 
 [:arrow_up:](#erronkabus)
 
-11. [Consultas utilizadas](#consultas-utilizadas)
-12. [Scripts](#scripts)
+## Consultas utilizadas
+
+[Consultas](/Documentacion/Bases%20de%20datos/Consultas.pdf)
+
+[:arrow_up:](#erronkabus)
+
+## Scripts
+
+[Creacion de base de datos](/Documentacion/Bases%20de%20datos/scriptCreacion.sql)
+[Insecion de datos](/Documentacion/Bases%20de%20datos/datos.sql)
+
+[:arrow_up:](#erronkabus)
 
 ## Presentacion
 
