@@ -3,24 +3,24 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Aurkibidea
 
-. [General](#general)
-  . [Parametros](#parametros)
-  . [Presentacion](#presentacion)
-. [Bases de datos](#bases-de-datos)
-  . [Esquema ER](#esquema-er)
-  . [Esquema fisico](#esquema-fisico)
-  . [Normalizacion](#normalizacion)
-  . [Consultas utilizadas](#consultas-utilizadas)
-  . [Scripts](#scripts)
-. [Entornos de desarrollo](#entornos-de-desarrollo)
-  . [Diagrama de clases](#diagrama-de-clases)
-  . [Diagrama de flujo](#diagrama-de-flujo)
-  . [Complejidad ciclomatica](#complejidad-ciclomatica)
-  . [Pseudocodigo](#pseudocodigo)
-  . [Memoria de errores](#memoria-de-errores)
-. [Programacion](#programacion)
-  . [Codigo fuente](#codigo-fuente)
-  . [Documentacion javadoc](#documentacion-javadoc)
+- [General](#general)
+  - [Parametros](#parametros)
+  - [Presentacion](#presentacion)
+- [Bases de datos](#bases-de-datos)
+  - [Esquema ER](#esquema-er)
+  - [Esquema fisico](#esquema-fisico)
+  - [Normalizacion](#normalizacion)
+  - [Consultas utilizadas](#consultas-utilizadas)
+  - [Scripts](#scripts)
+- [Entornos de desarrollo](#entornos-de-desarrollo)
+  - [Diagrama de clases](#diagrama-de-clases)
+  - [Diagrama de flujo](#diagrama-de-flujo)
+  - [Complejidad ciclomatica](#complejidad-ciclomatica)
+  - [Pseudocodigo](#pseudocodigo)
+  - [Memoria de errores](#memoria-de-errores)
+- [Programacion](#programacion)
+  - [Codigo fuente](#codigo-fuente)
+  - [Documentacion javadoc](#documentacion-javadoc)
 
 ## General
 
@@ -128,7 +128,6 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 [Memoria de errores](/Documentacion/Garapen%20inguruneak/Arazketa%20txostena.pdf)
 
 [:arrow_up:](#erronkabus)
-
 
 ## Programacion
 
