@@ -113,7 +113,7 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ## Scripts
 
-[Creacion de base de datos](/Documentacion/Bases%20de%20datos/scriptCreacion.sql)
+[Creacion de base de datos](/Documentacion/Bases%20de%20datos/scriptCreacion.sql)\
 [Insecion de datos](/Documentacion/Bases%20de%20datos/datos.sql)
 
 [:arrow_up:](#erronkabus)
