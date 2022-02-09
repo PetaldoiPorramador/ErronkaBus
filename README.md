@@ -51,7 +51,7 @@ Reto realizado por Oier San Roman, Unai Duran eta Julen Sanchez
 
 ### Presentacion
 
-[Presentacion]()
+[Presentacion](/Documentacion/ErronkaBus.pptx)
 
 [:arrow_up:](#erronkabus)
 
